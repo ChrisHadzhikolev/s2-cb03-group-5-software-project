@@ -1,0 +1,14 @@
+C:\Users\krish\Source\Repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\bin\Debug\ProjectMB.exe.config
+C:\Users\krish\Source\Repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\bin\Debug\ProjectMB.exe
+C:\Users\krish\Source\Repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\bin\Debug\ProjectMB.pdb
+C:\Users\krish\Source\Repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\obj\Debug\ProjectMB.csprojAssemblyReference.cache
+C:\Users\krish\Source\Repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\obj\Debug\ProjectMB.MainForm.resources
+C:\Users\krish\Source\Repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\obj\Debug\ProjectMB.Properties.Resources.resources
+C:\Users\krish\Source\Repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\obj\Debug\ProjectMB.csproj.GenerateResource.cache
+C:\Users\krish\Source\Repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\obj\Debug\ProjectMB.exe
+C:\Users\krish\Source\Repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\obj\Debug\ProjectMB.pdb
+C:\Users\krish\source\repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\obj\Debug\ProjectMB.ProductsForm.resources
+C:\Users\krish\source\repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\obj\Debug\ProjectMB.EmployeeForm.resources
+C:\Users\krish\source\repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\obj\Debug\ProjectMB.EmployeesForm.resources
+C:\Users\krish\source\repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\obj\Debug\ProjectMB.ProductForm.resources
+C:\Users\krish\source\repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\obj\Debug\ProjectMB.SearchForm.resources
