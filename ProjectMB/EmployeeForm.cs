@@ -15,12 +15,22 @@ namespace ProjectMB
         public EmployeeForm()
         {
             InitializeComponent();
+
         }
         public EmployeeForm(string name)
         {
             InitializeComponent();
         }
-
+        private const int CP_NOCLOSE_BUTTON = 0x200;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
+                return myCp;
+            }
+        }
         private void EmployeeForm_Load(object sender, EventArgs e)
         {
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -40,13 +50,19 @@ namespace ProjectMB
 
         private void daysBtn_Click(object sender, EventArgs e)
         {
-            
-            bool[] days = CheckboxDialog.ShowDialog("Select Days:");
-
+            CheckboxDialog checkboxDialog = new CheckboxDialog();
+            checkboxDialog.ShowDialog("Select Days:");
+            do
+            {
+                System.Threading.Thread.Sleep(1000);
+            } while (checkboxDialog.FormOpened);
+            bool[] days = checkboxDialog.SelectedValues();
             foreach (var item in days)
             {
                 if (item) MessageBox.Show("smth");
             }
         }
+
+        
     }
 }

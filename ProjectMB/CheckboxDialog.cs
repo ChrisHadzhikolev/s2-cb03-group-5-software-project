@@ -7,16 +7,29 @@ using System.Windows.Forms;
 
 namespace ProjectMB
 {
-    public static class CheckboxDialog
+    public class CheckboxDialog
     {
-        public static bool[] ShowDialog(string caption)
+        private bool[] result;
+        
+        public bool FormOpened { get; private set; }
+
+        public CheckboxDialog() 
         {
-            Form prompt = new Form();
-            prompt.Width = 500;
-            prompt.Height = 500;
-            prompt.Text = caption;
-            FlowLayoutPanel panel = new FlowLayoutPanel();
-            panel.Size = new System.Drawing.Size(550, 550);
+            result = new bool[7];            
+            FormOpened = false;
+        }
+
+        public void ShowDialog(string caption)
+        {
+            FormOpened = true;
+            Form prompt = new Form
+            {
+                Width = 750,
+                Height = 550,
+                Text = caption
+            };
+            FlowLayoutPanel panel = new FlowLayoutPanel(); //let the hate flow through you
+            panel.Size = new System.Drawing.Size(750, 550);
             CheckBox chkM = new CheckBox();
             chkM.Text = "Monday";
             CheckBox chkT = new CheckBox();
@@ -32,13 +45,28 @@ namespace ProjectMB
             CheckBox chkSD = new CheckBox();
             chkSD.Text = "Sunday";
             Button ok = new Button() { Text = "Yes" };
-            ok.Click += (sender, e) => { prompt.Close(); };
-            Button no = new Button() { Text = "No" };
-            no.Click += (sender, e) => { prompt.Close(); };
-            bool[] result = new bool[7];
+            prompt.FormClosing += (sender, e) => 
+            {
+                if (e.CloseReason == CloseReason.UserClosing && FormOpened)
+                {
+                    MessageBox.Show("Changes Not Saved!");
+                    FormOpened = false;
+                }
+            };
+            ok.Click += (sender, e) => 
+            {
+                result[1] = chkT.Checked;               
+                result[2] = chkW.Checked;               
+                result[3] = chkTD.Checked;               
+                result[4] = chkF.Checked;                
+                result[5] = chkS.Checked;                
+                result[6] = chkSD.Checked;
+                result[0] = chkM.Checked;
+                FormOpened = false;
+                prompt.Close();
+            };
             panel.Controls.Add(chkM);
-            panel.SetFlowBreak(chkM, true);
-            result[0] = chkM.Checked;
+            panel.SetFlowBreak(chkM, true);            
             panel.Controls.Add(chkT);
             panel.SetFlowBreak(chkT, true);
             result[1] = chkT.Checked;
@@ -58,10 +86,13 @@ namespace ProjectMB
             panel.SetFlowBreak(chkSD, true);
             result[6] = chkSD.Checked;
             panel.Controls.Add(ok);
-            panel.Controls.Add(no);
             prompt.Controls.Add(panel);
             prompt.ShowDialog();
+        }
+        public bool[] SelectedValues()
+        {
             return result;
         }
+       
     }
 }

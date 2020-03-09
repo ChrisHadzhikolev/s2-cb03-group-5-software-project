@@ -75,6 +75,7 @@
             this.cancelBtn.TabIndex = 25;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // confirmBtn
             // 
@@ -162,7 +163,7 @@
             // daysBtn
             // 
             this.daysBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.daysBtn.Location = new System.Drawing.Point(314, 285);
+            this.daysBtn.Location = new System.Drawing.Point(388, 285);
             this.daysBtn.Name = "daysBtn";
             this.daysBtn.Size = new System.Drawing.Size(223, 45);
             this.daysBtn.TabIndex = 28;
