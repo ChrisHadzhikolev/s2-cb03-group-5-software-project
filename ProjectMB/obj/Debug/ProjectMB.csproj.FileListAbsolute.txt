@@ -1,0 +1,46 @@
+C:\Users\krish\Source\Repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\bin\Debug\ProjectMB.exe.config
+C:\Users\krish\Source\Repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\bin\Debug\ProjectMB.exe
+C:\Users\krish\Source\Repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\bin\Debug\ProjectMB.pdb
+C:\Users\krish\Source\Repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\obj\Debug\ProjectMB.csprojAssemblyReference.cache
+C:\Users\krish\Source\Repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\obj\Debug\ProjectMB.MainForm.resources
+C:\Users\krish\Source\Repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\obj\Debug\ProjectMB.Properties.Resources.resources
+C:\Users\krish\Source\Repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\obj\Debug\ProjectMB.csproj.GenerateResource.cache
+C:\Users\krish\Source\Repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\obj\Debug\ProjectMB.exe
+C:\Users\krish\Source\Repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\obj\Debug\ProjectMB.pdb
+C:\Users\krish\source\repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\obj\Debug\ProjectMB.ProductsForm.resources
+C:\Users\krish\source\repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\obj\Debug\ProjectMB.EmployeeForm.resources
+C:\Users\krish\source\repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\obj\Debug\ProjectMB.EmployeesForm.resources
+C:\Users\krish\source\repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\obj\Debug\ProjectMB.ProductForm.resources
+C:\Users\krish\source\repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\obj\Debug\ProjectMB.SearchForm.resources
+C:\Users\krish\source\repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\krish\source\repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\bin\Debug\Google.Protobuf.dll
+C:\Users\krish\source\repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\bin\Debug\MySql.Data.dll
+C:\Users\krish\source\repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\bin\Debug\Renci.SshNet.dll
+C:\Users\krish\source\repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\krish\source\repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\bin\Debug\Google.Protobuf.xml
+C:\Users\krish\source\repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\bin\Debug\MySql.Data.xml
+C:\Users\krish\source\repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\bin\Debug\Renci.SshNet.xml
+C:\Users\krish\source\repos\ChrisHadzhikolev\CS-S2-BPF\ProjectMB\obj\Debug\ProjectMB.csproj.CopyComplete
+C:\Users\jakit\OneDrive\Работен плот\Fontys\sem2 - Software\Project\s2-cb03-group-5-software-project-Kris\ProjectMB\bin\Debug\ProjectMB.exe.config
+C:\Users\jakit\OneDrive\Работен плот\Fontys\sem2 - Software\Project\s2-cb03-group-5-software-project-Kris\ProjectMB\bin\Debug\ProjectMB.exe
+C:\Users\jakit\OneDrive\Работен плот\Fontys\sem2 - Software\Project\s2-cb03-group-5-software-project-Kris\ProjectMB\bin\Debug\ProjectMB.pdb
+C:\Users\jakit\OneDrive\Работен плот\Fontys\sem2 - Software\Project\s2-cb03-group-5-software-project-Kris\ProjectMB\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\jakit\OneDrive\Работен плот\Fontys\sem2 - Software\Project\s2-cb03-group-5-software-project-Kris\ProjectMB\bin\Debug\Google.Protobuf.dll
+C:\Users\jakit\OneDrive\Работен плот\Fontys\sem2 - Software\Project\s2-cb03-group-5-software-project-Kris\ProjectMB\bin\Debug\MySql.Data.dll
+C:\Users\jakit\OneDrive\Работен плот\Fontys\sem2 - Software\Project\s2-cb03-group-5-software-project-Kris\ProjectMB\bin\Debug\Renci.SshNet.dll
+C:\Users\jakit\OneDrive\Работен плот\Fontys\sem2 - Software\Project\s2-cb03-group-5-software-project-Kris\ProjectMB\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\jakit\OneDrive\Работен плот\Fontys\sem2 - Software\Project\s2-cb03-group-5-software-project-Kris\ProjectMB\bin\Debug\Google.Protobuf.xml
+C:\Users\jakit\OneDrive\Работен плот\Fontys\sem2 - Software\Project\s2-cb03-group-5-software-project-Kris\ProjectMB\bin\Debug\MySql.Data.xml
+C:\Users\jakit\OneDrive\Работен плот\Fontys\sem2 - Software\Project\s2-cb03-group-5-software-project-Kris\ProjectMB\bin\Debug\Renci.SshNet.xml
+C:\Users\jakit\OneDrive\Работен плот\Fontys\sem2 - Software\Project\s2-cb03-group-5-software-project-Kris\ProjectMB\obj\Debug\ProjectMB.csprojAssemblyReference.cache
+C:\Users\jakit\OneDrive\Работен плот\Fontys\sem2 - Software\Project\s2-cb03-group-5-software-project-Kris\ProjectMB\obj\Debug\ProjectMB.EmployeeForm.resources
+C:\Users\jakit\OneDrive\Работен плот\Fontys\sem2 - Software\Project\s2-cb03-group-5-software-project-Kris\ProjectMB\obj\Debug\ProjectMB.EmployeesForm.resources
+C:\Users\jakit\OneDrive\Работен плот\Fontys\sem2 - Software\Project\s2-cb03-group-5-software-project-Kris\ProjectMB\obj\Debug\ProjectMB.MainForm.resources
+C:\Users\jakit\OneDrive\Работен плот\Fontys\sem2 - Software\Project\s2-cb03-group-5-software-project-Kris\ProjectMB\obj\Debug\ProjectMB.ProductForm.resources
+C:\Users\jakit\OneDrive\Работен плот\Fontys\sem2 - Software\Project\s2-cb03-group-5-software-project-Kris\ProjectMB\obj\Debug\ProjectMB.ProductsForm.resources
+C:\Users\jakit\OneDrive\Работен плот\Fontys\sem2 - Software\Project\s2-cb03-group-5-software-project-Kris\ProjectMB\obj\Debug\ProjectMB.Properties.Resources.resources
+C:\Users\jakit\OneDrive\Работен плот\Fontys\sem2 - Software\Project\s2-cb03-group-5-software-project-Kris\ProjectMB\obj\Debug\ProjectMB.SearchForm.resources
+C:\Users\jakit\OneDrive\Работен плот\Fontys\sem2 - Software\Project\s2-cb03-group-5-software-project-Kris\ProjectMB\obj\Debug\ProjectMB.csproj.GenerateResource.cache
+C:\Users\jakit\OneDrive\Работен плот\Fontys\sem2 - Software\Project\s2-cb03-group-5-software-project-Kris\ProjectMB\obj\Debug\ProjectMB.csproj.CopyComplete
+C:\Users\jakit\OneDrive\Работен плот\Fontys\sem2 - Software\Project\s2-cb03-group-5-software-project-Kris\ProjectMB\obj\Debug\ProjectMB.exe
+C:\Users\jakit\OneDrive\Работен плот\Fontys\sem2 - Software\Project\s2-cb03-group-5-software-project-Kris\ProjectMB\obj\Debug\ProjectMB.pdb
