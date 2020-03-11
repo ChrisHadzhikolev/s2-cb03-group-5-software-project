@@ -20,7 +20,7 @@ namespace ProjectMB
 
         protected void EmployeesLb_SelectedValueChanged(object sender, EventArgs e)
         {
-            EmployeeForm employeeForm = new EmployeeForm(employeesLb.SelectedItem.ToString());
+            EmployeeForm employeeForm = new EmployeeForm(employeesLb.SelectedItem.ToString(), employeesLb);
             employeeForm.Show();
         }
         private void EmployeesForm_Load(object sender, EventArgs e)
@@ -40,6 +40,11 @@ namespace ProjectMB
         {
             EmployeeForm employeeForm = new EmployeeForm();
             employeeForm.Show();
+        }
+
+        private void employeesLb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

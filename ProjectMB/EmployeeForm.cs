@@ -12,15 +12,22 @@ namespace ProjectMB
 {
     public partial class EmployeeForm : Form
     {
+        //Users users = new Users();
+        ListBox listBox;
+        string name;
         public EmployeeForm()
         {
             InitializeComponent();
 
         }
-        public EmployeeForm(string name)
+        public EmployeeForm(string name, ListBox listbox)
         {
             InitializeComponent();
+            this.name = name;
+            this.listBox = listbox;
+
         }
+        
         private const int CP_NOCLOSE_BUTTON = 0x200;
         protected override CreateParams CreateParams
         {
@@ -65,7 +72,25 @@ namespace ProjectMB
 
         private void removeEmpBtn_Click(object sender, EventArgs e)
         {
+           
+                if (emailTb.TextLength > 0 && nameTb.TextLength > 0 && quantityTb.TextLength > 0)
+                {
 
+                if (shiftCb.SelectedIndex>-1 && typeCb.SelectedIndex>-1)
+                {
+                    if (nameTb.Text == name) //check if the name put in the textbox is in the listbox 
+                    {
+                        listBox.Items.Remove(name);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Fill in the empty fields.");
+                }
+                } else
+            {
+                MessageBox.Show("Fill in the empty fields.");
+            }
         }
     }
 }

@@ -76,6 +76,7 @@
             this.employeesLb.Name = "employeesLb";
             this.employeesLb.Size = new System.Drawing.Size(1256, 374);
             this.employeesLb.TabIndex = 3;
+            this.employeesLb.SelectedIndexChanged += new System.EventHandler(this.employeesLb_SelectedIndexChanged);
             // 
             // EmployeesForm
             // 
