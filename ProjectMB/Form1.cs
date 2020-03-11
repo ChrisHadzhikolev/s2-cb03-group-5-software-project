@@ -14,6 +14,8 @@ namespace ProjectMB
 {
     public partial class MainForm : Form
     {
+        Users users;
+        DatabaseFunctions databaseFunctions;
         public MainForm()
         {
             InitializeComponent();
@@ -21,6 +23,9 @@ namespace ProjectMB
             usernameTb.Leave += new EventHandler(leave_username);
             passwordTb.Click += new EventHandler(click_password);
             passwordTb.Leave += new EventHandler(leave_password);
+            databaseFunctions = new DatabaseFunctions();
+            databaseFunctions.GetAllUsers();
+            users = new Users();
         }
         protected void InitializeDesign() 
         {
@@ -113,8 +118,38 @@ namespace ProjectMB
         }
         private void loginBtn_Click(object sender, EventArgs e)
         {
-            loginPnl.Visible = false;
-            selectionPnl.Visible = true;
+
+            User user = users.FindUserByUsername(usernameTb.Text);
+            foreach (var item in Users.users)
+            {
+                MessageBox.Show(item.Username);
+            }
+            if (user != null)
+            {
+                if (user.Position == PersonPosition.MANAGER)
+                {
+                    string pass = databaseFunctions.PasswordByUsername(user.Username);
+                    if (pass == passwordTb.Text)
+                    {
+                        loginPnl.Visible = false;
+                        selectionPnl.Visible = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Incorrect password, please try again!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("This Platform is only for managers!");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("No such user, please try again!");
+            }
+            
         }
         private void exitBtn_Click(object sender, EventArgs e)
         {
