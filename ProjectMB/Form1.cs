@@ -26,7 +26,6 @@ namespace ProjectMB
             databaseFunctions = new DatabaseFunctions();
             databaseFunctions.GetAllUsers();
             users = new Users();
-            
         }
         protected void InitializeDesign() 
         {

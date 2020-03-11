@@ -1,20 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ProjectMB
-{
-    public class DBHelper
-    {
-        public string connectionString { get; private set; }
-        public DBHelper()
-        {
-            connectionString = "server=studmysql01.fhict.local;database=dbi428428;uid=dbi428428;password=spiderMan2000;";
-        }
-
+﻿/*
         public bool NonQuery(string query)
         {
             try
@@ -55,3 +39,4 @@ namespace ProjectMB
         
     }
 }
+*/
