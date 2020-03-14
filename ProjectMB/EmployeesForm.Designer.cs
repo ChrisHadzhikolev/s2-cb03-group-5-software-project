@@ -35,9 +35,10 @@
             // 
             // addBtn
             // 
-            this.addBtn.Location = new System.Drawing.Point(1024, 388);
+            this.addBtn.Location = new System.Drawing.Point(1138, 485);
+            this.addBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(244, 74);
+            this.addBtn.Size = new System.Drawing.Size(271, 92);
             this.addBtn.TabIndex = 5;
             this.addBtn.Text = "Add New Employee";
             this.addBtn.UseVisualStyleBackColor = true;
@@ -45,9 +46,10 @@
             // 
             // searchBtn
             // 
-            this.searchBtn.Location = new System.Drawing.Point(12, 388);
+            this.searchBtn.Location = new System.Drawing.Point(13, 485);
+            this.searchBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.searchBtn.Name = "searchBtn";
-            this.searchBtn.Size = new System.Drawing.Size(244, 74);
+            this.searchBtn.Size = new System.Drawing.Size(271, 92);
             this.searchBtn.TabIndex = 4;
             this.searchBtn.Text = "Search for an Employee";
             this.searchBtn.UseVisualStyleBackColor = true;
@@ -55,41 +57,33 @@
             // 
             // employeesLb
             // 
-            this.employeesLb.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.employeesLb.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F,
+                System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.employeesLb.FormattingEnabled = true;
             this.employeesLb.ItemHeight = 37;
-            this.employeesLb.Items.AddRange(new object[] {
-            "habibi",
-            "spish ",
-            "li",
-            "dobre",
-            "hranish",
-            "li",
-            "se",
-            "zashtoto",
-            "az ",
-            "ne",
-            "Rak",
-            "Ta",
-            "Tak"});
-            this.employeesLb.Location = new System.Drawing.Point(12, 8);
+            this.employeesLb.Items.AddRange(new object[]
+            {
+                "habibi", "spish ", "li", "dobre", "hranish", "li", "se", "zashtoto", "az ", "ne", "Rak", "Ta", "Tak"
+            });
+            this.employeesLb.Location = new System.Drawing.Point(13, 10);
+            this.employeesLb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.employeesLb.Name = "employeesLb";
-            this.employeesLb.Size = new System.Drawing.Size(1256, 374);
+            this.employeesLb.Size = new System.Drawing.Size(1395, 448);
             this.employeesLb.TabIndex = 3;
             // 
             // EmployeesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1280, 470);
+            this.ClientSize = new System.Drawing.Size(1422, 588);
             this.Controls.Add(this.addBtn);
             this.Controls.Add(this.searchBtn);
             this.Controls.Add(this.employeesLb);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "EmployeesForm";
             this.Text = "Manage Employees";
             this.Load += new System.EventHandler(this.EmployeesForm_Load);
             this.ResumeLayout(false);
-
         }
 
         #endregion

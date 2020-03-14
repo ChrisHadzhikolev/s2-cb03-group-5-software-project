@@ -63,6 +63,9 @@ namespace ProjectMB
             }
         }
 
-        
+        private void removeEmpBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

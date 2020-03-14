@@ -26,8 +26,9 @@ namespace ProjectMB
             databaseFunctions = new DatabaseFunctions();
             databaseFunctions.GetAllUsers();
             users = new Users();
+           
         }
-        protected void InitializeDesign() 
+        private void InitializeDesign() 
         {
             //
             //Modifications
@@ -38,41 +39,70 @@ namespace ProjectMB
             this.MaximizeBox = false;
 
             this.loginPnl.SetBounds(0, 0, this.ClientSize.Width, this.ClientSize.Height);
+            this.loginPnl.BackColor = Color.FromArgb(193, 162, 254);
+            
 
             this.loginComponentsPnl.Size = new System.Drawing.Size(loginPnl.Width / 2, loginPnl.Height / 2);
             this.loginComponentsPnl.Location = new Point((loginPnl.Width - loginComponentsPnl.Width) / 2, (loginPnl.Height - loginComponentsPnl.Height) / 2);
             this.loginComponentsPnl.Anchor = AnchorStyles.None;
-            int LCW = loginComponentsPnl.Width;
-            int LCH = loginComponentsPnl.Height;
+            int lcw = loginComponentsPnl.Width;
+            int lch = loginComponentsPnl.Height;
 
-            this.loginBtn.Size = new System.Drawing.Size(usernameTb.Width * 2, loginComponentsPnl.Height/8);
-            this.loginBtn.Location = new System.Drawing.Point((loginComponentsPnl.Width-loginBtn.Width)/ 2, (LCH / 3) + usernameTb.Height + 5);
+            this.loginBtn.Size = new Size(usernameTb.Width * 2, loginComponentsPnl.Height/8);
+            this.loginBtn.Location = new Point((loginComponentsPnl.Width - loginBtn.Width) / 2,
+                (lch / 3) + usernameTb.Height + 5);
+            this.loginBtn.BackColor = Color.FromArgb(  5, 179, 245);
+            this.loginBtn.FlatStyle = FlatStyle.Flat;
+
 
             this.usernameTb.AutoSize = false;
             this.usernameTb.Text = "Username";
             this.usernameTb.BorderStyle = BorderStyle.None;
             this.usernameTb.Controls.Add(usernameLbl);
-            usernameTb.SetBounds((LCW - (LCW * 8 / 10)) / 2, 25, LCW * 8 / 10, LCH * 1 / 10);
+            usernameTb.SetBounds((lcw - (lcw * 8 / 10)) / 2, 25, lcw * 8 / 10, lch * 1 / 10);
             usernameLbl.Height = 1;
 
             this.passwordTb.AutoSize = false;
             this.passwordTb.Text = "Password";
             this.passwordTb.BorderStyle = BorderStyle.None;
             this.passwordTb.Controls.Add(passwordLbl);
-            passwordTb.SetBounds((LCW - (LCW * 8 / 10)) / 2, (LCH / 10) + usernameTb.Height + 5, LCW * 8 / 10, LCH * 1 / 10);
+            passwordTb.SetBounds((lcw - (lcw * 8 / 10)) / 2, (lch / 10) + usernameTb.Height + 5, lcw * 8 / 10, lch * 1 / 10);
+            passwordTb.PasswordChar = '*';
+            passwordTb.MaxLength = 12;
+            
             passwordLbl.Height = 1;
 
             selectionPnl.Visible = false;
             selectionPnl.SetBounds(0, 0, this.ClientSize.Width, this.ClientSize.Height);
+            this.selectionPnl.BackColor = Color.FromArgb(193, 162, 254);
 
             employeesBtn.Size = new Size(selectionPnl.Width/5, selectionPnl.Height/10);
             employeesBtn.Location = new Point((selectionPnl.Width-employeesBtn.Width)/2, (selectionPnl.Height - employeesBtn.Height) / 3);
+            this.employeesBtn.BackColor = Color.FromArgb(  5, 179, 245);
+            this.employeesBtn.FlatStyle = FlatStyle.Flat;
+            
             productsBtn.Size = new Size(selectionPnl.Width / 5, selectionPnl.Height / 10);
             productsBtn.Location = new Point((selectionPnl.Width - productsBtn.Width)/2, (selectionPnl.Height - productsBtn.Height) * 2 / 3);
+            this.productsBtn.BackColor = Color.FromArgb(  5, 179, 245);
+            this.productsBtn.FlatStyle = FlatStyle.Flat;
+            
             exitBtn.Size = new Size(loginPnl.Width / 15, loginPnl.Height / 20);
             exitBtn.Location = new Point(loginPnl.Width - exitBtn.Width, 10);
+            this.exitBtn.BackColor = Color.FromArgb(  5, 179, 245);
+            this.exitBtn.FlatStyle = FlatStyle.Flat;
+           
+            this.logOutBtn.Size = new Size(loginPnl.Width / 15, loginPnl.Height / 20);
+            this.logOutBtn.Location = new Point(loginPnl.Width - exitBtn.Width - logOutBtn.Width - 10, 10);
+            this.logOutBtn.BackColor = Color.FromArgb(  5, 179, 245);
+            this.logOutBtn.FlatStyle = FlatStyle.Flat;
         }
-        protected void click_username(Object sender, EventArgs e)
+
+        private void enter_click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void click_username(Object sender, EventArgs e)
         {
             if (usernameTb.Text == "Username")
             {
@@ -81,7 +111,7 @@ namespace ProjectMB
             usernameLbl.BackColor = Color.FromArgb(218, 112, 214);
            
         }
-        protected void leave_username(Object sender, EventArgs e)
+        private void leave_username(Object sender, EventArgs e)
         {
             if(string.IsNullOrWhiteSpace(usernameTb.Text))
             {
@@ -89,7 +119,7 @@ namespace ProjectMB
             }
             usernameLbl.BackColor = Color.FromArgb(125, 249, 255);
         }
-        protected void click_password(Object sender, EventArgs e)
+        private void click_password(Object sender, EventArgs e)
         {
             if (passwordTb.Text == "Password")
             {
@@ -98,7 +128,7 @@ namespace ProjectMB
             passwordLbl.BackColor = Color.FromArgb(218, 112, 214);
 
         }
-        protected void leave_password(Object sender, EventArgs e)
+        private void leave_password(Object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(passwordTb.Text))
             {
@@ -118,12 +148,7 @@ namespace ProjectMB
         }
         private void loginBtn_Click(object sender, EventArgs e)
         {
-
             User user = users.FindUserByUsername(usernameTb.Text);
-            foreach (var item in Users.users)
-            {
-                MessageBox.Show(item.Username);
-            }
             if (user != null)
             {
                 if (user.Position == PersonPosition.MANAGER)
@@ -133,6 +158,9 @@ namespace ProjectMB
                     {
                         loginPnl.Visible = false;
                         selectionPnl.Visible = true;
+                        logOutBtn.Visible = true;
+                        usernameTb.Text = "Username";
+                        passwordTb.Text = "Password";
                     }
                     else
                     {
@@ -158,6 +186,19 @@ namespace ProjectMB
         private void MainForm_Load(object sender, EventArgs e)
         {
             InitializeDesign();
+        }
+        private void logOutBtn_Click(object sender, EventArgs e)
+        {
+            loginPnl.Visible = true;
+            selectionPnl.Visible = false;
+            logOutBtn.Visible = false;
+        }
+        private void passwordTb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                loginBtn_Click(sender, e);
+            }
         }
     }
 }

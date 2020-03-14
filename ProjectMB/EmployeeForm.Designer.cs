@@ -41,6 +41,7 @@
             this.nameLbl = new System.Windows.Forms.Label();
             this.nameTb = new System.Windows.Forms.TextBox();
             this.daysBtn = new System.Windows.Forms.Button();
+            this.removeEmpBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // shiftCb
@@ -69,7 +70,7 @@
             // cancelBtn
             // 
             this.cancelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelBtn.Location = new System.Drawing.Point(361, 359);
+            this.cancelBtn.Location = new System.Drawing.Point(12, 359);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(250, 85);
             this.cancelBtn.TabIndex = 25;
@@ -171,11 +172,22 @@
             this.daysBtn.UseVisualStyleBackColor = true;
             this.daysBtn.Click += new System.EventHandler(this.daysBtn_Click);
             // 
+            // removeEmpBtn
+            // 
+            this.removeEmpBtn.Location = new System.Drawing.Point(388, 359);
+            this.removeEmpBtn.Name = "removeEmpBtn";
+            this.removeEmpBtn.Size = new System.Drawing.Size(223, 85);
+            this.removeEmpBtn.TabIndex = 29;
+            this.removeEmpBtn.Text = "Remove";
+            this.removeEmpBtn.UseVisualStyleBackColor = true;
+            this.removeEmpBtn.Click += new System.EventHandler(this.removeEmpBtn_Click);
+            // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(899, 471);
+            this.Controls.Add(this.removeEmpBtn);
             this.Controls.Add(this.daysBtn);
             this.Controls.Add(this.shiftCb);
             this.Controls.Add(this.workingHLbl);
@@ -212,5 +224,6 @@
         private System.Windows.Forms.Label nameLbl;
         private System.Windows.Forms.TextBox nameTb;
         private System.Windows.Forms.Button daysBtn;
+        private System.Windows.Forms.Button removeEmpBtn;
     }
 }

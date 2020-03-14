@@ -9,6 +9,7 @@ namespace ProjectMB
     class Users
     {
         public static List<User> users = new List<User>();
+        public static List<User> employees = new List<User>();
         public Users()
         { }
         public User FindUserByUsername(string username)
