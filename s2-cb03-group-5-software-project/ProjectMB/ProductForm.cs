@@ -12,6 +12,8 @@ namespace ProjectMB
 {
     public partial class ProductForm : Form
     {
+        string name;
+        ListBox listBox;
         public ProductForm()
         {
             InitializeComponent();
@@ -60,6 +62,29 @@ namespace ProjectMB
         private void cancelBtn_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void removeBtn_Click(object sender, EventArgs e)
+        {
+            if (nameTb.TextLength > 0)
+            {
+
+                if (typeCb.SelectedIndex > -1 && availableCkb.Checked && quantityTb.TextLength >= 1)
+                {
+                    if (nameTb.Text == name) //check if the name put in the textbox is in the listbox 
+                    {
+                        listBox.Items.Remove(name);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Fill in the empty fields.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Fill in the empty fields.");
+            }
         }
     }
 }

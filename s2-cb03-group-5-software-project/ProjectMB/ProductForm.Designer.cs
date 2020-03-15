@@ -155,6 +155,7 @@
             this.removeBtn.TabIndex = 36;
             this.removeBtn.Text = "Remove";
             this.removeBtn.UseVisualStyleBackColor = true;
+            this.removeBtn.Click += new System.EventHandler(this.removeBtn_Click);
             // 
             // ProductForm
             // 
