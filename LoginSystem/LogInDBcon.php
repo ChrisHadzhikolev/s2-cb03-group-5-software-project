@@ -1,12 +1,12 @@
 <?php
 
 
-    $servername = "localhost";
+    $servername = "studmysql01.fhict.local";
     $database = 'dbi428428';
-    $username = "root";
-    $password = "";
+    $username = "dbi428428";
+    $password = "spiderMan2000";
 
-$conn = new PDO("mysql:host=$servername;dbname=dbi428428", $username, $password);
+$conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
