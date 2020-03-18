@@ -35,23 +35,14 @@
             // 
             // productsLb
             // 
-            this.productsLb.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productsLb.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F,
+                System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.productsLb.FormattingEnabled = true;
             this.productsLb.ItemHeight = 37;
-            this.productsLb.Items.AddRange(new object[] {
-            "habibi",
-            "spish ",
-            "li",
-            "dobre",
-            "hranish",
-            "li",
-            "se",
-            "zashtoto",
-            "az ",
-            "ne",
-            "Rak",
-            "Ta",
-            "Tak"});
+            this.productsLb.Items.AddRange(new object[]
+            {
+                "habibi", "spish ", "li", "dobre", "hranish", "li", "se", "zashtoto", "az ", "ne", "Rak", "Ta", "Tak"
+            });
             this.productsLb.Location = new System.Drawing.Point(12, 12);
             this.productsLb.Name = "productsLb";
             this.productsLb.Size = new System.Drawing.Size(1256, 374);
@@ -87,7 +78,6 @@
             this.Text = "Manage Products";
             this.Load += new System.EventHandler(this.ProductsForm_Load);
             this.ResumeLayout(false);
-
         }
 
         #endregion

@@ -62,6 +62,7 @@
             this.confirmBtn.TabIndex = 34;
             this.confirmBtn.Text = "Confirm";
             this.confirmBtn.UseVisualStyleBackColor = true;
+            this.confirmBtn.Click += new System.EventHandler(this.confirmBtn_Click_1);
             // 
             // typeCb
             // 

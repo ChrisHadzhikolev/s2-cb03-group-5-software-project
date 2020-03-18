@@ -24,6 +24,7 @@ namespace ProjectMB
             this.MaximizeBox = false;
             this.searchBtn.BackColor = Color.FromArgb(5, 179, 245);
             this.searchBtn.FlatStyle = FlatStyle.Flat;
+            this.BackColor = Color.FromArgb(193, 162, 254);
         }
 
         private void searchBtn_Click(object sender, EventArgs e)

@@ -62,23 +62,23 @@ namespace ProjectMB
             // usernameTb
             // 
             this.usernameTb.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.usernameTb.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Regular,
-                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.usernameTb.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F,
+                System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.usernameTb.Location = new System.Drawing.Point(0, 0);
             this.usernameTb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.usernameTb.Name = "usernameTb";
-            this.usernameTb.Size = new System.Drawing.Size(111, 37);
+            this.usernameTb.Size = new System.Drawing.Size(111, 34);
             this.usernameTb.TabIndex = 1;
             // 
             // passwordTb
             // 
             this.passwordTb.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.passwordTb.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Regular,
-                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.passwordTb.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F,
+                System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.passwordTb.Location = new System.Drawing.Point(0, 0);
             this.passwordTb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.passwordTb.Name = "passwordTb";
-            this.passwordTb.Size = new System.Drawing.Size(111, 37);
+            this.passwordTb.Size = new System.Drawing.Size(111, 34);
             this.passwordTb.TabIndex = 2;
             this.passwordTb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.passwordTb_KeyDown);
             // 

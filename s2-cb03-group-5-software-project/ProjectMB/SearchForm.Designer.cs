@@ -34,16 +34,18 @@
             // 
             // searchTb
             // 
-            this.searchTb.Location = new System.Drawing.Point(12, 12);
+            this.searchTb.Location = new System.Drawing.Point(13, 15);
+            this.searchTb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.searchTb.Name = "searchTb";
-            this.searchTb.Size = new System.Drawing.Size(414, 26);
+            this.searchTb.Size = new System.Drawing.Size(460, 31);
             this.searchTb.TabIndex = 0;
             // 
             // searchBtn
             // 
-            this.searchBtn.Location = new System.Drawing.Point(12, 54);
+            this.searchBtn.Location = new System.Drawing.Point(13, 68);
+            this.searchBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.searchBtn.Name = "searchBtn";
-            this.searchBtn.Size = new System.Drawing.Size(414, 41);
+            this.searchBtn.Size = new System.Drawing.Size(460, 51);
             this.searchBtn.TabIndex = 1;
             this.searchBtn.Text = "Search";
             this.searchBtn.UseVisualStyleBackColor = true;
@@ -51,17 +53,17 @@
             // 
             // SearchForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(438, 118);
+            this.ClientSize = new System.Drawing.Size(487, 148);
             this.Controls.Add(this.searchBtn);
             this.Controls.Add(this.searchTb);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "SearchForm";
             this.Text = "Search";
             this.Load += new System.EventHandler(this.SearchProductForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

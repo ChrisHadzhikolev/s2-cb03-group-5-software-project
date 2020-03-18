@@ -61,10 +61,6 @@
                 System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.employeesLb.FormattingEnabled = true;
             this.employeesLb.ItemHeight = 37;
-            this.employeesLb.Items.AddRange(new object[]
-            {
-                "habibi", "spish ", "li", "dobre", "hranish", "li", "se", "zashtoto", "az ", "ne", "Rak", "Ta", "Tak"
-            });
             this.employeesLb.Location = new System.Drawing.Point(13, 10);
             this.employeesLb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.employeesLb.Name = "employeesLb";

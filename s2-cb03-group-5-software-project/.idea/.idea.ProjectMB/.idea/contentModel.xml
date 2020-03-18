@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\krish\.Rider2019.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\krish\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_ProjectMB.1106564335.00" t="ExcludeRecursive" />
-    <e p="C:\Users\krish\Documents\k\s2-cb03-group-5-software-project" t="IncludeFlat">
+    <e p="C:\Users\krish\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_ProjectMB.820685354.00" t="ExcludeRecursive" />
+    <e p="C:\Users\krish\Downloads\s2-cb03-group-5-software-project-patch-1 (2)\s2-cb03-group-5-software-project-patch-1\s2-cb03-group-5-software-project" t="IncludeFlat">
       <e p="packages" t="ExcludeRecursive" />
       <e p="ProjectMB" t="IncludeRecursive">
         <e p="App.config" t="Include" />
@@ -22,6 +22,7 @@
         <e p="Form1.resx" t="Include" />
         <e p="ManageType.cs" t="Include" />
         <e p="NoConnectionException.cs" t="Include" />
+        <e p="NotExistingUserException.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
         <e p="PersonPosition.cs" t="Include" />

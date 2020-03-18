@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace ProjectMB
 {
-    class Users
+    static class Users
     {
         public static List<User> users = new List<User>();
-        public static List<User> employees = new List<User>();
-        public Users()
-        { }
-        public User FindUserByUsername(string username)
+        public static List<User> Employees = new List<User>();
+        public static string Department = "";
+        
+        public static User FindUserByUsername(string username)
         {
             foreach (var item in users)
             {

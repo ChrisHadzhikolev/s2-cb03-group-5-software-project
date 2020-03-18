@@ -8,14 +8,14 @@ namespace ProjectMB
 {
     public enum ProductCategory
     {
-        IMAGESOUND,
+        IMAGE_SOUND,
         COMPUTER,
-        PHOTOVIDEO,
-        TELEPHONYNAVIGATION,
+        PHOTO_VIDEO,
+        TELEPHONY_NAVIGATION,
         HOUSEHOLD,
         KITCHEN,
-        SPORTCARE,
-        GAMINGFILMMUSIC,
-        SMARTHOME
+        SPORT_CARE,
+        GAMING_FILM_MUSIC,
+        SMART_HOME
     }
 }

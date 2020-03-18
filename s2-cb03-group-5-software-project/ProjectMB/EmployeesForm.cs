@@ -18,9 +18,9 @@ namespace ProjectMB
             employeesLb.SelectedValueChanged += new EventHandler(EmployeesLb_SelectedValueChanged);
         }
 
-        protected void EmployeesLb_SelectedValueChanged(object sender, EventArgs e)
+        private void EmployeesLb_SelectedValueChanged(object sender, EventArgs e)
         {
-            EmployeeForm employeeForm = new EmployeeForm(employeesLb.SelectedItem.ToString());
+            EmployeeForm employeeForm = new EmployeeForm(Users.Employees[employeesLb.SelectedIndex]);
             employeeForm.Show();
         }
         private void EmployeesForm_Load(object sender, EventArgs e)
@@ -32,6 +32,24 @@ namespace ProjectMB
             this.addBtn.FlatStyle = FlatStyle.Flat;
             this.searchBtn.BackColor = Color.FromArgb(5, 179, 245);
             this.searchBtn.FlatStyle = FlatStyle.Flat;
+            this.BackColor = Color.FromArgb(193, 162, 254);
+            try
+            {
+                DatabaseFunctions.GetEmployeesByDepartment(Users.Department);
+                foreach (var item in Users.Employees)
+                {
+                    employeesLb.Items.Add(item.ToString());
+                }
+            }
+            catch (NoConnectionException)
+            {
+                MessageBox.Show("Error", "Connection unsuccessful, please restart", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (NotExistingException)
+            {
+                MessageBox.Show("Error", "Department is non-existent, please restart", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
         private void searchBtn_Click(object sender, EventArgs e)

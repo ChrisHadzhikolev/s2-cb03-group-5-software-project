@@ -9,13 +9,13 @@ namespace ProjectMB
 {
     public class CheckboxDialog
     {
-        private bool[] result;
+        private bool[] _result;
         
         public bool FormOpened { get; private set; }
 
         public CheckboxDialog() 
         {
-            result = new bool[7];            
+            _result = new bool[7];            
             FormOpened = false;
         }
 
@@ -36,14 +36,14 @@ namespace ProjectMB
             chkT.Text = "Tuesday";
             CheckBox chkW = new CheckBox();
             chkW.Text = "Wednesday";
-            CheckBox chkTD = new CheckBox();
-            chkTD.Text = "Thursday";
+            CheckBox chkTd = new CheckBox();
+            chkTd.Text = "Thursday";
             CheckBox chkF = new CheckBox();
             chkF.Text = "Friday";
             CheckBox chkS = new CheckBox();
             chkS.Text = "Saturday";
-            CheckBox chkSD = new CheckBox();
-            chkSD.Text = "Sunday";
+            CheckBox chkSd = new CheckBox();
+            chkSd.Text = "Sunday";
             Button ok = new Button() { Text = "Yes" };
             prompt.FormClosing += (sender, e) => 
             {
@@ -55,13 +55,13 @@ namespace ProjectMB
             };
             ok.Click += (sender, e) => 
             {
-                result[1] = chkT.Checked;               
-                result[2] = chkW.Checked;               
-                result[3] = chkTD.Checked;               
-                result[4] = chkF.Checked;                
-                result[5] = chkS.Checked;                
-                result[6] = chkSD.Checked;
-                result[0] = chkM.Checked;
+                _result[1] = chkT.Checked;               
+                _result[2] = chkW.Checked;               
+                _result[3] = chkTd.Checked;               
+                _result[4] = chkF.Checked;                
+                _result[5] = chkS.Checked;                
+                _result[6] = chkSd.Checked;
+                _result[0] = chkM.Checked;
                 FormOpened = false;
                 prompt.Close();
             };
@@ -69,29 +69,29 @@ namespace ProjectMB
             panel.SetFlowBreak(chkM, true);            
             panel.Controls.Add(chkT);
             panel.SetFlowBreak(chkT, true);
-            result[1] = chkT.Checked;
+            _result[1] = chkT.Checked;
             panel.Controls.Add(chkW);
             panel.SetFlowBreak(chkW, true);
-            result[2] = chkW.Checked;
-            panel.Controls.Add(chkTD);
-            panel.SetFlowBreak(chkTD, true);
-            result[3] = chkTD.Checked;
+            _result[2] = chkW.Checked;
+            panel.Controls.Add(chkTd);
+            panel.SetFlowBreak(chkTd, true);
+            _result[3] = chkTd.Checked;
             panel.Controls.Add(chkF);
             panel.SetFlowBreak(chkF, true);
-            result[4] = chkF.Checked;
+            _result[4] = chkF.Checked;
             panel.Controls.Add(chkS);
             panel.SetFlowBreak(chkS, true);
-            result[5] = chkS.Checked;
-            panel.Controls.Add(chkSD);
-            panel.SetFlowBreak(chkSD, true);
-            result[6] = chkSD.Checked;
+            _result[5] = chkS.Checked;
+            panel.Controls.Add(chkSd);
+            panel.SetFlowBreak(chkSd, true);
+            _result[6] = chkSd.Checked;
             panel.Controls.Add(ok);
             prompt.Controls.Add(panel);
             prompt.ShowDialog();
         }
         public bool[] SelectedValues()
         {
-            return result;
+            return _result;
         }
        
     }

@@ -92,6 +92,7 @@
     </Compile>
     <Compile Include="ManageType.cs" />
     <Compile Include="NoConnectionException.cs" />
+    <Compile Include="NotExistingUserException.cs" />
     <Compile Include="PersonPosition.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductCategory.cs" />
