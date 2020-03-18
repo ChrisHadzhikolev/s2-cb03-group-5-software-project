@@ -90,37 +90,33 @@ namespace ProjectMB
             {
                 if (!string.IsNullOrWhiteSpace(firstNameTb.Text) && !string.IsNullOrWhiteSpace(lastNameTb.Text) && !string.IsNullOrWhiteSpace(firstNameTb.Text) && !string.IsNullOrWhiteSpace(salaryTb.Text))
                 {
-                    MessageBox.Show("habibi");
                     if (shiftCb.SelectedIndex > -1)
                     {
-                        MessageBox.Show("spish");
                         string fn = firstNameTb.Text;
-                        string fn = firstNameTb.Text;
-                        string fn = firstNameTb.Text;
-                        string fn = firstNameTb.Text;
-                        string fn = firstNameTb.Text;
-                        
+                        string ln = lastNameTb.Text;
+                        string email = emailTb.Text;
+                        double salary = double.Parse(salaryTb.Text);
+                        ShiftType type = (ShiftType) Enum.Parse(typeof(ShiftType), shiftCb.Text, true);
+
                         if (_edit)
                         {
                             _usrToBeEdited.FirstName = fn;
-                            _usrToBeEdited.LastName = lastNameTb.Text;
-                            _usrToBeEdited.Email = emailTb.Text;
-                            _usrToBeEdited.Salary = int.Parse(salaryTb.Text);
+                            _usrToBeEdited.LastName = ln;
+                            _usrToBeEdited.Email = email;
+                            _usrToBeEdited.Salary = salary;
                             _usrToBeEdited.WorkingDays = _days;
                             _usrToBeEdited.Position = PersonPosition.EMPLOYEE;
                             _usrToBeEdited.Department = Users.Department;
-                            _usrToBeEdited.ShiftTypeU = (ShiftType) Enum.Parse(typeof(ShiftType), shiftCb.Text, true);
-                            //_usrToBeEdited.Username = _usrToBeEdited.GenerateUsername();
-                            MessageBox.Show("li");
+                            _usrToBeEdited.ShiftTypeU = type;
                             DatabaseFunctions.UpdateUser(_usrToBeEdited);
-                            MessageBox.Show("dobre");
                         }
                         else
                         {
-                            _usrToBeEdited = new User(firstNameTb.Text);
+                            _usrToBeEdited = new User(fn, ln, email, PersonPosition.EMPLOYEE, salary, type, _days, Users.Department);
                            DatabaseFunctions.AddUser(_usrToBeEdited);
                         }
                         DatabaseFunctions.GetEmployeesByDepartment(Users.Department);
+                        this.Close();
                     }
                     else
                     {

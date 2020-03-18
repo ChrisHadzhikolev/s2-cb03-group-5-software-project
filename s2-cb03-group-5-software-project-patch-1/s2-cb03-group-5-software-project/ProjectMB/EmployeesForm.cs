@@ -20,8 +20,16 @@ namespace ProjectMB
 
         private void EmployeesLb_SelectedValueChanged(object sender, EventArgs e)
         {
-            EmployeeForm employeeForm = new EmployeeForm(Users.Employees[employeesLb.SelectedIndex]);
-            employeeForm.Show();
+            try
+            {
+                EmployeeForm employeeForm = new EmployeeForm(Users.Employees[employeesLb.SelectedIndex]);
+                employeeForm.Show();
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+            }
+            
         }
         private void EmployeesForm_Load(object sender, EventArgs e)
         {
