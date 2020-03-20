@@ -1,4 +1,9 @@
 <?php session_start(); ?>
+<head>
+    <link rel="stylesheet" type="text/css" href="logIn.css">
+</head>
+<body>
+<h1>Sign In</h1>
 <form method="post">
     <div class="container2">
         <label for="uname"><b>Username:</b></label>
@@ -19,7 +24,7 @@
         
     </div>
     </form>
-
+</body>
     <?php
      if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
         header("location: index.php");

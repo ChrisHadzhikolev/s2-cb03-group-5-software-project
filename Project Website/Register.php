@@ -1,4 +1,8 @@
 <?php session_start(); ?>
+<head>
+    <link rel="stylesheet" type="text/css" href="logIn.css">
+</head>
+<body>
 <form method="post">
     <div class="container2">
         <label for="email"><b>E-Mail:</b></label>
@@ -36,7 +40,7 @@
         
     </div>
     </form>
-
+</body>
     <?php
     if(isset($_POST['Register'])){
     include 'Variables.php';

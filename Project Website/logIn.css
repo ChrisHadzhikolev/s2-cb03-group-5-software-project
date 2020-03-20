@@ -1,0 +1,20 @@
+body{
+    color: black;
+    background-image: url("blue.png");
+    margin: 90px;
+    text-align: center;
+}
+form{
+    margin: 20px;
+    display: inline-block;
+    backface-visibility: visible;
+}
+button{
+    width: 90px;
+    height: 25px;
+}
+button:hover {
+    position: relative;
+    background-color: darkgrey;
+}
+
