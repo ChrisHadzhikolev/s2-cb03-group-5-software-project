@@ -28,10 +28,10 @@
 
     if(isset($_POST['login_user'])){
     include 'Variables.php';
-    $servername = "localhost";  
-    $database = 'project';
-    $username = "root";
-    $password = "";
+    $servername = "studmysql01.fhict.local";  
+    $database = 'dbi428428';
+    $username = "dbi428428";
+    $password = "spiderMan2000";
 
         $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
