@@ -15,9 +15,22 @@ namespace ProjectMB
         public EmployeesForm()
         {
             InitializeComponent();
-            employeesLb.SelectedValueChanged += new EventHandler(EmployeesLb_SelectedValueChanged);
+            employeesLb.SelectedValueChanged += EmployeesLb_SelectedValueChanged;
+            Timer timer = new Timer    
+            {    
+                Interval = 2000    
+            };    
+            timer.Enabled = true;    
+            timer.Tick += OnTimerEvent;  
         }
-
+        private void OnTimerEvent(object sender, EventArgs e)    
+        {    
+            employeesLb.Items.Clear();
+            foreach (var item in Users.Employees)
+            {
+                employeesLb.Items.Add(item.ToString());
+            }    
+        } 
         private void EmployeesLb_SelectedValueChanged(object sender, EventArgs e)
         {
             try

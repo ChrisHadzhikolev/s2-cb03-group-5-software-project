@@ -35,7 +35,7 @@ namespace ProjectMB
             Department = department;
         }
         private int _id;
-        private static int _idSeed= 10000;
+        private static int _idSeed= 9999;
 
         public string Username { get; set; }
         public string FirstName { get; set; }
@@ -61,8 +61,8 @@ namespace ProjectMB
         }
         public string GenerateUsername()
         {
-            return "mbemp" + _idSeed.ToString();
             _idSeed++;
+            return "mbemp" + _idSeed;
         }
 
         public override string ToString()
