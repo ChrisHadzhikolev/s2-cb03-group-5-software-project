@@ -21,11 +21,12 @@ namespace ProjectMB
             usernameTb.Leave += new EventHandler(leave_username);
             passwordTb.Click += new EventHandler(click_password);
             passwordTb.Leave += new EventHandler(leave_password);
-            if (!DatabaseFunctions.GetAllUsers())
+            if (!DatabaseFunctions.GetAllUsers() && !DatabaseFunctions.GetAllProducts())
             {
                 MessageBox.Show("Loading Data Failure, please restart", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+            
         }
 
         private void MainForm_Load(object sender, EventArgs e)

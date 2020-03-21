@@ -22,6 +22,19 @@ namespace ProjectMB
                      WorkingDays = workingDays;
                      Department = department;
                  }
+        public User(string username, string firstName, string lastName, string email, PersonPosition position, double salary, ShiftType shiftType, bool[] workingDays, string department)
+        {
+            
+            Username = username;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Position = position;
+            Salary = salary;
+            ShiftTypeU = shiftType;
+            WorkingDays = workingDays;
+            Department = department;
+        }
         public User(string firstName, string lastName, string email, PersonPosition position, double salary, ShiftType shiftType, bool[] workingDays, string department)
         {
             Username = GenerateUsername();
@@ -35,7 +48,7 @@ namespace ProjectMB
             Department = department;
         }
         private int _id;
-        private static int _idSeed= 10000;
+        private static int _idSeed= 9999;
 
         public string Username { get; set; }
         public string FirstName { get; set; }
@@ -59,10 +72,10 @@ namespace ProjectMB
         {            
           return RandomString(12);           
         }
-        public string GenerateUsername()
+        public static string GenerateUsername()
         {
-            return "mbemp" + _idSeed.ToString();
             _idSeed++;
+            return "mbemp" + _idSeed;
         }
 
         public override string ToString()

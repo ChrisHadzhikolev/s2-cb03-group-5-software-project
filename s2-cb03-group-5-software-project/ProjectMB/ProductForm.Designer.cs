@@ -51,7 +51,7 @@
             this.cancelBtn.TabIndex = 35;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = true;
-            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click_1);
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // confirmBtn
             // 
@@ -62,12 +62,22 @@
             this.confirmBtn.TabIndex = 34;
             this.confirmBtn.Text = "Confirm";
             this.confirmBtn.UseVisualStyleBackColor = true;
-            this.confirmBtn.Click += new System.EventHandler(this.confirmBtn_Click_1);
+            this.confirmBtn.Click += new System.EventHandler(this.confirmBtn_Click);
             // 
             // typeCb
             // 
             this.typeCb.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.typeCb.FormattingEnabled = true;
+            this.typeCb.Items.AddRange(new object[] {
+            "Image_Sound",
+            "Computer",
+            "Photo_Video",
+            "Telephony_Navigation",
+            "Household",
+            "Kitchen",
+            "Sport_Care",
+            "Gaming_Film_Music",
+            "Smart_Home"});
             this.typeCb.Location = new System.Drawing.Point(286, 241);
             this.typeCb.Name = "typeCb";
             this.typeCb.Size = new System.Drawing.Size(603, 45);

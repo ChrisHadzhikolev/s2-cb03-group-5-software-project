@@ -16,14 +16,21 @@ namespace ProjectMB
         ListBox _listBox;
         Product _productToBeEdited;
         private bool _editProduct;
+        public ProductForm(Product product)
+        {
+            InitializeComponent();
+            _productToBeEdited = product;
+            nameTb.Text = product.Name;
+            priceTb.Text = product.Price.ToString();
+            quantityTb.Text = product.Quantity.ToString();
+            typeCb.Text = product.Category.ToString();
+            _editProduct = true;
+        }
+
         public ProductForm()
         {
             InitializeComponent();
-        }
-
-        public ProductForm(string productName)
-        {
-            InitializeComponent();
+            _editProduct = false;
         }
 
         private void NewProductForm_Load(object sender, EventArgs e)
@@ -42,7 +49,7 @@ namespace ProjectMB
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (availableCkb.Checked) 
+            if (availableCkb.Checked)
             {
                 quantityTb.Enabled = true;
             }
@@ -61,9 +68,10 @@ namespace ProjectMB
         {
             try
             {
-                if (!string.IsNullOrWhiteSpace(nameTb.Text) && !string.IsNullOrWhiteSpace(priceTb.Text)&& !string.IsNullOrWhiteSpace(quantityTb.Text))
+                if (!string.IsNullOrWhiteSpace(nameTb.Text) && !string.IsNullOrWhiteSpace(priceTb.Text) && !string.IsNullOrWhiteSpace(quantityTb.Text))
                 {
-                    if (typeCb.SelectedIndex>-1)
+
+                    if (typeCb.SelectedIndex > -1)
                     {
                         string productName = nameTb.Text;
                         double productPrice = double.Parse(priceTb.Text); ;
@@ -75,13 +83,12 @@ namespace ProjectMB
                             _productToBeEdited.Name = productName;
                             _productToBeEdited.Price = productPrice;
                             _productToBeEdited.Quantity = productQuantity;
-                            _productToBeEdited.Category =type;
+                            _productToBeEdited.Category = type;
                             DatabaseFunctions.UpdateProduct(_productToBeEdited);
-
                         }
                         else
                         {
-                            Product newProduct = new Product(productName,type,productPrice,productQuantity);
+                            Product newProduct = new Product(productName, type, productPrice, productQuantity);
                             DatabaseFunctions.AddProduct(newProduct);
                         }
                         DatabaseFunctions.GetAllProducts();
@@ -113,37 +120,22 @@ namespace ProjectMB
             }
         }
 
-        private void cancelBtn_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void removeBtn_Click(object sender, EventArgs e)
         {
-            if (nameTb.TextLength > 0)
+            try
             {
-
-                if (typeCb.SelectedIndex > -1 && availableCkb.Checked && quantityTb.TextLength >= 1)
-                {
-                    if (nameTb.Text == _name) //check if the name put in the textbox is in the listbox 
-                    {
-                        _listBox.Items.Remove(_name);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Fill in the empty fields.");
-                }
+                DatabaseFunctions.RemoveProduct(_productToBeEdited);
+                DatabaseFunctions.GetAllProducts();
             }
-            else
+            catch (NoConnectionException)
             {
-                MessageBox.Show("Fill in the empty fields.");
+                MessageBox.Show("Error", "Connection unsuccessful, please restart", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void confirmBtn_Click_1(object sender, EventArgs e)
-        {
-
+            catch (NotExistingException)
+            {
+                MessageBox.Show("Error", "Product is non-existent, please restart", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
     }
 }

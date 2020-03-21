@@ -71,7 +71,6 @@
   <ItemGroup>
     <Compile Include="CheckboxDialog.cs" />
     <Compile Include="DatabaseFunctions.cs" />
-    <Compile Include="DBHelper.cs" />
     <Compile Include="EmployeeForm.cs">
       <SubType>Form</SubType>
     </Compile>

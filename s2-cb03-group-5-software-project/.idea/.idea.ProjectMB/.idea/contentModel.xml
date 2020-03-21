@@ -10,7 +10,6 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="CheckboxDialog.cs" t="Include" />
         <e p="DatabaseFunctions.cs" t="Include" />
-        <e p="DBHelper.cs" t="Include" />
         <e p="EmployeeForm.cs" t="Include" />
         <e p="EmployeeForm.Designer.cs" t="Include" />
         <e p="EmployeeForm.resx" t="Include" />

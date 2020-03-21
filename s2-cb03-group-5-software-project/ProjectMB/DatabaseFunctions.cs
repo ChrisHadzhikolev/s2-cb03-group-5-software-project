@@ -12,7 +12,44 @@ namespace ProjectMB
         private static readonly string ConnectionString=
             "server=studmysql01.fhict.local;database=dbi428428;uid=dbi428428;password=spiderMan2000;";
 
-        
+        public static bool GetAllProducts()
+        {
+            string query = "Select * from products;";
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(ConnectionString))
+                {
+                    List<Product> results = new List<Product>();
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        string id = dataReader[0].ToString();
+                        string name = dataReader[1].ToString();
+                        ProductCategory productCategory =
+                            (ProductCategory)Enum.Parse(typeof(ProductCategory), dataReader[2].ToString(), true);
+                        string price = dataReader[3].ToString();
+                        string quantity = dataReader[4].ToString();
+
+
+
+                        Product product = new Product(name, productCategory, double.Parse(price), int.Parse(quantity), int.Parse(id));
+                        results.Add(product);
+                    }
+
+                    conn.Close();
+                    Products.products.Clear();
+                    Products.products.AddRange(results);
+                }
+            }
+            catch (Exception)
+            {
+                throw new NoConnectionException();
+            }
+
+            return true;
+        }
 
         public static bool GetAllUsers()
         {
@@ -52,44 +89,6 @@ namespace ProjectMB
                     conn.Close();
                     Users.users.Clear();
                     Users.users.AddRange(results);
-                }
-            }
-            catch (Exception)
-            {
-                throw new NoConnectionException();
-            }
-
-            return true;
-        }
-        public static bool GetAllProducts()
-        {
-            string query = "Select * from products;";
-            try
-            {
-                using (MySqlConnection conn = new MySqlConnection(ConnectionString))
-                {
-                    List<Product> results = new List<Product>();
-                    conn.Open();
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    MySqlDataReader dataReader = cmd.ExecuteReader();
-                    while (dataReader.Read())
-                    {
-                        string id = dataReader[0].ToString();
-                        string name = dataReader[1].ToString();
-                        ProductCategory productCategory =
-                            (ProductCategory)Enum.Parse(typeof(ProductCategory), dataReader[2].ToString(), true);
-                        string price = dataReader[3].ToString();
-                        string quantity = dataReader[4].ToString();
-                       
-                       
-
-                        Product product = new Product( name, productCategory, double.Parse(price), int.Parse(quantity),int.Parse(id));
-                        results.Add(product);
-                    }
-
-                    conn.Close();
-                    Products.products.Clear();
-                    Products.products.AddRange(results);
                 }
             }
             catch (Exception)
@@ -355,12 +354,13 @@ namespace ProjectMB
             if (product != null)
             {
                 string query =
-                    "update products set Name = @name, Category = @category, Price = @price, Quantity = @quantity WHERE Name = @name";
+                    "update products set Name = @name, Category = @category, Price = @price, Quantity = @quantity WHERE id = @id;";
                 try
                 {
                     using (MySqlConnection conn = new MySqlConnection(ConnectionString))
                     {
                         MySqlCommand cmd = new MySqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@id", product.id);
                         cmd.Parameters.AddWithValue("@name", product.Name);
                         cmd.Parameters.AddWithValue("@category", product.Category + 1);
                         cmd.Parameters.AddWithValue("@price", product.Price);

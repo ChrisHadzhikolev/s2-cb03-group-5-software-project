@@ -86,66 +86,64 @@ namespace ProjectMB
 
         private void confirmBtn_Click(object sender, EventArgs e)
         {
-        //    try
-        //    {
-        //        if (!string.IsNullOrWhiteSpace(firstNameTb.Text) && !string.IsNullOrWhiteSpace(lastNameTb.Text) && !string.IsNullOrWhiteSpace(firstNameTb.Text) && !string.IsNullOrWhiteSpace(salaryTb.Text))
-        //        {
-        //            MessageBox.Show("habibi");
-        //            if (shiftCb.SelectedIndex > -1)
-        //            {
-        //                MessageBox.Show("spish");
-        //                //string fn = firstNameTb.Text;
-        //                //string fn = firstNameTb.Text;
-        //                //string fn = firstNameTb.Text;
-        //                //string fn = firstNameTb.Text;
-        //                //string fn = firstNameTb.Text;
-                        
-        //                if (_edit)
-        //                {
-        //                    _usrToBeEdited.FirstName = fn;
-        //                    _usrToBeEdited.LastName = lastNameTb.Text;
-        //                    _usrToBeEdited.Email = emailTb.Text;
-        //                    _usrToBeEdited.Salary = int.Parse(salaryTb.Text);
-        //                    _usrToBeEdited.WorkingDays = _days;
-        //                    _usrToBeEdited.Position = PersonPosition.EMPLOYEE;
-        //                    _usrToBeEdited.Department = Users.Department;
-        //                    _usrToBeEdited.ShiftTypeU = (ShiftType) Enum.Parse(typeof(ShiftType), shiftCb.Text, true);
-        //                    //_usrToBeEdited.Username = _usrToBeEdited.GenerateUsername();
-        //                    MessageBox.Show("li");
-        //                    DatabaseFunctions.UpdateUser(_usrToBeEdited);
-        //                    MessageBox.Show("dobre");
-        //                }
-        //                else
-        //                {
-        //                    _usrToBeEdited = new User(firstNameTb.Text);
-        //                   DatabaseFunctions.AddUser(_usrToBeEdited);
-        //                }
-        //                DatabaseFunctions.GetEmployeesByDepartment(Users.Department);
-        //            }
-        //            else
-        //            {
-        //                MessageBox.Show("Choose valid shift!");
-        //            }
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("Fill in the empty fields!");
-        //        }
-        //    }
-        //    catch (FormatException)
-        //    {
-        //        MessageBox.Show("Salary must be numeric!");
-        //    }
-        //    catch (NoConnectionException)
-        //    {
-        //        MessageBox.Show("Error", "Connection unsuccessful, please restart", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //    catch (NotExistingException)
-        //    {
-        //        MessageBox.Show("Error", "User is non-existent, please restart", MessageBoxButtons.OK,
-        //            MessageBoxIcon.Error);
-        //    }
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(firstNameTb.Text) && !string.IsNullOrWhiteSpace(lastNameTb.Text) && !string.IsNullOrWhiteSpace(firstNameTb.Text) && !string.IsNullOrWhiteSpace(salaryTb.Text))
+                {
+                    if (shiftCb.SelectedIndex > -1)
+                    {
+                        string fn = firstNameTb.Text;
+                        string ln = lastNameTb.Text;
+                        string email = emailTb.Text;
+                        double salary = double.Parse(salaryTb.Text);
+                        ShiftType type = (ShiftType) Enum.Parse(typeof(ShiftType), shiftCb.Text, true);
+
+                        if (_edit)
+                        {
+                            _usrToBeEdited.FirstName = fn;
+                            _usrToBeEdited.LastName = ln;
+                            _usrToBeEdited.Email = email;
+                            _usrToBeEdited.Salary = salary;
+                            _usrToBeEdited.WorkingDays = _days;
+                            _usrToBeEdited.Position = PersonPosition.EMPLOYEE;
+                            _usrToBeEdited.Department = Users.Department;
+                            _usrToBeEdited.ShiftTypeU = type;
+                            DatabaseFunctions.UpdateUser(_usrToBeEdited);
+                        }
+                        else
+                        {
+
+                            _usrToBeEdited = new User(User.GenerateUsername(),fn, ln, email, PersonPosition.EMPLOYEE, salary, type, _days, Users.Department);
+                            DatabaseFunctions.AddUser(_usrToBeEdited);
+
+                        }
+                        DatabaseFunctions.GetEmployeesByDepartment(Users.Department);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Choose valid shift!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Fill in the empty fields!");
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Salary must be numeric!");
+            }
+            catch (NoConnectionException)
+            {
+                MessageBox.Show("Error", "Connection unsuccessful, please restart", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (NotExistingException)
+            {
+                MessageBox.Show("Error", "User is non-existent, please restart", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
            
-     }
+        }
     }
 }

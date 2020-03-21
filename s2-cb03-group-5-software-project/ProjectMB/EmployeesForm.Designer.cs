@@ -40,7 +40,7 @@
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(271, 92);
             this.addBtn.TabIndex = 5;
-            this.addBtn.Text = "Add New Employee";
+            this.addBtn.Text = "Add";
             this.addBtn.UseVisualStyleBackColor = true;
             this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
             // 
@@ -51,7 +51,7 @@
             this.searchBtn.Name = "searchBtn";
             this.searchBtn.Size = new System.Drawing.Size(271, 92);
             this.searchBtn.TabIndex = 4;
-            this.searchBtn.Text = "Search for an Employee";
+            this.searchBtn.Text = "Search";
             this.searchBtn.UseVisualStyleBackColor = true;
             this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 

@@ -23,5 +23,17 @@ namespace ProjectMB
             }
             return null;
         }
+        public static User[] FindUserByLastName(string lastName)
+        {
+            List<User> results = new List<User>();
+            foreach (var item in users)
+            {
+                if (item.LastName == lastName && item.Position==PersonPosition.EMPLOYEE)
+                {
+                   results.Add(item);
+                }
+            }
+            return results.ToArray();
+        }
     }
 }
