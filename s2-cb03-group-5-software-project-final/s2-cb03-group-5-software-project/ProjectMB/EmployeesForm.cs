@@ -64,11 +64,11 @@ namespace ProjectMB
             }
             catch (NoConnectionException)
             {
-                MessageBox.Show("Error", "Connection unsuccessful, please restart", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Connection unsuccessful, please restart", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (NotExistingException)
             {
-                MessageBox.Show("Error", "Department is non-existent, please restart", MessageBoxButtons.OK,
+                MessageBox.Show("Department is non-existent, please restart", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
         }

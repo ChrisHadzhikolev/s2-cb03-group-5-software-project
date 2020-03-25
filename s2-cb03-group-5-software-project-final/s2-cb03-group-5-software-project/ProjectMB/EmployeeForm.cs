@@ -19,6 +19,7 @@ namespace ProjectMB
         User _usrToBeEdited;
         private bool[] _days = {false, false, false, false, false, false, false};
         private bool _edit = false;
+        
         public EmployeeForm()
         {
             InitializeComponent();
@@ -78,11 +79,11 @@ namespace ProjectMB
             }
             catch (NoConnectionException)
             {
-                MessageBox.Show("Error", "Connection unsuccessful, please restart", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Connection unsuccessful, please restart", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (NotExistingException)
             {
-                MessageBox.Show("Error", "User is non-existent, please restart", MessageBoxButtons.OK,
+                MessageBox.Show("User is non-existent, please restart", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
         }
@@ -96,36 +97,46 @@ namespace ProjectMB
                 {
                     if (shiftCb.SelectedIndex > -1)
                     {
-                        string fn = firstNameTb.Text;
-                        string ln = lastNameTb.Text;
-                        string email = emailTb.Text;
-                        string salaryStr = Regex.Replace(salaryTb.Text, "€", "");
-                        double salary =  double.Parse(salaryStr.Trim());
-                        ShiftType type = (ShiftType) Enum.Parse(typeof(ShiftType), shiftCb.Text, true);
-
-                        if (_edit)
+                        const string emailPattern =
+                                            "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$";
+                        Regex regex = new Regex(emailPattern);
+                        if (regex.IsMatch(emailTb.Text))
                         {
-                            _usrToBeEdited.FirstName = fn;
-                            _usrToBeEdited.LastName = ln;
-                            _usrToBeEdited.Email = email;
-                            _usrToBeEdited.Salary = salary;
-                            _usrToBeEdited.WorkingDays = _days;
-                            _usrToBeEdited.Position = PersonPosition.EMPLOYEE;
-                            _usrToBeEdited.Department = Users.Department;
-                            _usrToBeEdited.ShiftTypeU = type;
-                            DatabaseFunctions.UpdateUser(_usrToBeEdited);
+                            string fn = firstNameTb.Text;
+                            string ln = lastNameTb.Text;
+                            string email = emailTb.Text;
+                            string salaryStr = Regex.Replace(salaryTb.Text, "€", "");
+                            double salary =  double.Parse(salaryStr.Trim());
+                            ShiftType type = (ShiftType) Enum.Parse(typeof(ShiftType), shiftCb.Text, true);
+
+                            if (_edit)
+                            {
+                                _usrToBeEdited.FirstName = fn;
+                                _usrToBeEdited.LastName = ln;
+                                _usrToBeEdited.Email = email;
+                                _usrToBeEdited.Salary = salary;
+                                _usrToBeEdited.WorkingDays = _days;
+                                _usrToBeEdited.Position = PersonPosition.EMPLOYEE;
+                                _usrToBeEdited.Department = Users.Department;
+                                _usrToBeEdited.ShiftTypeU = type;
+                                DatabaseFunctions.UpdateUser(_usrToBeEdited);
+                            }
+                            else
+                            {
+                                _usrToBeEdited = new User(fn, ln, email, PersonPosition.EMPLOYEE, salary, type, _days,
+                                    Users.Department);
+                                DatabaseFunctions.AddUser(_usrToBeEdited);
+                            }
+                            DatabaseFunctions.GetEmployeesByDepartment(Users.Department);
+                            this.Close();
                         }
                         else
                         {
-                            _usrToBeEdited = new User(fn, ln, email, PersonPosition.EMPLOYEE, salary, type, _days,
-                                Users.Department);
-                            DatabaseFunctions.AddUser(_usrToBeEdited);
-
+                            MessageBox.Show("Please, select a valid Email!", "Error", MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);   
                         }
-
-                        DatabaseFunctions.GetEmployeesByDepartment(Users.Department);
-                        this.Close();
-                    }
+                       
+                    } 
                     else
                     {
                         MessageBox.Show("Choose valid shift!");
@@ -142,22 +153,22 @@ namespace ProjectMB
             }
             catch (NoConnectionException)
             {
-                MessageBox.Show("Error", "Connection unsuccessful, please restart", MessageBoxButtons.OK,
+                MessageBox.Show("Connection unsuccessful, please restart", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
             catch (NotExistingException)
             {
-                MessageBox.Show("Error", "User is non-existent, please restart", MessageBoxButtons.OK,
+                MessageBox.Show("User is non-existent, please restart", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
             catch (UsernameErrorException)
             {
-                MessageBox.Show("Error", "Error occured, when tried to generate username, please restart", MessageBoxButtons.OK,
+                MessageBox.Show("Error occured, when tried to generate username, please restart", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
             catch (IOException)
             {
-                MessageBox.Show("Error", "Error loading resources, please restart", MessageBoxButtons.OK,
+                MessageBox.Show("Error loading resources, please restart", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
 
