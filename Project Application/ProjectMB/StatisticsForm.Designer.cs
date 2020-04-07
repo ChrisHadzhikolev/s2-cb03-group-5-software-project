@@ -35,10 +35,12 @@
             // 
             // lbStatistics
             // 
+            this.lbStatistics.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.lbStatistics.FormattingEnabled = true;
+            this.lbStatistics.ItemHeight = 25;
             this.lbStatistics.Location = new System.Drawing.Point(12, 23);
             this.lbStatistics.Name = "lbStatistics";
-            this.lbStatistics.Size = new System.Drawing.Size(776, 264);
+            this.lbStatistics.Size = new System.Drawing.Size(776, 254);
             this.lbStatistics.TabIndex = 0;
             // 
             // btnEmployeeStatistics
@@ -74,6 +76,7 @@
             this.Controls.Add(this.lbStatistics);
             this.Name = "StatisticsForm";
             this.Text = "Statistics";
+            this.Load += new System.EventHandler(this.StatisticsForm_Load);
             this.ResumeLayout(false);
 
         }

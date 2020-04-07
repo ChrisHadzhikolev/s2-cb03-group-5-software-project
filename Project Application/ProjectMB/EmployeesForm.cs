@@ -56,7 +56,8 @@ namespace ProjectMB
             this.BackColor = Color.FromArgb(193, 162, 254);
             try
             {
-                DatabaseFunctions.GetEmployeesByDepartment(Users.Department);
+                //DatabaseFunctions.GetEmployeesByDepartment(Users.Department);
+                DatabaseFunctions.GetAllEmployees();
                 foreach (var item in Users.Employees)
                 {
                     employeesLb.Items.Add(item.ToString());

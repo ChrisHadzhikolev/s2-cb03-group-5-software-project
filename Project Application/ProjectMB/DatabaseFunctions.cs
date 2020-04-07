@@ -407,5 +407,52 @@ namespace ProjectMB
                 throw new NotExistingException();
             }
         }
+        public static void GetAllEmployees()
+        {
+            try
+            {
+                string query =
+                    "Select * from people as p join working_days as wd on p.username = wd.username where position = 'EMPLOYEE';";
+                using (MySqlConnection conn = new MySqlConnection(ConnectionString))
+                {
+                    List<User> results = new List<User>();
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    //cmd.Parameters.AddWithValue("@departmentName", departmentName);
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        int id = Int32.Parse(dataReader[0].ToString());
+                        string username = dataReader[1].ToString();
+                        string firstName = dataReader[2].ToString();
+                        string lastName = dataReader[3].ToString();
+                        string email = dataReader[4].ToString();
+                        PersonPosition position =
+                            (PersonPosition)Enum.Parse(typeof(PersonPosition), dataReader[5].ToString(), true);
+                        double salary = Int32.Parse(dataReader[6].ToString());
+                        string department = dataReader[7].ToString();
+                        ShiftType shiftType =
+                            (ShiftType)Enum.Parse(typeof(ShiftType), dataReader[10].ToString(), true);
+                        bool[] days = new bool[7];
+                        for (int i = 0; i < 7; i++)
+                        {
+                            days[i] = bool.Parse(dataReader[i + 11].ToString());
+                        }
+
+                        User user = new User(username, firstName, lastName, email, position, salary, shiftType,
+                            days, department, id);
+                        results.Add(user);
+                    }
+
+                    conn.Close();
+                    Users.Employees.Clear();
+                    Users.Employees.AddRange(results);
+                }
+            }
+            catch (Exception)
+            {
+                throw new NoConnectionException();
+            }
+            }
+        }
     }
-}
