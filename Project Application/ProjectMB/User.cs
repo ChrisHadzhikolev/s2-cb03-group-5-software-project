@@ -10,7 +10,7 @@ namespace ProjectMB
 {
     public class User
     {
-        public User(string username, string firstName, string lastName, string email, PersonPosition position, double salary, ShiftType shiftType, bool[] workingDays, string department, int id)
+        public User(string username, string firstName, string lastName, string email, PersonPosition position, double salary, ShiftType shiftType, bool[] workingDays, Department department, int id)
                  {
                      this._id = id;
                      Username = username;
@@ -21,9 +21,9 @@ namespace ProjectMB
                      Salary = salary;
                      ShiftTypeU = shiftType;
                      WorkingDays = workingDays;
-                     Department = department;
+            UserDepartment = department;
                  }
-        public User(string firstName, string lastName, string email, PersonPosition position, double salary, ShiftType shiftType, bool[] workingDays, string department)
+        public User(string firstName, string lastName, string email, PersonPosition position, double salary, ShiftType shiftType, bool[] workingDays, Department department)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace ProjectMB
             Salary = salary;
             ShiftTypeU = shiftType;
             WorkingDays = workingDays;
-            Department = department;
+            UserDepartment = department;
         }
         private int _id;
         private static int _idSeed= 9999;
@@ -58,7 +58,7 @@ namespace ProjectMB
         public double Salary { get; set; }
         public ShiftType ShiftTypeU { get; set; }
         public bool[] WorkingDays { get; set; }
-        public string Department { get; set; }
+        public Department UserDepartment { get; set; }
 
 
         private static Random _random = new Random();
@@ -101,7 +101,7 @@ namespace ProjectMB
 
         public override string ToString()
         {
-            return $"{_id.ToString()}\t{FirstName}\t{LastName}\t{Email}\t{Salary.ToString("C2", CultureInfo.CurrentCulture)}\t{Department}";
+            return $"{_id.ToString()}\t{FirstName}\t{LastName}\t{Email}\t{Salary.ToString("C2", CultureInfo.CurrentCulture)}\t{UserDepartment.Name}";
         }
     }
 

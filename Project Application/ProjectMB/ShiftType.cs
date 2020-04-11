@@ -8,8 +8,8 @@ namespace ProjectMB
 {
     public enum ShiftType
     {
-        DAY,
-        NIGHT,
-        HALFDAY
+        Day,
+        Night,
+        HalfDay
     }
 }

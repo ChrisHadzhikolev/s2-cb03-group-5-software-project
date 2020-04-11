@@ -43,12 +43,27 @@ namespace ProjectMB
             List<User> results = new List<User>();
             foreach (var item in users)
             {
-                if (item.LastName == lastName && item.Position==PersonPosition.EMPLOYEE)
+                if (item.LastName == lastName)
                 {
                    results.Add(item);
                 }
             }
             return results.ToArray();
+        }
+        public static void AddUser(User user) 
+        {
+            DatabaseFunctions.AddUser(user);
+            DatabaseFunctions.GetAllEmployees();
+        }
+        public static void UpdateUser(User user)
+        {
+            DatabaseFunctions.UpdateUser(user);
+            DatabaseFunctions.GetAllEmployees();
+        }
+        public static void RemoveUser(User user)
+        {
+            DatabaseFunctions.RemoveUser(user);
+            DatabaseFunctions.GetAllEmployees();
         }
     }
 }

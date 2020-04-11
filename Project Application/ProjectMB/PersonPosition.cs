@@ -8,8 +8,9 @@ namespace ProjectMB
 {
     public enum PersonPosition
     {
-        MANAGER,
-        EMPLOYEE,
-        LAST_DEPOT
+        Manager,
+        Department,
+        Employee,
+        Stock
     }
 }

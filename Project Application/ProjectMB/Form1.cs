@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Management;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
@@ -33,6 +34,8 @@ namespace ProjectMB
                 string id = (Users.LastGenUsernameId()+1).ToString();
                 File.WriteAllLines("idSeeder", new string[]{id});
             }
+            Departments.AddDepartment("Human Resources");
+            Departments.AddDepartment("Finances");
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -52,10 +55,10 @@ namespace ProjectMB
             //
             //Modifications
             //
-            this.ClientSize = new Size((int) (System.Windows.SystemParameters.PrimaryScreenWidth),
-                (int) (System.Windows.SystemParameters.PrimaryScreenHeight));
+            //this.ClientSize = new Size((int) (System.Windows.SystemParameters.PrimaryScreenWidth),
+              //  (int) (System.Windows.SystemParameters.PrimaryScreenHeight));
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = FormBorderStyle.None;
             this.MaximizeBox = false;
 
             this.loginPnl.SetBounds(0, 0, this.ClientSize.Width, this.ClientSize.Height);
@@ -96,33 +99,40 @@ namespace ProjectMB
             selectionPnl.SetBounds(0, 0, this.ClientSize.Width, this.ClientSize.Height);
             this.selectionPnl.BackColor = Color.FromArgb(193, 162, 254);
 
-            employeesBtn.Size = new Size(selectionPnl.Width / 5, selectionPnl.Height / 10);
-            employeesBtn.Location = new Point((selectionPnl.Width - employeesBtn.Width) / 2,
+            this.employeesBtn.Size = new Size(selectionPnl.Width / 5, selectionPnl.Height / 10);
+            this.employeesBtn.Location = new Point(selectionPnl.Width / 2 - employeesBtn.Width - 25,
                 (selectionPnl.Height - employeesBtn.Height) / 3);
             this.employeesBtn.BackColor = Color.FromArgb(5, 179, 245);
             this.employeesBtn.FlatStyle = FlatStyle.Flat;
 
-            productsBtn.Size = new Size(selectionPnl.Width / 5, selectionPnl.Height / 10);
-            productsBtn.Location = new Point((selectionPnl.Width - productsBtn.Width) / 2,
-                (selectionPnl.Height - productsBtn.Height) * 2 / 3);
+            this.productsBtn.Size = new Size(selectionPnl.Width / 5, selectionPnl.Height / 10);
+            this.productsBtn.Location = new Point((selectionPnl.Width / 2 + 25),
+                (selectionPnl.Height - productsBtn.Height) / 3);
             this.productsBtn.BackColor = Color.FromArgb(5, 179, 245);
             this.productsBtn.FlatStyle = FlatStyle.Flat;
 
-            exitBtn.Size = new Size(loginPnl.Width / 15, loginPnl.Height / 20);
-            exitBtn.Location = new Point(loginPnl.Width - exitBtn.Width, 10);
+            this.statisticsBtn.Size = new Size(selectionPnl.Width / 5, selectionPnl.Height / 10);
+            this.statisticsBtn.Location = new Point((selectionPnl.Width / 2 + 25),
+                (selectionPnl.Height - statisticsBtn.Height) / 2);
+            this.statisticsBtn.BackColor = Color.FromArgb(5, 179, 245);
+            this.statisticsBtn.FlatStyle = FlatStyle.Flat;
+
+            this.departmentsBtn.Size = new Size(selectionPnl.Width / 5, selectionPnl.Height / 10);
+            this.departmentsBtn.Location = new Point((selectionPnl.Width / 2 - departmentsBtn.Width - 25),
+                (selectionPnl.Height - employeesBtn.Height) / 2);
+            this.departmentsBtn.BackColor = Color.FromArgb(5, 179, 245);
+            this.departmentsBtn.FlatStyle = FlatStyle.Flat;
+
+
+            this.exitBtn.Size = new Size(loginPnl.Width / 15, loginPnl.Height / 20);
+            this.exitBtn.Location = new Point(loginPnl.Width - exitBtn.Width - 25, 10);
             this.exitBtn.BackColor = Color.FromArgb(5, 179, 245);
             this.exitBtn.FlatStyle = FlatStyle.Flat;
 
             this.logOutBtn.Size = new Size(loginPnl.Width / 15, loginPnl.Height / 20);
-            this.logOutBtn.Location = new Point(loginPnl.Width - exitBtn.Width - logOutBtn.Width - 10, 10);
+            this.logOutBtn.Location = new Point(loginPnl.Width - exitBtn.Width - logOutBtn.Width - 10 - 25, 10);
             this.logOutBtn.BackColor = Color.FromArgb(5, 179, 245);
             this.logOutBtn.FlatStyle = FlatStyle.Flat;
-
-            statisticsBtn.Size = new Size(selectionPnl.Width / 5, selectionPnl.Height / 10);
-            statisticsBtn.Location = new Point((selectionPnl.Width - statisticsBtn.Width) / 2,
-                (selectionPnl.Height - statisticsBtn.Height) / 2);
-            this.statisticsBtn.BackColor = Color.FromArgb(5, 179, 245);
-            this.statisticsBtn.FlatStyle = FlatStyle.Flat;
         }
 
         private void click_username(Object sender, EventArgs e)
@@ -165,6 +175,15 @@ namespace ProjectMB
             passwordLbl.BackColor = Color.FromArgb(125, 249, 255);
         }
 
+        private void usernameTb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                this.SelectNextControl(usernameTb, true, true, true, true);
+               
+            }
+        }
+
         private void passwordTb_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter)
@@ -179,10 +198,10 @@ namespace ProjectMB
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
-            User user = Users.FindUserByUsername(usernameTb.Text);
+            User user = Users.FindUserByUsername(usernameTb.Text.Trim());
             if (user != null)
             {
-                if (user.Position == PersonPosition.MANAGER)
+                if (user.Position == PersonPosition.Manager)
                 {
                     string pass = DatabaseFunctions.PasswordByUsername(user.Username);
                     if (pass == passwordTb.Text)
@@ -192,7 +211,7 @@ namespace ProjectMB
                         logOutBtn.Visible = true;
                         usernameTb.Text = "Username";
                         passwordTb.Text = "Password";
-                        Users.Department = user.Department;
+                        Users.Department = user.UserDepartment.Name;
                     }
                     else
                     {
@@ -240,5 +259,12 @@ namespace ProjectMB
             StatisticsForm statisticsForm = new StatisticsForm();
             statisticsForm.Show();
         }
+
+        private void departmentsBtn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Coming soon!");
+        }
+
+       
     }
 }

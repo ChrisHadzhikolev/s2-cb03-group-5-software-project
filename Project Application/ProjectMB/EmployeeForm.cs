@@ -16,10 +16,9 @@ namespace ProjectMB
 {
     public partial class EmployeeForm : Form
     {
-        User _usrToBeEdited;
-        private bool[] _days = {false, false, false, false, false, false, false};
         private bool _edit = false;
-        
+        private User _userToBeEdited;
+        #region Constructors
         public EmployeeForm()
         {
             InitializeComponent();
@@ -29,53 +28,36 @@ namespace ProjectMB
         public EmployeeForm(User user)
         {
             InitializeComponent();
-            _usrToBeEdited = user;
-            this.firstNameTb.Text = _usrToBeEdited.FirstName;
-            this.lastNameTb.Text = _usrToBeEdited.LastName;
-            this.emailTb.Text = _usrToBeEdited.Email;
-            this.salaryTb.Text = _usrToBeEdited.Salary.ToString("C2", CultureInfo.CurrentCulture);
-            this.firstNameTb.Text = _usrToBeEdited.FirstName;
-            this.shiftCb.SelectedValue = _usrToBeEdited.ShiftTypeU.ToString();
+            _userToBeEdited = user;
+            this.firstNameTb.Text = user.FirstName;
+            this.lastNameTb.Text = user.LastName;
+            this.emailTb.Text = user.Email;
+            this.salaryTb.Text = user.Salary.ToString("C2", CultureInfo.CurrentCulture);
+            this.departmentCb.SelectedIndex = departmentCb.Items.IndexOf(user.UserDepartment.Name);
+            this.roleCb.SelectedIndex = roleCb.Items.IndexOf(user.Position.ToString());
+            this.shiftCb.SelectedIndex = shiftCb.Items.IndexOf(user.ShiftTypeU.ToString());
+            mondayCbx.Checked = user.WorkingDays[0];
+            tuesdayCbx.Checked = user.WorkingDays[1];
+            wednesdayCbx.Checked = user.WorkingDays[2];
+            thursdayCbx.Checked = user.WorkingDays[3];
+            fridayCbx.Checked = user.WorkingDays[4];
+            saturdayCbx.Checked = user.WorkingDays[5];
+            sundayCbx.Checked = user.WorkingDays[6];
             _edit = true;
+            titleLbl.Text = "Edit Employee";
         }
-       
-        private void EmployeeForm_Load(object sender, EventArgs e)
-        {
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.cancelBtn.BackColor = Color.FromArgb(5, 179, 245);
-            this.cancelBtn.FlatStyle = FlatStyle.Flat;
-            this.confirmBtn.BackColor = Color.FromArgb(5, 179, 245);
-            this.confirmBtn.FlatStyle = FlatStyle.Flat;
-            this.daysBtn.BackColor = Color.FromArgb(5, 179, 245);
-            this.daysBtn.FlatStyle = FlatStyle.Flat;
-            this.removeBtn.BackColor = Color.FromArgb(5, 179, 245);
-            this.removeBtn.FlatStyle = FlatStyle.Flat;
-            this.BackColor = Color.FromArgb(193, 162, 254);
-        }
-
+        #endregion
+        #region CRUD
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-        private void daysBtn_Click(object sender, EventArgs e)
-        {
-            CheckboxDialog checkboxDialog = new CheckboxDialog();
-            checkboxDialog.ShowDialog("Select Days:");
-            do
-            {
-                System.Threading.Thread.Sleep(1000);
-            } while (checkboxDialog.FormOpened);
-            _days = checkboxDialog.SelectedValues();
         }
 
         private void removeBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                DatabaseFunctions.RemoveUser(_usrToBeEdited);
-                DatabaseFunctions.GetEmployeesByDepartment(Users.Department);
+                Users.RemoveUser(_userToBeEdited);
             }
             catch (NoConnectionException)
             {
@@ -93,9 +75,9 @@ namespace ProjectMB
             try
             {
                 if (!string.IsNullOrWhiteSpace(firstNameTb.Text) && !string.IsNullOrWhiteSpace(lastNameTb.Text) &&
-                    !string.IsNullOrWhiteSpace(firstNameTb.Text) && !string.IsNullOrWhiteSpace(salaryTb.Text))
+                    !string.IsNullOrWhiteSpace(emailTb.Text) && !string.IsNullOrWhiteSpace(salaryTb.Text))
                 {
-                    if (shiftCb.SelectedIndex > -1)
+                    if (shiftCb.SelectedIndex > 0)
                     {
                         const string emailPattern =
                                             "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$";
@@ -106,37 +88,46 @@ namespace ProjectMB
                             string ln = lastNameTb.Text;
                             string email = emailTb.Text;
                             string salaryStr = Regex.Replace(salaryTb.Text, "€", "");
-                            double salary =  double.Parse(salaryStr.Trim());
-                            ShiftType type = (ShiftType) Enum.Parse(typeof(ShiftType), shiftCb.Text, true);
+                            double salary = double.Parse(salaryStr.Trim());
+                            Department department = Departments.DepartmentByName(departmentCb.SelectedItem.ToString());
+                            PersonPosition position = (PersonPosition)Enum.Parse(typeof(PersonPosition), roleCb.Text, true);
+                            ShiftType type = (ShiftType)Enum.Parse(typeof(ShiftType), shiftCb.Text, true);
+                            bool[] _days = new bool[7];
+                            _days[0] = mondayCbx.Checked;
+                            _days[1] = tuesdayCbx.Checked;
+                            _days[2] = wednesdayCbx.Checked;
+                            _days[3] = thursdayCbx.Checked; 
+                            _days[4] = fridayCbx.Checked;
+                            _days[5] = saturdayCbx.Checked;
+                            _days[6] = sundayCbx.Checked;
+                            //_days = { mondayCbx.Checked, tuesdayCbx.Checked, wednesdayCbx.Checked, thursdayCbx.Checked, fridayCbx.Checked, saturdayCbx.Checked, sundayCbx.Checked };
 
                             if (_edit)
                             {
-                                _usrToBeEdited.FirstName = fn;
-                                _usrToBeEdited.LastName = ln;
-                                _usrToBeEdited.Email = email;
-                                _usrToBeEdited.Salary = salary;
-                                _usrToBeEdited.WorkingDays = _days;
-                                _usrToBeEdited.Position = PersonPosition.EMPLOYEE;
-                                _usrToBeEdited.Department = Users.Department;
-                                _usrToBeEdited.ShiftTypeU = type;
-                                DatabaseFunctions.UpdateUser(_usrToBeEdited);
+                                _userToBeEdited.FirstName = fn;
+                                _userToBeEdited.LastName = ln;
+                                _userToBeEdited.Email = email;
+                                _userToBeEdited.Position = position;
+                                _userToBeEdited.Salary = salary;
+                                _userToBeEdited.ShiftTypeU = type;
+                                _userToBeEdited.WorkingDays = _days;
+                                _userToBeEdited.UserDepartment = department;
+                                Users.UpdateUser(_userToBeEdited);
                             }
                             else
                             {
-                                _usrToBeEdited = new User(fn, ln, email, PersonPosition.EMPLOYEE, salary, type, _days,
-                                    Users.Department);
-                                DatabaseFunctions.AddUser(_usrToBeEdited);
+                                Users.AddUser(new User(fn, ln, email, position, salary, type, _days, department));
                             }
-                            DatabaseFunctions.GetEmployeesByDepartment(Users.Department);
+
+                            DatabaseFunctions.GetUsersByDepartment(Users.Department);
                             this.Close();
                         }
                         else
                         {
                             MessageBox.Show("Please, select a valid Email!", "Error", MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);   
+                                MessageBoxIcon.Error);
                         }
-                       
-                    } 
+                    }
                     else
                     {
                         MessageBox.Show("Choose valid shift!");
@@ -171,7 +162,171 @@ namespace ProjectMB
                 MessageBox.Show("Error loading resources, please restart", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
-
         }
+        #endregion
+        #region Design
+        private void mondayCbx_CheckedChanged(object sender, EventArgs e)
+        {
+            if (mondayCbx.Checked)
+            {
+                mondayCbx.BackColor = Color.Green;
+            }
+            else
+            {
+                mondayCbx.BackColor = Color.Red;
+            }
+        }
+
+        private void tuesdayCbx_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tuesdayCbx.Checked)
+            {
+                tuesdayCbx.BackColor = Color.Green;
+            }
+            else
+            {
+                tuesdayCbx.BackColor = Color.Red;
+            }
+        }
+
+        private void wednesdayCbx_CheckedChanged(object sender, EventArgs e)
+        {
+            if (wednesdayCbx.Checked)
+            {
+                wednesdayCbx.BackColor = Color.Green;
+            }
+            else
+            {
+                wednesdayCbx.BackColor = Color.Red;
+            }
+        }
+
+        private void thursdayCbx_CheckedChanged(object sender, EventArgs e)
+        {
+            if (thursdayCbx.Checked)
+            {
+                thursdayCbx.BackColor = Color.Green;
+            }
+            else
+            {
+                thursdayCbx.BackColor = Color.Red;
+            }
+        }
+
+        private void fridayCbx_CheckedChanged(object sender, EventArgs e)
+        {
+            if (fridayCbx.Checked)
+            {
+                fridayCbx.BackColor = Color.Green;
+            }
+            else
+            {
+                fridayCbx.BackColor = Color.Red;
+            }
+        }
+
+        private void saturdayCbx_CheckedChanged(object sender, EventArgs e)
+        {
+            if (saturdayCbx.Checked)
+            {
+                saturdayCbx.BackColor = Color.Green;
+            }
+            else
+            {
+                saturdayCbx.BackColor = Color.Red;
+            }
+        }
+
+        private void sundayCbx_CheckedChanged(object sender, EventArgs e)
+        {
+            if (sundayCbx.Checked)
+            {
+                sundayCbx.BackColor = Color.Green;
+            }
+            else
+            {
+                sundayCbx.BackColor = Color.Red;
+            }
+        }
+        private void firstNameTb_Click(object sender, EventArgs e)
+        {
+            if (firstNameTb.Text == "First Name")
+            {
+                firstNameTb.Text = "";
+            }
+
+            firstNamePnl.BackColor = Color.FromArgb(218, 112, 214);
+        }
+
+        private void firstNameTb_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(firstNameTb.Text))
+            {
+                firstNameTb.Text = "First Name";
+            }
+
+            firstNamePnl.BackColor = Color.FromArgb(125, 249, 255);
+        }
+
+        private void lastNameTb_Click(object sender, EventArgs e)
+        {
+            if (lastNameTb.Text == "Last Name")
+            {
+                lastNameTb.Text = "";
+            }
+
+            lastNamePnl.BackColor = Color.FromArgb(218, 112, 214);
+        }
+
+        private void lastNameTb_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(lastNameTb.Text))
+            {
+                lastNameTb.Text = "Last Name";
+            }
+
+            lastNamePnl.BackColor = Color.FromArgb(125, 249, 255);
+        }
+
+        private void emailTb_Click(object sender, EventArgs e)
+        {
+            if (emailTb.Text == "Email")
+            {
+                emailTb.Text = "";
+            }
+
+            emailPnl.BackColor = Color.FromArgb(218, 112, 214);
+        }
+
+        private void emailTb_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(emailTb.Text))
+            {
+                emailTb.Text = "Email";
+            }
+
+            emailPnl.BackColor = Color.FromArgb(125, 249, 255);
+        }
+
+        private void salaryTb_Click(object sender, EventArgs e)
+        {
+            if (salaryTb.Text == "Salary")
+            {
+                salaryTb.Text = "";
+            }
+
+            salaryPnl.BackColor = Color.FromArgb(218, 112, 214);
+        }
+
+        private void salaryTb_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(salaryTb.Text))
+            {
+                salaryTb.Text = "Salary";
+            }
+
+            salaryPnl.BackColor = Color.FromArgb(125, 249, 255);
+        }
+        #endregion
     }
 }

@@ -13,7 +13,7 @@ namespace ProjectMB
         //public static ProductCategory productCategory;
 
        public static Product FindProductByName(string name)
-        {
+       {
             foreach (var item in products)
             {
                 if (item.Name == name)
@@ -22,6 +22,6 @@ namespace ProjectMB
                 }
             }
             return null;
-        }
+       }
     }
 }
