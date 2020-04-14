@@ -1,9 +1,12 @@
 ﻿using MySql.Data.MySqlClient;
+using Renci.SshNet.Messages.Connection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Forms.VisualStyles;
 
 namespace ProjectMB
 {
@@ -549,7 +552,7 @@ namespace ProjectMB
         #region CRUD_Deprtment
         public static bool GetAllDepartments()
         {
-            string query = "SELECT * from departments";
+            string query = "select departmentName from departments";
             try
             {
                 using (MySqlConnection conn=new MySqlConnection(ConnectionString))
@@ -563,7 +566,6 @@ namespace ProjectMB
                         string name = dataReader[0].ToString();
                         Department department = new Department(name);
                         results.Add(department);
-
                     }
                     conn.Close();
                     Departments.departments.Clear();
@@ -572,7 +574,6 @@ namespace ProjectMB
             }
             catch (Exception)
             {
-
                 throw new NoConnectionException();
             }
             return true;
@@ -583,7 +584,7 @@ namespace ProjectMB
             {
                 using (MySqlConnection conn= new MySqlConnection(ConnectionString))
                 {
-                    string query = "INSERT INTO departments('Name') values (@name);";
+                    string query = "insert into departments(`departmentName`) values (@name);";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@name", department.Name);
                     conn.Open();
@@ -592,27 +593,67 @@ namespace ProjectMB
                 }
             }
         }
-        public static void UpdateDepartment(Department department)
+        public static void UpdateDepartment(Department department, string oldName)
         {
             if (department!=null)
             {
-                string query = "UPDATE departments set Name=@name;";
-                try
-                {
+               // try
+                //{
                     using (MySqlConnection conn = new MySqlConnection(ConnectionString))
                     {
-                        MySqlCommand cmd = new MySqlCommand(query,conn);
+                        string query = "select * from people as p join working_days as wd on p.username = wd.username where department = @oldName";
+                        List<User> results = new List<User>();
+                        MySqlCommand cmd_refactor = new MySqlCommand(query, conn);
+                        cmd_refactor.Parameters.AddWithValue("@oldName", oldName);
+                        conn.Open();
+                        MySqlDataReader dataReader = cmd_refactor.ExecuteReader();
+                        while (dataReader.Read())
+                        {                            
+                            int id = int.Parse(dataReader[0].ToString());
+                            string username = dataReader[1].ToString();
+                            string firstName = dataReader[2].ToString();
+                            string lastName = dataReader[3].ToString();
+                            string email = dataReader[4].ToString();
+                            string phoneNumber = dataReader[5].ToString();
+                            PersonPosition position =
+                                (PersonPosition)Enum.Parse(typeof(PersonPosition), dataReader[6].ToString(), true);
+                            double salary = Double.Parse(dataReader[7].ToString());
+                            Department departmentResult = new Department(dataReader[8].ToString());
+                            ShiftType shiftType =
+                                (ShiftType)Enum.Parse(typeof(ShiftType), dataReader[11].ToString(), true);
+                            bool[] days = new bool[7];
+                            for (int i = 0; i < 7; i++)
+                            {
+                                days[i] = bool.Parse(dataReader[i + 12].ToString());
+                            }
+
+                            User user = new User(username, firstName, lastName, email, position, salary, shiftType,
+                                days, departmentResult, id, phoneNumber);
+                            results.Add(user);
+                        }
+                        conn.Close();
+                        foreach (var item in results)
+                        {
+                            conn.Open();
+                            item.UserDepartment = department;
+                            UpdateUser(item);
+                            conn.Close();
+                        }
+
+                        query = "update departments set departmentName = @name where departmentName = @oldName";
+                        MySqlCommand cmd = new MySqlCommand(query, conn);
                         cmd.Parameters.AddWithValue("@name", department.Name);
+                        cmd.Parameters.AddWithValue("@oldName", oldName);
                         conn.Open();
                         cmd.ExecuteNonQuery();
                         conn.Close();
                     }
-                }
-                catch (Exception)
-                {
-
-                    throw new NoConnectionException();
-                }
+                //}                
+                //catch (Exception e)
+                //{
+                //    MessageBox.Show(e.Source);
+                //    throw new NoConnectionException();
+               // }
             }
         }
         public static void RemoveDepartment(Department department)
@@ -621,19 +662,35 @@ namespace ProjectMB
             {
                 try
                 {
-                    using (MySqlConnection conn=new MySqlConnection(ConnectionString))
+                    using (MySqlConnection conn = new MySqlConnection(ConnectionString))
                     {
-                        MySqlCommand cmd = null;
-                        string query = "DELETE FROM departments WHERE Name=@name;";
+                        string query = "select count(id) from people where department = @name;";
+                        MySqlCommand cmd = new MySqlCommand(query, conn);
                         cmd.Parameters.AddWithValue("@name", department.Name);
                         conn.Open();
-                        cmd.ExecuteNonQuery();
+                        Object obj = cmd.ExecuteScalar();
                         conn.Close();
+                        if (int.Parse(obj.ToString()) == 0)
+                        {                           
+                            query = "DELETE FROM departments WHERE departmentName = @name;";
+                            MySqlCommand cmd_del = new MySqlCommand(query, conn);
+                            cmd_del.Parameters.AddWithValue("@name", department.Name);
+                            conn.Open();
+                            cmd_del.ExecuteNonQuery();
+                            conn.Close();
+                        }
+                        else
+                        {
+                            throw new UsersInDepartmentException();
+                        }                      
                     }
+                }
+                catch (UsersInDepartmentException)
+                {
+                    throw new UsersInDepartmentException();
                 }
                 catch (Exception)
                 {
-
                     throw new NoConnectionException();
                 }
             }

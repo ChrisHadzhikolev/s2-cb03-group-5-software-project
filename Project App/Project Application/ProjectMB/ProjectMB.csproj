@@ -139,6 +139,7 @@
     <Compile Include="User.cs" />
     <Compile Include="UsernameErrorException.cs" />
     <Compile Include="Users.cs" />
+    <Compile Include="UsersInDepartmentException.cs" />
     <EmbeddedResource Include="DepartmentForm.resx">
       <DependentUpon>DepartmentForm.cs</DependentUpon>
     </EmbeddedResource>

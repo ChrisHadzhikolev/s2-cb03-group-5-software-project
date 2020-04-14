@@ -14,12 +14,15 @@ namespace ProjectMB
     {
         Department _departmentToBeEdited;
         private bool _editDepartment;
+        private string departmentOldName = "";
         public DepartmentForm(Department department)
         {
             InitializeComponent();
             _departmentToBeEdited = department;
             NameTb.Text = department.Name;
+            departmentOldName = department.Name;
             _editDepartment = true;
+            removeBtn.Enabled = true;
 
         }
         public DepartmentForm()
@@ -39,7 +42,7 @@ namespace ProjectMB
                     if (_editDepartment)
                     {
                         _departmentToBeEdited.Name = departmentName;
-                        DatabaseFunctions.UpdateDepartment(_departmentToBeEdited);
+                        DatabaseFunctions.UpdateDepartment(_departmentToBeEdited, departmentOldName);
                     }
                     else
                     {
@@ -63,6 +66,7 @@ namespace ProjectMB
                 MessageBox.Show("Department is non-existent, please restart", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+           
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
@@ -76,6 +80,7 @@ namespace ProjectMB
             {
                 DatabaseFunctions.RemoveDepartment(_departmentToBeEdited);
                 DatabaseFunctions.GetAllDepartments();
+                this.Close();
             }
             catch (NoConnectionException)
             {
@@ -84,6 +89,11 @@ namespace ProjectMB
             catch (NotExistingException)
             {
                 MessageBox.Show("Department is non-existent, please restart", "Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            catch (UsersInDepartmentException)
+            {
+                MessageBox.Show("There are still employees in that department", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
         }

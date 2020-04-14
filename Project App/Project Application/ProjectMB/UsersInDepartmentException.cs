@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectMB
 {
-    public enum PersonPosition
+    class UsersInDepartmentException:Exception
     {
-        Manager,
-        Department,
-        Employee,
-        Stock, 
-        Admin
     }
 }

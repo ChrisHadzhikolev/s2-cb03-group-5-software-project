@@ -23,7 +23,7 @@ namespace ProjectMB
             usernameTb.Leave += new EventHandler(leave_username);
             passwordTb.Click += new EventHandler(click_password);
             passwordTb.Leave += new EventHandler(leave_password);
-            if (!DatabaseFunctions.GetAllUsers() && !DatabaseFunctions.GetAllProducts())
+            if (!DatabaseFunctions.GetAllUsers() && !DatabaseFunctions.GetAllProducts() && !DatabaseFunctions.GetAllDepartments())
             {
                 MessageBox.Show("Loading Data Failure, please restart", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -34,8 +34,7 @@ namespace ProjectMB
                 string id = (Users.LastGenUsernameId()+1).ToString();
                 File.WriteAllLines("idSeeder", new string[]{id});
             }
-            Departments.AddDepartment("Human Resources");
-            Departments.AddDepartment("Finances");
+            
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -55,8 +54,8 @@ namespace ProjectMB
             //
             //Modifications
             //
-            //this.ClientSize = new Size((int) (System.Windows.SystemParameters.PrimaryScreenWidth),
-              //  (int) (System.Windows.SystemParameters.PrimaryScreenHeight));
+            this.ClientSize = new Size((int) (System.Windows.SystemParameters.PrimaryScreenWidth),
+              (int) (System.Windows.SystemParameters.PrimaryScreenHeight));
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -201,7 +200,7 @@ namespace ProjectMB
             User user = Users.FindUserByUsername(usernameTb.Text.Trim());
             if (user != null)
             {
-                if (user.Position == PersonPosition.Manager)
+                if (user.Position == PersonPosition.Manager || user.Position == PersonPosition.Admin)
                 {
                     string pass = DatabaseFunctions.PasswordByUsername(user.Username);
                     if (pass == passwordTb.Text)
@@ -252,8 +251,6 @@ namespace ProjectMB
             productsForm.Show();
         }
 
-        #endregion
-
         private void statisticsBtn_Click(object sender, EventArgs e)
         {
             StatisticsForm statisticsForm = new StatisticsForm();
@@ -262,9 +259,14 @@ namespace ProjectMB
 
         private void departmentsBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Coming soon!");
+            DepartmentsForm departmentsForm = new DepartmentsForm();
+            departmentsForm.Show();
         }
 
-       
+        #endregion
+
+
+
+
     }
 }
