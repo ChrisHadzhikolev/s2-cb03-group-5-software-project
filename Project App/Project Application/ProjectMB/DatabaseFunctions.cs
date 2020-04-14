@@ -30,20 +30,21 @@ namespace ProjectMB
                         string firstName = dataReader[2].ToString();
                         string lastName = dataReader[3].ToString();
                         string email = dataReader[4].ToString();
+                        string phoneNumber = dataReader[5].ToString();
                         PersonPosition position =
-                            (PersonPosition)Enum.Parse(typeof(PersonPosition), dataReader[5].ToString(), true);
-                        double salary = Double.Parse(dataReader[6].ToString());
-                        Department department = new Department(dataReader[7].ToString());
+                            (PersonPosition)Enum.Parse(typeof(PersonPosition), dataReader[6].ToString(), true);
+                        double salary = Double.Parse(dataReader[7].ToString());
+                        Department department = new Department(dataReader[8].ToString());
                         ShiftType shiftType =
-                            (ShiftType)Enum.Parse(typeof(ShiftType), dataReader[10].ToString(), true);
+                            (ShiftType)Enum.Parse(typeof(ShiftType), dataReader[11].ToString(), true);
                         bool[] days = new bool[7];
                         for (int i = 0; i < 7; i++)
                         {
-                            days[i] = bool.Parse(dataReader[i + 11].ToString());
+                            days[i] = bool.Parse(dataReader[i + 12].ToString());
                         }
 
                         User user = new User(username, firstName, lastName, email, position, salary, shiftType,
-                            days, department, id);
+                            days, department, id, phoneNumber);
                         results.Add(user);
                     }
 
@@ -78,20 +79,21 @@ namespace ProjectMB
                         string firstName = dataReader[2].ToString();
                         string lastName = dataReader[3].ToString();
                         string email = dataReader[4].ToString();
+                        string phoneNumber = dataReader[5].ToString();
                         PersonPosition position =
-                            (PersonPosition)Enum.Parse(typeof(PersonPosition), dataReader[5].ToString(), true);
-                        double salary = Int32.Parse(dataReader[6].ToString());
-                        Department department = new Department(dataReader[7].ToString());
+                            (PersonPosition)Enum.Parse(typeof(PersonPosition), dataReader[6].ToString(), true);
+                        double salary = Int32.Parse(dataReader[7].ToString());
+                        Department department = new Department(dataReader[8].ToString());
                         ShiftType shiftType =
-                            (ShiftType)Enum.Parse(typeof(ShiftType), dataReader[10].ToString(), true);
+                            (ShiftType)Enum.Parse(typeof(ShiftType), dataReader[11].ToString(), true);
                         bool[] days = new bool[7];
                         for (int i = 0; i < 7; i++)
                         {
-                            days[i] = bool.Parse(dataReader[i + 11].ToString());
+                            days[i] = bool.Parse(dataReader[i + 12].ToString());
                         }
 
                         User user = new User(username, firstName, lastName, email, position, salary, shiftType,
-                            days, department, id);
+                            days, department, id, phoneNumber);
                         results.Add(user);
                     }
 
@@ -127,20 +129,21 @@ namespace ProjectMB
                             string firstName = dataReader[2].ToString();
                             string lastName = dataReader[3].ToString();
                             string email = dataReader[4].ToString();
+                            string phoneNumber = dataReader[5].ToString();
                             PersonPosition position =
-                                (PersonPosition)Enum.Parse(typeof(PersonPosition), dataReader[5].ToString(), true);
-                            double salary = Double.Parse(dataReader[6].ToString());
-                            Department department = new Department(dataReader[7].ToString());
+                                (PersonPosition)Enum.Parse(typeof(PersonPosition), dataReader[6].ToString(), true);
+                            double salary = Double.Parse(dataReader[7].ToString());
+                            Department department = new Department(dataReader[8].ToString());
                             ShiftType shiftType =
-                                (ShiftType)Enum.Parse(typeof(ShiftType), dataReader[10].ToString(), true);
+                                (ShiftType)Enum.Parse(typeof(ShiftType), dataReader[11].ToString(), true);
                             bool[] days = new bool[7];
                             for (int i = 0; i < 7; i++)
                             {
-                                days[i] = bool.Parse(dataReader[i + 11].ToString());
+                                days[i] = bool.Parse(dataReader[i + 12].ToString());
                             }
 
                             User user = new User(username, firstName, lastName, email, position, salary, shiftType,
-                                days, department, id);
+                                days, department, id, phoneNumber);
                             results.Add(user);
                         }
 
@@ -181,20 +184,21 @@ namespace ProjectMB
                             string firstName = dataReader[2].ToString();
                             string lastName = dataReader[3].ToString();
                             string email = dataReader[4].ToString();
+                            string phoneNumber = dataReader[5].ToString();
                             PersonPosition position =
-                                (PersonPosition)Enum.Parse(typeof(PersonPosition), dataReader[5].ToString(), true);
-                            double salary = Double.Parse(dataReader[6].ToString());
-                            Department department = new Department(dataReader[7].ToString());
+                                (PersonPosition)Enum.Parse(typeof(PersonPosition), dataReader[6].ToString(), true);
+                            double salary = Double.Parse(dataReader[7].ToString());
+                            Department department = new Department(dataReader[8].ToString());
                             ShiftType shiftType =
-                                (ShiftType)Enum.Parse(typeof(ShiftType), dataReader[10].ToString(), true);
+                                (ShiftType)Enum.Parse(typeof(ShiftType), dataReader[11].ToString(), true);
                             bool[] days = new bool[7];
                             for (int i = 0; i < 7; i++)
                             {
-                                days[i] = bool.Parse(dataReader[i + 11].ToString());
+                                days[i] = bool.Parse(dataReader[i + 12].ToString());
                             }
 
                             User user = new User(username, firstName, lastName, email, position, salary, shiftType,
-                                days, department, id);
+                                days, department, id, phoneNumber);
                             results.Add(user);
                         }
 
@@ -249,7 +253,7 @@ namespace ProjectMB
                     using (MySqlConnection conn = new MySqlConnection(ConnectionString))
                     {
                         string query =
-                            "Insert into people (`id`, `username`, `first_name`, `last_name`, `email`, `position`, `salary`, `department`) values (null, @username, @first_name, @last_name, @email,'EMPLOYEE', @salary, @department);";
+                            "Insert into people (`username`, `first_name`, `last_name`, `email`, `position`, `salary`, `department`) values (@username, @first_name, @last_name, @email,'EMPLOYEE', @salary, @department);";
                         MySqlCommand cmd = new MySqlCommand(query, conn);
                         cmd.Parameters.AddWithValue("@username", user.Username);
                         cmd.Parameters.AddWithValue("@first_name", user.FirstName);
@@ -261,7 +265,7 @@ namespace ProjectMB
                         cmd.ExecuteNonQuery();
                         conn.Close();
                         query =
-                            "insert into users (`id`, `username`, `password`) VALUES (null, @username, @pass);";
+                            "insert into users (`username`, `password`) VALUES (@username, @pass);";
                         cmd = new MySqlCommand(query, conn);
                         cmd.Parameters.AddWithValue("@username", user.Username);
                         cmd.Parameters.AddWithValue("@pass", user.GeneratePassword());
@@ -269,7 +273,7 @@ namespace ProjectMB
                         cmd.ExecuteNonQuery();
                         conn.Close();
                         query =
-                            "insert into working_days (`id`, `username`, `shift`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`) values (null, @username, @shift, @monday, @tuesday, @wednesday, @thursday, @friday, @saturday, @sunday);";
+                            "insert into working_days (`username`, `shift`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`) values (@username, @shift, @monday, @tuesday, @wednesday, @thursday, @friday, @saturday, @sunday);";
                         cmd = new MySqlCommand(query, conn);
                         cmd.Parameters.AddWithValue("@username", user.Username);
                         cmd.Parameters.AddWithValue("@shift", user.ShiftTypeU.ToString());

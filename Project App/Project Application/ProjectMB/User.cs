@@ -10,6 +10,20 @@ namespace ProjectMB
 {
     public class User
     {
+        public User(string username, string firstName, string lastName, string email, PersonPosition position, double salary, ShiftType shiftType, bool[] workingDays, Department department, int id, string phoneNumber)
+        {
+            this._id = id;
+            Username = username;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Position = position;
+            Salary = salary;
+            ShiftTypeU = shiftType;
+            WorkingDays = workingDays;
+            UserDepartment = department;
+            _phoneNumber = phoneNumber;
+        }
         public User(string username, string firstName, string lastName, string email, PersonPosition position, double salary, ShiftType shiftType, bool[] workingDays, Department department, int id)
                  {
                      this._id = id;
@@ -59,6 +73,8 @@ namespace ProjectMB
         public ShiftType ShiftTypeU { get; set; }
         public bool[] WorkingDays { get; set; }
         public Department UserDepartment { get; set; }
+
+        private string _phoneNumber;
 
 
         private static Random _random = new Random();
