@@ -47,13 +47,12 @@ namespace ProjectMB
         private void EmployeesForm_Load(object sender, EventArgs e)
         {
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
             this.addBtn.BackColor = Color.FromArgb(5, 179, 245);
             this.addBtn.FlatStyle = FlatStyle.Flat;
             this.searchBtn.BackColor = Color.FromArgb(5, 179, 245);
             this.searchBtn.FlatStyle = FlatStyle.Flat;
             this.BackColor = Color.FromArgb(193, 162, 254);
+            this.employeesLb.HorizontalScrollbar = true;
             try
             {
                 //DatabaseFunctions.GetEmployeesByDepartment(Users.Department);
@@ -84,6 +83,11 @@ namespace ProjectMB
         {
             EmployeeForm employeeForm = new EmployeeForm();
             employeeForm.Show();
+        }
+
+        private void closeBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

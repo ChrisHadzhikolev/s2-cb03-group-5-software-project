@@ -24,10 +24,12 @@ namespace ProjectMB
             InitializeComponent();
             this.removeBtn.Enabled = false;
             _edit = false;
+            loadDepartments();
         }
         public EmployeeForm(User user)
         {
             InitializeComponent();
+            loadDepartments();
             _userToBeEdited = user;
             this.firstNameTb.Text = user.FirstName;
             this.lastNameTb.Text = user.LastName;
@@ -47,6 +49,17 @@ namespace ProjectMB
             titleLbl.Text = "Edit Employee";
         }
         #endregion
+        private void loadDepartments() 
+        {
+            departmentCb.Items.Clear();
+            departmentCb.Items.Add("Department");
+            foreach (var item in Departments.departments)
+            {
+                departmentCb.Items.Add(item.Name);
+                MessageBox.Show(item.Name);
+            }
+            
+        }
         #region CRUD
         private void cancelBtn_Click(object sender, EventArgs e)
         {
@@ -76,8 +89,8 @@ namespace ProjectMB
             {
                 if (!string.IsNullOrWhiteSpace(firstNameTb.Text) && !string.IsNullOrWhiteSpace(lastNameTb.Text) &&
                     !string.IsNullOrWhiteSpace(emailTb.Text) && !string.IsNullOrWhiteSpace(salaryTb.Text))
-                {
-                    if (shiftCb.SelectedIndex > 0)
+                { 
+                    if (shiftCb.SelectedIndex > 0 && departmentCb.SelectedIndex > 0 && roleCb.SelectedIndex > 0)
                     {
                         const string emailPattern =
                                             "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$";

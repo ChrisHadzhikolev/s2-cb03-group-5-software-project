@@ -235,3 +235,4 @@ C:\Users\krish\Documents\k\s2-cb03-group-5-software-project\Project App\Project 
 C:\Users\krish\Documents\k\s2-cb03-group-5-software-project\Project App\Project Application\ProjectMB\obj\Debug\ProjectMB.csproj.CopyComplete
 C:\Users\krish\Documents\k\s2-cb03-group-5-software-project\Project App\Project Application\ProjectMB\obj\Debug\ProjectMB.exe
 C:\Users\krish\Documents\k\s2-cb03-group-5-software-project\Project App\Project Application\ProjectMB\obj\Debug\ProjectMB.pdb
+C:\Users\krish\Documents\k\s2-cb03-group-5-software-project\Project App\Project Application\ProjectMB\obj\Debug\ProjectMB.SplashScreen.resources

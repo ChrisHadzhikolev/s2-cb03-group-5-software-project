@@ -570,6 +570,7 @@ namespace ProjectMB
                     conn.Close();
                     Departments.departments.Clear();
                     Departments.departments.AddRange(results);
+                    
                 }
             }
             catch (Exception)

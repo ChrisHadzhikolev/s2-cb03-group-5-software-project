@@ -7,28 +7,39 @@ using System.IO;
 using System.Linq;
 using System.Management;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ProjectMB
 {
     public partial class MainForm : Form
     {
+        [DllImport("user32")]
+        static extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flags);
+
         public MainForm()
         {
             InitializeComponent();
+            
             usernameTb.Click += new EventHandler(click_username);
             usernameTb.Leave += new EventHandler(leave_username);
             passwordTb.Click += new EventHandler(click_password);
             passwordTb.Leave += new EventHandler(leave_password);
             try
             {
-                if (!DatabaseFunctions.GetAllUsers() && !DatabaseFunctions.GetAllProducts() && !DatabaseFunctions.GetAllDepartments())
+                if (!DatabaseFunctions.GetAllUsers() && !DatabaseFunctions.GetAllProducts())
                 {
                     MessageBox.Show("Loading Data Failure, please restart", "Error", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
+                }
+                if (!DatabaseFunctions.GetAllDepartments()) 
+                {
+                    MessageBox.Show("Loading Data Failure, please restart", "Error", MessageBoxButtons.OK,
+                       MessageBoxIcon.Error);
                 }
 
                 if (!File.Exists("idSeeder"))
@@ -54,7 +65,14 @@ namespace ProjectMB
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            
+            this.WindowState = FormWindowState.Minimized;
+            this.WindowState = FormWindowState.Normal;
             InitializeDesign();
+            this.Focus(); 
+            this.Show();
+            AnimateWindow(this.Handle, 500, AnimateWindowFlags.AW_BLEND);
+
         }
 
         private void exitBtn_Click(object sender, EventArgs e)
@@ -278,10 +296,14 @@ namespace ProjectMB
             departmentsForm.Show();
         }
 
+
+
+
         #endregion
 
-
-
-
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            AnimateWindow(this.Handle, 1000, AnimateWindowFlags.AW_BLEND | AnimateWindowFlags.AW_HIDE);
+        }
     }
 }

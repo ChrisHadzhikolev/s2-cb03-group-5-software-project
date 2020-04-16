@@ -39,12 +39,12 @@ namespace ProjectMB
             this.passwordLbl = new System.Windows.Forms.Label();
             this.usernameLbl = new System.Windows.Forms.Label();
             this.selectionPnl = new System.Windows.Forms.Panel();
+            this.departmentsBtn = new System.Windows.Forms.Button();
             this.statisticsBtn = new System.Windows.Forms.Button();
             this.productsBtn = new System.Windows.Forms.Button();
             this.employeesBtn = new System.Windows.Forms.Button();
             this.exitBtn = new System.Windows.Forms.Button();
             this.logOutBtn = new System.Windows.Forms.Button();
-            this.departmentsBtn = new System.Windows.Forms.Button();
             this.loginPnl.SuspendLayout();
             this.loginComponentsPnl.SuspendLayout();
             this.selectionPnl.SuspendLayout();
@@ -134,6 +134,17 @@ namespace ProjectMB
             this.selectionPnl.TabIndex = 4;
             this.selectionPnl.Visible = false;
             // 
+            // departmentsBtn
+            // 
+            this.departmentsBtn.Location = new System.Drawing.Point(93, 105);
+            this.departmentsBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.departmentsBtn.Name = "departmentsBtn";
+            this.departmentsBtn.Size = new System.Drawing.Size(92, 35);
+            this.departmentsBtn.TabIndex = 4;
+            this.departmentsBtn.Text = "Departments";
+            this.departmentsBtn.UseVisualStyleBackColor = true;
+            this.departmentsBtn.Click += new System.EventHandler(this.departmentsBtn_Click);
+            // 
             // statisticsBtn
             // 
             this.statisticsBtn.Location = new System.Drawing.Point(63, 163);
@@ -186,17 +197,6 @@ namespace ProjectMB
             this.logOutBtn.Visible = false;
             this.logOutBtn.Click += new System.EventHandler(this.logOutBtn_Click);
             // 
-            // departmentsBtn
-            // 
-            this.departmentsBtn.Location = new System.Drawing.Point(93, 105);
-            this.departmentsBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.departmentsBtn.Name = "departmentsBtn";
-            this.departmentsBtn.Size = new System.Drawing.Size(92, 35);
-            this.departmentsBtn.TabIndex = 4;
-            this.departmentsBtn.Text = "Departments";
-            this.departmentsBtn.UseVisualStyleBackColor = true;
-            this.departmentsBtn.Click += new System.EventHandler(this.departmentsBtn_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -211,6 +211,7 @@ namespace ProjectMB
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Media Bazaar Management System";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.loginPnl.ResumeLayout(false);
             this.loginComponentsPnl.ResumeLayout(false);

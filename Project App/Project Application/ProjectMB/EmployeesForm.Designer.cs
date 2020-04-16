@@ -31,14 +31,17 @@
             this.addBtn = new System.Windows.Forms.Button();
             this.searchBtn = new System.Windows.Forms.Button();
             this.employeesLb = new System.Windows.Forms.ListBox();
+            this.departmentCb = new System.Windows.Forms.ComboBox();
+            this.showBtn = new System.Windows.Forms.Button();
+            this.roleCb = new System.Windows.Forms.ComboBox();
+            this.closeBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // addBtn
             // 
-            this.addBtn.Location = new System.Drawing.Point(683, 252);
-            this.addBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addBtn.Location = new System.Drawing.Point(1106, 427);
             this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(163, 48);
+            this.addBtn.Size = new System.Drawing.Size(272, 81);
             this.addBtn.TabIndex = 5;
             this.addBtn.Text = "Add";
             this.addBtn.UseVisualStyleBackColor = true;
@@ -46,10 +49,9 @@
             // 
             // searchBtn
             // 
-            this.searchBtn.Location = new System.Drawing.Point(8, 252);
-            this.searchBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.searchBtn.Location = new System.Drawing.Point(13, 427);
             this.searchBtn.Name = "searchBtn";
-            this.searchBtn.Size = new System.Drawing.Size(163, 48);
+            this.searchBtn.Size = new System.Drawing.Size(272, 81);
             this.searchBtn.TabIndex = 4;
             this.searchBtn.Text = "Search";
             this.searchBtn.UseVisualStyleBackColor = true;
@@ -57,25 +59,81 @@
             // 
             // employeesLb
             // 
+            this.employeesLb.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.employeesLb.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.employeesLb.FormattingEnabled = true;
-            this.employeesLb.ItemHeight = 25;
-            this.employeesLb.Location = new System.Drawing.Point(8, 5);
-            this.employeesLb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.employeesLb.ItemHeight = 37;
+            this.employeesLb.Location = new System.Drawing.Point(0, 0);
             this.employeesLb.Name = "employeesLb";
-            this.employeesLb.Size = new System.Drawing.Size(839, 229);
+            this.employeesLb.Size = new System.Drawing.Size(1422, 370);
             this.employeesLb.TabIndex = 3;
-            //this.employeesLb.SelectedIndexChanged += new System.EventHandler(this.employeesLb_SelectedIndexChanged);
+            // 
+            // departmentCb
+            // 
+            this.departmentCb.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.departmentCb.FormattingEnabled = true;
+            this.departmentCb.Items.AddRange(new object[] {
+            "Position",
+            "Employee",
+            "Stock",
+            "Department",
+            "All Employees",
+            "All Managers",
+            "All People"});
+            this.departmentCb.Location = new System.Drawing.Point(667, 388);
+            this.departmentCb.Name = "departmentCb";
+            this.departmentCb.Size = new System.Drawing.Size(245, 40);
+            this.departmentCb.TabIndex = 6;
+            // 
+            // showBtn
+            // 
+            this.showBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(179)))), ((int)(((byte)(245)))));
+            this.showBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.showBtn.Location = new System.Drawing.Point(535, 434);
+            this.showBtn.Name = "showBtn";
+            this.showBtn.Size = new System.Drawing.Size(245, 32);
+            this.showBtn.TabIndex = 7;
+            this.showBtn.Text = "Show";
+            this.showBtn.UseVisualStyleBackColor = false;
+            // 
+            // roleCb
+            // 
+            this.roleCb.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roleCb.FormattingEnabled = true;
+            this.roleCb.Items.AddRange(new object[] {
+            "Department",
+            "All Departments"});
+            this.roleCb.Location = new System.Drawing.Point(416, 388);
+            this.roleCb.Name = "roleCb";
+            this.roleCb.Size = new System.Drawing.Size(245, 40);
+            this.roleCb.TabIndex = 8;
+            // 
+            // closeBtn
+            // 
+            this.closeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(179)))), ((int)(((byte)(245)))));
+            this.closeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeBtn.Location = new System.Drawing.Point(1289, 0);
+            this.closeBtn.Name = "closeBtn";
+            this.closeBtn.Size = new System.Drawing.Size(101, 32);
+            this.closeBtn.TabIndex = 9;
+            this.closeBtn.Text = "Close";
+            this.closeBtn.UseVisualStyleBackColor = false;
+            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
             // 
             // EmployeesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(853, 306);
+            this.ClientSize = new System.Drawing.Size(1390, 518);
+            this.Controls.Add(this.closeBtn);
+            this.Controls.Add(this.roleCb);
+            this.Controls.Add(this.showBtn);
+            this.Controls.Add(this.departmentCb);
             this.Controls.Add(this.addBtn);
             this.Controls.Add(this.searchBtn);
             this.Controls.Add(this.employeesLb);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "EmployeesForm";
             this.Text = "Manage Employees";
             this.Load += new System.EventHandler(this.EmployeesForm_Load);
@@ -88,5 +146,9 @@
         private System.Windows.Forms.Button addBtn;
         private System.Windows.Forms.Button searchBtn;
         private System.Windows.Forms.ListBox employeesLb;
+        private System.Windows.Forms.ComboBox departmentCb;
+        private System.Windows.Forms.Button showBtn;
+        private System.Windows.Forms.ComboBox roleCb;
+        private System.Windows.Forms.Button closeBtn;
     }
 }
