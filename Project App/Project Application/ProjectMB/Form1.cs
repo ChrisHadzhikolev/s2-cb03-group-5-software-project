@@ -23,18 +23,33 @@ namespace ProjectMB
             usernameTb.Leave += new EventHandler(leave_username);
             passwordTb.Click += new EventHandler(click_password);
             passwordTb.Leave += new EventHandler(leave_password);
-            if (!DatabaseFunctions.GetAllUsers() && !DatabaseFunctions.GetAllProducts() && !DatabaseFunctions.GetAllDepartments())
+            try
+            {
+                if (!DatabaseFunctions.GetAllUsers() && !DatabaseFunctions.GetAllProducts() && !DatabaseFunctions.GetAllDepartments())
+                {
+                    MessageBox.Show("Loading Data Failure, please restart", "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+
+                if (!File.Exists("idSeeder"))
+                {
+                    string id = (Users.LastGenUsernameId() + 1).ToString();
+                    File.WriteAllLines("idSeeder", new string[] { id });
+                }
+            }
+            catch (NoConnectionException)
+            {
+
+                MessageBox.Show("Loading Data Failure, please restart", "Error", MessageBoxButtons.OK,
+                      MessageBoxIcon.Error);
+            }
+            catch (IOException)
             {
                 MessageBox.Show("Loading Data Failure, please restart", "Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                     MessageBoxIcon.Error);
             }
 
-            if (!File.Exists("idSeeder"))
-            {
-                string id = (Users.LastGenUsernameId()+1).ToString();
-                File.WriteAllLines("idSeeder", new string[]{id});
-            }
-            
+
         }
 
         private void MainForm_Load(object sender, EventArgs e)
