@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace ProjectMB
         public EmployeesForm()
         {
             InitializeComponent();
-            employeesLb.SelectedValueChanged += EmployeesLb_SelectedValueChanged;
+            //Users.Change += new EventHandler<EventArgs>(OnTimerEvent);
             Timer timer = new Timer    
             {    
                 Interval = 2000    
@@ -24,43 +25,51 @@ namespace ProjectMB
             timer.Tick += OnTimerEvent;  
         }
         private void OnTimerEvent(object sender, EventArgs e)    
-        {    
-            employeesLb.Items.Clear();
-            foreach (var item in Users.Employees)
+        {
+            employeesLv.Items.Clear();
+            foreach (var item in Users.users)
             {
-                employeesLb.Items.Add(item.ToString());
+                ListViewItem lvi = new ListViewItem(item.ID.ToString());
+                lvi.SubItems.Add(item.FirstName);
+                lvi.SubItems.Add(item.LastName);
+                lvi.SubItems.Add(item.Email);
+                lvi.SubItems.Add(item.PhoneNumber);
+                lvi.SubItems.Add(item.Position.ToString());
+                lvi.SubItems.Add(item.Salary.ToString("C2", CultureInfo.CurrentCulture));
+                lvi.SubItems.Add(item.UserDepartment.Name);
+                employeesLv.Items.Add(lvi);
             }    
-        } 
-        private void EmployeesLb_SelectedValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                EmployeeForm employeeForm = new EmployeeForm(Users.Employees[employeesLb.SelectedIndex]);
-                employeeForm.Show();
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine(exception);
-            }
-            
-        }
+        }                 
+       
         private void EmployeesForm_Load(object sender, EventArgs e)
-        {
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.addBtn.BackColor = Color.FromArgb(5, 179, 245);
-            this.addBtn.FlatStyle = FlatStyle.Flat;
-            this.searchBtn.BackColor = Color.FromArgb(5, 179, 245);
-            this.searchBtn.FlatStyle = FlatStyle.Flat;
-            this.BackColor = Color.FromArgb(193, 162, 254);
-            this.employeesLb.HorizontalScrollbar = true;
+        {          
             try
             {
-                //DatabaseFunctions.GetEmployeesByDepartment(Users.Department);
-                DatabaseFunctions.GetAllEmployees();
-                foreach (var item in Users.Employees)
+                DatabaseFunctions.GetAllUsers();
+                DatabaseFunctions.GetAllDepartments();
+
+                employeesLv.Items.Clear();
+                foreach (var item in Users.users)
                 {
-                    employeesLb.Items.Add(item.ToString());
+                    ListViewItem lvi = new ListViewItem(item.ID.ToString());
+                    lvi.SubItems.Add(item.FirstName);
+                    lvi.SubItems.Add(item.LastName);
+                    lvi.SubItems.Add(item.Email);
+                    lvi.SubItems.Add(item.PhoneNumber);
+                    lvi.SubItems.Add(item.Position.ToString());
+                    lvi.SubItems.Add(item.Salary.ToString("C2", CultureInfo.CurrentCulture));
+                    lvi.SubItems.Add(item.UserDepartment.Name);
+                    employeesLv.Items.Add(lvi);
                 }
+                departmentCb.Items.Clear();
+                departmentCb.Items.Add("Department");
+                departmentCb.Items.Add("All Departments");
+                departmentCb.SelectedIndex = 0;
+                foreach (var item in Departments.departments)
+                {
+                    departmentCb.Items.Add(item.Name);
+                }
+                roleCb.SelectedIndex = 0;
             }
             catch (NoConnectionException)
             {
@@ -88,6 +97,40 @@ namespace ProjectMB
         private void closeBtn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void employeesLv_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                User user = Users.FindUser(int.Parse(employeesLv.SelectedItems[0].SubItems[0].Text));
+                if (user != null)
+                {
+                    EmployeeForm employeeForm = new EmployeeForm(user);
+                    employeeForm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Couldn't find the user, please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+            }
+        }
+
+        private void showBtn_Click(object sender, EventArgs e)
+        {
+            if (departmentCb.SelectedIndex > 0 && roleCb.SelectedIndex > 0)
+            {
+                string role = roleCb.SelectedItem.ToString();
+                string department = departmentCb.SelectedItem.ToString();
+                DatabaseFunctions.ShowResults(role, department);
+            }
+            
+
         }
     }
 }

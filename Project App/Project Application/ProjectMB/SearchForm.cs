@@ -57,7 +57,7 @@ namespace ProjectMB
         {
             resultsLb.Items.Clear();
             string input = searchTb.Text;
-            user = Users.FindUserByLastName(input);
+            user = Users.FindUsers(input);
             if (type==ManageType.EMPLOYEE)
             {
                 foreach (var item in user)

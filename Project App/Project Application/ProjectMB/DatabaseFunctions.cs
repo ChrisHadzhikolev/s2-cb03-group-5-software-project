@@ -12,9 +12,58 @@ namespace ProjectMB
 {
     static class DatabaseFunctions
     {
-        private static readonly string ConnectionString=
+        private static readonly string ConnectionString =
             "server=studmysql01.fhict.local;database=dbi428428;uid=dbi428428;password=spiderMan2000;";
         #region CRUD_User
+        public static void GetUsers(string role, string departmentName)
+        {
+            try
+            {
+                string query =
+                    "Select * from people as p join working_days as wd on p.username = wd.username where department = @departmentName AND position = @role;";
+                using (MySqlConnection conn = new MySqlConnection(ConnectionString))
+                {
+                    List<User> results = new List<User>();
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@departmentName", departmentName);
+                    cmd.Parameters.AddWithValue("@role", role);
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        int id = Int32.Parse(dataReader[0].ToString());
+                        string username = dataReader[1].ToString();
+                        string firstName = dataReader[2].ToString();
+                        string lastName = dataReader[3].ToString();
+                        string email = dataReader[4].ToString();
+                        string phoneNumber = dataReader[5].ToString();
+                        PersonPosition position =
+                            (PersonPosition)Enum.Parse(typeof(PersonPosition), dataReader[6].ToString(), true);
+                        double salary = Double.Parse(dataReader[7].ToString());
+                        Department department = new Department(dataReader[8].ToString());
+                        ShiftType shiftType =
+                            (ShiftType)Enum.Parse(typeof(ShiftType), dataReader[11].ToString(), true);
+                        bool[] days = new bool[7];
+                        for (int i = 0; i < 7; i++)
+                        {
+                            days[i] = bool.Parse(dataReader[i + 12].ToString());
+                        }
+
+                        User user = new User(username, firstName, lastName, email, position, salary, shiftType,
+                            days, department, id, phoneNumber);
+                        results.Add(user);
+                    }
+
+                    conn.Close();
+                    Users.Employees.Clear();
+                    Users.Employees.AddRange(results);
+                }
+            }
+            catch (Exception)
+            {
+                throw new NoConnectionException();
+            }
+        }
         public static bool GetAllUsers()
         {
             string query = "Select * from people as p join working_days as wd on p.username = wd.username";
@@ -110,6 +159,16 @@ namespace ProjectMB
                 throw new NoConnectionException();
             }
         }
+
+        internal static void ShowResults(string role, string department)
+        {
+            switch (role)
+            {
+                default:
+                    break;
+            }
+        }
+
         public static void GetEmployeesByDepartment(string departmentName)
         {
             if (departmentName != "")
@@ -167,7 +226,11 @@ namespace ProjectMB
         }
         public static void GetUsersByDepartment(string departmentName)
         {
-            if (departmentName != "")
+            if (departmentName == "All Departments")
+            {
+
+            }
+            else if (departmentName != "")
             {
                 try
                 {
@@ -253,44 +316,45 @@ namespace ProjectMB
             {
                 try
                 {
-                    using (MySqlConnection conn = new MySqlConnection(ConnectionString))
-                    {
-                        string query =
-                            "Insert into people (`username`, `first_name`, `last_name`, `email`, `position`, `salary`, `department`) values (@username, @first_name, @last_name, @email,'EMPLOYEE', @salary, @department);";
-                        MySqlCommand cmd = new MySqlCommand(query, conn);
-                        cmd.Parameters.AddWithValue("@username", user.Username);
-                        cmd.Parameters.AddWithValue("@first_name", user.FirstName);
-                        cmd.Parameters.AddWithValue("@last_name", user.LastName);
-                        cmd.Parameters.AddWithValue("@email", user.Email);
-                        cmd.Parameters.AddWithValue("@salary", user.Salary);
-                        cmd.Parameters.AddWithValue("@department", user.UserDepartment.Name);
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
-                        conn.Close();
-                        query =
-                            "insert into users (`username`, `password`) VALUES (@username, @pass);";
-                        cmd = new MySqlCommand(query, conn);
-                        cmd.Parameters.AddWithValue("@username", user.Username);
-                        cmd.Parameters.AddWithValue("@pass", user.GeneratePassword());
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
-                        conn.Close();
-                        query =
+                using (MySqlConnection conn = new MySqlConnection(ConnectionString))
+                {
+
+                    string query =
+                            "insert into users (`username`, `first_time_verification_key`) VALUES (@username, @verificationKey);";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@username", user.Username);
+                    cmd.Parameters.AddWithValue("@verificationKey", user.GenerateVerificationKey());
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    query =
+                           "Insert into people (`username`, `first_name`, `last_name`, `email`, `position`, `salary`, `department`) values (@username, @first_name, @last_name, @email,'EMPLOYEE', @salary, @department);";
+                    cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@username", user.Username);
+                    cmd.Parameters.AddWithValue("@first_name", user.FirstName);
+                    cmd.Parameters.AddWithValue("@last_name", user.LastName);
+                    cmd.Parameters.AddWithValue("@email", user.Email);
+                    cmd.Parameters.AddWithValue("@salary", user.Salary);
+                    cmd.Parameters.AddWithValue("@department", user.UserDepartment.Name);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    query =
                             "insert into working_days (`username`, `shift`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`) values (@username, @shift, @monday, @tuesday, @wednesday, @thursday, @friday, @saturday, @sunday);";
-                        cmd = new MySqlCommand(query, conn);
-                        cmd.Parameters.AddWithValue("@username", user.Username);
-                        cmd.Parameters.AddWithValue("@shift", user.ShiftTypeU.ToString());
-                        cmd.Parameters.AddWithValue("@monday", user.WorkingDays[0]);
-                        cmd.Parameters.AddWithValue("@tuesday", user.WorkingDays[1]);
-                        cmd.Parameters.AddWithValue("@wednesday", user.WorkingDays[2]);
-                        cmd.Parameters.AddWithValue("@thursday", user.WorkingDays[3]);
-                        cmd.Parameters.AddWithValue("@friday", user.WorkingDays[4]);
-                        cmd.Parameters.AddWithValue("@saturday", user.WorkingDays[5]);
-                        cmd.Parameters.AddWithValue("@sunday", user.WorkingDays[6]);
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
-                        conn.Close();
-                    }
+                    cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@username", user.Username);
+                    cmd.Parameters.AddWithValue("@shift", user.ShiftTypeU.ToString());
+                    cmd.Parameters.AddWithValue("@monday", user.WorkingDays[0]);
+                    cmd.Parameters.AddWithValue("@tuesday", user.WorkingDays[1]);
+                    cmd.Parameters.AddWithValue("@wednesday", user.WorkingDays[2]);
+                    cmd.Parameters.AddWithValue("@thursday", user.WorkingDays[3]);
+                    cmd.Parameters.AddWithValue("@friday", user.WorkingDays[4]);
+                    cmd.Parameters.AddWithValue("@saturday", user.WorkingDays[5]);
+                    cmd.Parameters.AddWithValue("@sunday", user.WorkingDays[6]);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
                 }
                 catch (Exception)
                 {
@@ -555,7 +619,7 @@ namespace ProjectMB
             string query = "select departmentName from departments";
             try
             {
-                using (MySqlConnection conn=new MySqlConnection(ConnectionString))
+                using (MySqlConnection conn = new MySqlConnection(ConnectionString))
                 {
                     List<Department> results = new List<Department>();
                     conn.Open();
@@ -570,7 +634,7 @@ namespace ProjectMB
                     conn.Close();
                     Departments.departments.Clear();
                     Departments.departments.AddRange(results);
-                    
+
                 }
             }
             catch (Exception)
@@ -581,9 +645,9 @@ namespace ProjectMB
         }
         public static void AddDepartment(Department department)
         {
-            if (department!=null)
+            if (department != null)
             {
-                using (MySqlConnection conn= new MySqlConnection(ConnectionString))
+                using (MySqlConnection conn = new MySqlConnection(ConnectionString))
                 {
                     string query = "insert into departments(`departmentName`) values (@name);";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -596,70 +660,70 @@ namespace ProjectMB
         }
         public static void UpdateDepartment(Department department, string oldName)
         {
-            if (department!=null)
+            if (department != null)
             {
-               // try
+                // try
                 //{
-                    using (MySqlConnection conn = new MySqlConnection(ConnectionString))
+                using (MySqlConnection conn = new MySqlConnection(ConnectionString))
+                {
+                    string query = "select * from people as p join working_days as wd on p.username = wd.username where department = @oldName";
+                    List<User> results = new List<User>();
+                    MySqlCommand cmd_refactor = new MySqlCommand(query, conn);
+                    cmd_refactor.Parameters.AddWithValue("@oldName", oldName);
+                    conn.Open();
+                    MySqlDataReader dataReader = cmd_refactor.ExecuteReader();
+                    while (dataReader.Read())
                     {
-                        string query = "select * from people as p join working_days as wd on p.username = wd.username where department = @oldName";
-                        List<User> results = new List<User>();
-                        MySqlCommand cmd_refactor = new MySqlCommand(query, conn);
-                        cmd_refactor.Parameters.AddWithValue("@oldName", oldName);
-                        conn.Open();
-                        MySqlDataReader dataReader = cmd_refactor.ExecuteReader();
-                        while (dataReader.Read())
-                        {                            
-                            int id = int.Parse(dataReader[0].ToString());
-                            string username = dataReader[1].ToString();
-                            string firstName = dataReader[2].ToString();
-                            string lastName = dataReader[3].ToString();
-                            string email = dataReader[4].ToString();
-                            string phoneNumber = dataReader[5].ToString();
-                            PersonPosition position =
-                                (PersonPosition)Enum.Parse(typeof(PersonPosition), dataReader[6].ToString(), true);
-                            double salary = Double.Parse(dataReader[7].ToString());
-                            Department departmentResult = new Department(dataReader[8].ToString());
-                            ShiftType shiftType =
-                                (ShiftType)Enum.Parse(typeof(ShiftType), dataReader[11].ToString(), true);
-                            bool[] days = new bool[7];
-                            for (int i = 0; i < 7; i++)
-                            {
-                                days[i] = bool.Parse(dataReader[i + 12].ToString());
-                            }
-
-                            User user = new User(username, firstName, lastName, email, position, salary, shiftType,
-                                days, departmentResult, id, phoneNumber);
-                            results.Add(user);
-                        }
-                        conn.Close();
-                        foreach (var item in results)
+                        int id = int.Parse(dataReader[0].ToString());
+                        string username = dataReader[1].ToString();
+                        string firstName = dataReader[2].ToString();
+                        string lastName = dataReader[3].ToString();
+                        string email = dataReader[4].ToString();
+                        string phoneNumber = dataReader[5].ToString();
+                        PersonPosition position =
+                            (PersonPosition)Enum.Parse(typeof(PersonPosition), dataReader[6].ToString(), true);
+                        double salary = Double.Parse(dataReader[7].ToString());
+                        Department departmentResult = new Department(dataReader[8].ToString());
+                        ShiftType shiftType =
+                            (ShiftType)Enum.Parse(typeof(ShiftType), dataReader[11].ToString(), true);
+                        bool[] days = new bool[7];
+                        for (int i = 0; i < 7; i++)
                         {
-                            conn.Open();
-                            item.UserDepartment = department;
-                            UpdateUser(item);
-                            conn.Close();
+                            days[i] = bool.Parse(dataReader[i + 12].ToString());
                         }
 
-                        query = "update departments set departmentName = @name where departmentName = @oldName";
-                        MySqlCommand cmd = new MySqlCommand(query, conn);
-                        cmd.Parameters.AddWithValue("@name", department.Name);
-                        cmd.Parameters.AddWithValue("@oldName", oldName);
+                        User user = new User(username, firstName, lastName, email, position, salary, shiftType,
+                            days, departmentResult, id, phoneNumber);
+                        results.Add(user);
+                    }
+                    conn.Close();
+                    foreach (var item in results)
+                    {
                         conn.Open();
-                        cmd.ExecuteNonQuery();
+                        item.UserDepartment = department;
+                        UpdateUser(item);
                         conn.Close();
                     }
+
+                    query = "update departments set departmentName = @name where departmentName = @oldName";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@name", department.Name);
+                    cmd.Parameters.AddWithValue("@oldName", oldName);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
                 //}                
                 //catch (Exception e)
                 //{
                 //    MessageBox.Show(e.Source);
                 //    throw new NoConnectionException();
-               // }
+                // }
             }
         }
         public static void RemoveDepartment(Department department)
         {
-            if (department!=null)
+            if (department != null)
             {
                 try
                 {
@@ -672,7 +736,7 @@ namespace ProjectMB
                         Object obj = cmd.ExecuteScalar();
                         conn.Close();
                         if (int.Parse(obj.ToString()) == 0)
-                        {                           
+                        {
                             query = "DELETE FROM departments WHERE departmentName = @name;";
                             MySqlCommand cmd_del = new MySqlCommand(query, conn);
                             cmd_del.Parameters.AddWithValue("@name", department.Name);
@@ -683,7 +747,7 @@ namespace ProjectMB
                         else
                         {
                             throw new UsersInDepartmentException();
-                        }                      
+                        }
                     }
                 }
                 catch (UsersInDepartmentException)

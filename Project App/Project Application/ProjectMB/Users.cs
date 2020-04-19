@@ -1,22 +1,35 @@
-﻿using System;
+﻿using Org.BouncyCastle.Crypto.Tls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ProjectMB
 {
-    static class Users
+     class Users
     {
         public static List<User> users = new List<User>();
-        public static List<User> Employees = new List<User>();
+        public static List<User> requestedUsers = new List<User>();
         public static string Department = "";
         
-        public static User FindUserByUsername(string username)
+        public static User FindUser(string username)
         {
             foreach (var item in users)
             {
                 if (item.Username == username)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+        public static User FindUser(int id)
+        {
+            foreach (var item in users)
+            {
+                if (item.ID == id)
                 {
                     return item;
                 }
@@ -38,7 +51,7 @@ namespace ProjectMB
             int returnId = int.Parse(lastUser.Substring(5, lastUser.Length - 5));
             return returnId;
         }
-        public static User[] FindUserByLastName(string lastName)
+        public static User[] FindUsers(string lastName)
         {
             List<User> results = new List<User>();
             foreach (var item in users)
@@ -50,6 +63,7 @@ namespace ProjectMB
             }
             return results.ToArray();
         }
+
         public static void AddUser(User user) 
         {
             DatabaseFunctions.AddUser(user);
@@ -64,6 +78,41 @@ namespace ProjectMB
         {
             DatabaseFunctions.RemoveUser(user);
             DatabaseFunctions.GetAllEmployees();
+        }
+        public static void GetUsers(string role, string department)
+        {
+//            switch (role)
+//            {
+                
+//Employee
+//Stock
+//Department
+//All Employees
+//Manager
+//All People
+//            }
+//            if (department != "All Departments")
+//            {
+//                foreach (var item in users)
+//                {
+//                    if (true)
+//                    {
+
+//                    }
+//                }
+//            }
+//            else
+//            {
+
+//            }
+//            requestedUsers.Clear();
+//            foreach (var item in users)
+//            {
+//                if (true)
+//                {
+
+//                }
+//            }
         }
     }
 }

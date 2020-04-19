@@ -12,7 +12,7 @@ namespace ProjectMB
     {
         public User(string username, string firstName, string lastName, string email, PersonPosition position, double salary, ShiftType shiftType, bool[] workingDays, Department department, int id, string phoneNumber)
         {
-            this._id = id;
+            this.ID = id;
             Username = username;
             FirstName = firstName;
             LastName = lastName;
@@ -22,11 +22,11 @@ namespace ProjectMB
             ShiftTypeU = shiftType;
             WorkingDays = workingDays;
             UserDepartment = department;
-            _phoneNumber = phoneNumber;
+            PhoneNumber = phoneNumber;
         }
         public User(string username, string firstName, string lastName, string email, PersonPosition position, double salary, ShiftType shiftType, bool[] workingDays, Department department, int id)
                  {
-                     this._id = id;
+                     this.ID = id;
                      Username = username;
                      FirstName = firstName;
                      LastName = lastName;
@@ -61,7 +61,7 @@ namespace ProjectMB
             WorkingDays = workingDays;
             UserDepartment = department;
         }
-        private int _id;
+        public int ID { get; private set; }
         private static int _idSeed= 9999;
 
         public string Username { get; private set; }
@@ -74,7 +74,7 @@ namespace ProjectMB
         public bool[] WorkingDays { get; set; }
         public Department UserDepartment { get; set; }
 
-        private string _phoneNumber;
+        public string PhoneNumber { get;private set; }
 
 
         private static Random _random = new Random();
@@ -84,7 +84,7 @@ namespace ProjectMB
             return new string(Enumerable.Repeat(chars, length)
               .Select(s => s[_random.Next(s.Length)]).ToArray());
         }
-        public string GeneratePassword()
+        public string GenerateVerificationKey()
         {            
           return RandomString(12);           
         }
@@ -117,7 +117,7 @@ namespace ProjectMB
 
         public override string ToString()
         {
-            return $"{_id.ToString()}\t{FirstName}\t{LastName}\t{Email}\t{Salary.ToString("C2", CultureInfo.CurrentCulture)}\t{UserDepartment.Name}";
+            return $"{FirstName}\t{LastName}\t{Email}\t{Salary.ToString("C2", CultureInfo.CurrentCulture)}\t{UserDepartment.Name}";
         }
     }
 

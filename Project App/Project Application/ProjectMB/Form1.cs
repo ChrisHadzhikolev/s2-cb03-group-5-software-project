@@ -230,7 +230,7 @@ namespace ProjectMB
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
-            User user = Users.FindUserByUsername(usernameTb.Text.Trim());
+            User user = Users.FindUser(usernameTb.Text.Trim());
             if (user != null)
             {
                 if (user.Position == PersonPosition.Manager || user.Position == PersonPosition.Admin)
