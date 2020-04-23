@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +15,10 @@ namespace ProjectMB
     {
         ManageType type;
         User[] user;
+
+        [DllImport("user32")]
+        static extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flags);
+
         public SearchForm(ManageType type)
         {
             InitializeComponent();
@@ -50,7 +55,9 @@ namespace ProjectMB
             this.searchBtn.BackColor = Color.FromArgb(5, 179, 245);
             this.searchBtn.FlatStyle = FlatStyle.Flat;
             this.BackColor = Color.FromArgb(193, 162, 254);
-           
+            AnimateWindow(this.Handle, 500, AnimateWindowFlags.AW_SLIDE);
+
+
         }
 
         private void searchBtn_Click(object sender, EventArgs e)
@@ -87,6 +94,11 @@ namespace ProjectMB
                 }
             }
            
+        }
+
+        private void SearchForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            AnimateWindow(this.Handle, 1000, AnimateWindowFlags.AW_BLEND | AnimateWindowFlags.AW_HIDE);
         }
     }
 }

@@ -35,9 +35,10 @@
             // 
             // addDepartmentBtn
             // 
-            this.addDepartmentBtn.Location = new System.Drawing.Point(634, 378);
+            this.addDepartmentBtn.Location = new System.Drawing.Point(951, 582);
+            this.addDepartmentBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.addDepartmentBtn.Name = "addDepartmentBtn";
-            this.addDepartmentBtn.Size = new System.Drawing.Size(244, 74);
+            this.addDepartmentBtn.Size = new System.Drawing.Size(366, 114);
             this.addDepartmentBtn.TabIndex = 5;
             this.addDepartmentBtn.Text = "Add New Department";
             this.addDepartmentBtn.UseVisualStyleBackColor = true;
@@ -45,9 +46,10 @@
             // 
             // searchDepartmentBtn
             // 
-            this.searchDepartmentBtn.Location = new System.Drawing.Point(38, 378);
+            this.searchDepartmentBtn.Location = new System.Drawing.Point(57, 582);
+            this.searchDepartmentBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.searchDepartmentBtn.Name = "searchDepartmentBtn";
-            this.searchDepartmentBtn.Size = new System.Drawing.Size(244, 74);
+            this.searchDepartmentBtn.Size = new System.Drawing.Size(366, 114);
             this.searchDepartmentBtn.TabIndex = 4;
             this.searchDepartmentBtn.Text = "Search for a Department";
             this.searchDepartmentBtn.UseVisualStyleBackColor = true;
@@ -57,22 +59,25 @@
             // 
             this.departmentsLb.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.departmentsLb.FormattingEnabled = true;
-            this.departmentsLb.ItemHeight = 25;
-            this.departmentsLb.Location = new System.Drawing.Point(38, 12);
+            this.departmentsLb.ItemHeight = 37;
+            this.departmentsLb.Location = new System.Drawing.Point(57, 18);
+            this.departmentsLb.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.departmentsLb.Name = "departmentsLb";
-            this.departmentsLb.Size = new System.Drawing.Size(840, 304);
+            this.departmentsLb.Size = new System.Drawing.Size(1258, 448);
             this.departmentsLb.TabIndex = 3;
             // 
             // DepartmentsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(910, 475);
+            this.ClientSize = new System.Drawing.Size(1365, 731);
             this.Controls.Add(this.addDepartmentBtn);
             this.Controls.Add(this.searchDepartmentBtn);
             this.Controls.Add(this.departmentsLb);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "DepartmentsForm";
             this.Text = "DepartmentForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DepartmentsForm_FormClosing);
             this.Load += new System.EventHandler(this.DepartmentsForm_Load);
             this.ResumeLayout(false);
 

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,6 +13,9 @@ namespace ProjectMB
 {
     public partial class DepartmentsForm : Form
     {
+        [DllImport("user32")]
+        static extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flags);
+
         public DepartmentsForm()
         {
             InitializeComponent();
@@ -66,6 +70,7 @@ namespace ProjectMB
             this.searchDepartmentBtn.BackColor = Color.FromArgb(5, 179, 245);
             this.searchDepartmentBtn.FlatStyle = FlatStyle.Flat;
             this.BackColor = Color.FromArgb(193, 162, 254);
+
             try
             {
                 DatabaseFunctions.GetAllDepartments();
@@ -83,6 +88,12 @@ namespace ProjectMB
                 MessageBox.Show("Department is non-existent, please restart", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+            AnimateWindow(this.Handle, 500, AnimateWindowFlags.AW_SLIDE);
+        }
+
+        private void DepartmentsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            AnimateWindow(this.Handle, 1000, AnimateWindowFlags.AW_BLEND | AnimateWindowFlags.AW_HIDE);
         }
     }
 }

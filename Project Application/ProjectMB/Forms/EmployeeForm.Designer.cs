@@ -407,6 +407,8 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "EmployeeForm";
             this.Text = "EmployeeForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EmployeeForm_FormClosing);
+            this.Load += new System.EventHandler(this.EmployeeForm_Load);
             this.contentPnl.ResumeLayout(false);
             this.contentPnl.PerformLayout();
             this.leftPnl.ResumeLayout(false);

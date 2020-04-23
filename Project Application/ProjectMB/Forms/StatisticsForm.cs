@@ -8,11 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace ProjectMB
 {
     public partial class StatisticsForm : Form
     {
+
+        [DllImport("user32")]
+        static extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flags);
+
         public StatisticsForm()
         {
             InitializeComponent();
@@ -157,6 +162,11 @@ namespace ProjectMB
             //this.searchBtn.BackColor = Color.FromArgb(5, 179, 245);
             //this.searchBtn.FlatStyle = FlatStyle.Flat;
             this.BackColor = Color.FromArgb(193, 162, 254);
+        }
+
+        private void StatisticsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            AnimateWindow(this.Handle, 1000, AnimateWindowFlags.AW_BLEND | AnimateWindowFlags.AW_HIDE);
         }
     }
 } 

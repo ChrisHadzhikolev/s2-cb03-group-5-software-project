@@ -37,10 +37,10 @@
             // 
             this.productsLb.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productsLb.FormattingEnabled = true;
-            this.productsLb.ItemHeight = 25;
+            this.productsLb.ItemHeight = 37;
             this.productsLb.Location = new System.Drawing.Point(12, 12);
             this.productsLb.Name = "productsLb";
-            this.productsLb.Size = new System.Drawing.Size(1256, 354);
+            this.productsLb.Size = new System.Drawing.Size(1256, 337);
             this.productsLb.TabIndex = 0;
             this.productsLb.SelectedIndexChanged += new System.EventHandler(this.productsLb_SelectedIndexChanged);
             // 
@@ -72,6 +72,7 @@
             this.Controls.Add(this.productsLb);
             this.Name = "ProductsForm";
             this.Text = "Manage Products";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProductsForm_FormClosing);
             this.Load += new System.EventHandler(this.ProductsForm_Load);
             this.ResumeLayout(false);
 

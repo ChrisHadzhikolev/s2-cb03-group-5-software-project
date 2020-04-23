@@ -4,17 +4,23 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProjectMB
 {
+   
     public partial class DepartmentForm : Form
     {
         Department _departmentToBeEdited;
         private bool _editDepartment;
         private string departmentOldName = "";
+
+        [DllImport("user32")]
+        static extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flags);
+       
         public DepartmentForm(Department department)
         {
             InitializeComponent();
@@ -96,6 +102,17 @@ namespace ProjectMB
                 MessageBox.Show("There are still employees in that department", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+
+        private void DepartmentForm_Load(object sender, EventArgs e)
+        {
+            this.CenterToScreen();
+            AnimateWindow(this.Handle, 500, AnimateWindowFlags.AW_SLIDE);
+        }
+
+        private void DepartmentForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            AnimateWindow(this.Handle, 1000, AnimateWindowFlags.AW_BLEND | AnimateWindowFlags.AW_HIDE);
         }
     }
 }

@@ -30,6 +30,7 @@
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.poweredByLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,12 +53,24 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Loading...";
             // 
+            // poweredByLbl
+            // 
+            this.poweredByLbl.BackColor = System.Drawing.Color.Transparent;
+            this.poweredByLbl.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.poweredByLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(133)))), ((int)(((byte)(136)))));
+            this.poweredByLbl.Location = new System.Drawing.Point(307, 409);
+            this.poweredByLbl.Name = "poweredByLbl";
+            this.poweredByLbl.Size = new System.Drawing.Size(167, 22);
+            this.poweredByLbl.TabIndex = 2;
+            this.poweredByLbl.Text = "Powered by IHDY";
+            // 
             // SplashScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.poweredByLbl);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -74,5 +87,6 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label poweredByLbl;
     }
 }

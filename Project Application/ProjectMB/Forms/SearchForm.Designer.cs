@@ -35,20 +35,17 @@
             // 
             // searchTb
             // 
-            this.searchTb.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular,
-                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.searchTb.Location = new System.Drawing.Point(12, 360);
-            this.searchTb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.searchTb.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchTb.Location = new System.Drawing.Point(11, 288);
             this.searchTb.Name = "searchTb";
-            this.searchTb.Size = new System.Drawing.Size(577, 50);
+            this.searchTb.Size = new System.Drawing.Size(520, 50);
             this.searchTb.TabIndex = 0;
             // 
             // searchBtn
             // 
-            this.searchBtn.Location = new System.Drawing.Point(594, 358);
-            this.searchBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.searchBtn.Location = new System.Drawing.Point(535, 286);
             this.searchBtn.Name = "searchBtn";
-            this.searchBtn.Size = new System.Drawing.Size(460, 68);
+            this.searchBtn.Size = new System.Drawing.Size(414, 54);
             this.searchBtn.TabIndex = 1;
             this.searchBtn.Text = "Search";
             this.searchBtn.UseVisualStyleBackColor = true;
@@ -56,30 +53,30 @@
             // 
             // resultsLb
             // 
-            this.resultsLb.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular,
-                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.resultsLb.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resultsLb.FormattingEnabled = true;
             this.resultsLb.ItemHeight = 45;
-            this.resultsLb.Location = new System.Drawing.Point(12, 12);
+            this.resultsLb.Location = new System.Drawing.Point(11, 10);
             this.resultsLb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.resultsLb.Name = "resultsLb";
-            this.resultsLb.Size = new System.Drawing.Size(1043, 319);
+            this.resultsLb.Size = new System.Drawing.Size(939, 229);
             this.resultsLb.TabIndex = 2;
             // 
             // SearchForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1081, 456);
+            this.ClientSize = new System.Drawing.Size(973, 365);
             this.Controls.Add(this.resultsLb);
             this.Controls.Add(this.searchBtn);
             this.Controls.Add(this.searchTb);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "SearchForm";
             this.Text = "Search By Surname";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SearchForm_FormClosing);
             this.Load += new System.EventHandler(this.SearchProductForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,6 +14,10 @@ namespace ProjectMB
 {
     public partial class EmployeesForm : Form
     {
+
+        [DllImport("user32")]
+        static extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flags);
+
         public EmployeesForm()
         {
             InitializeComponent();
@@ -80,6 +85,8 @@ namespace ProjectMB
                 MessageBox.Show("Department is non-existent, please restart", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+            AnimateWindow(this.Handle, 500, AnimateWindowFlags.AW_SLIDE);
+
         }
 
         private void searchBtn_Click(object sender, EventArgs e)
@@ -129,7 +136,11 @@ namespace ProjectMB
                 string department = departmentCb.SelectedItem.ToString();
                 DatabaseFunctions.ShowResults(role, department);
             }
-            
+        }
+
+        private void EmployeesForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            AnimateWindow(this.Handle, 1000, AnimateWindowFlags.AW_BLEND | AnimateWindowFlags.AW_HIDE);
 
         }
     }

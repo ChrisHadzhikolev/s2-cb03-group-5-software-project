@@ -187,6 +187,7 @@
             this.Controls.Add(this.nameTb);
             this.Name = "ProductForm";
             this.Text = "NewProductForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProductForm_FormClosing);
             this.Load += new System.EventHandler(this.NewProductForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -316,3 +316,34 @@ C:\Users\krish\Downloads\s2-cb03-group-5-software-project-Vasil-Project App-Proj
 C:\Users\krish\Downloads\s2-cb03-group-5-software-project-Vasil-Project App-Project Application\s2-cb03-group-5-software-project-Vasil-Project App-Project Application\Project App\Project Application\ProjectMB\obj\Debug\ProjectMB.csproj.CopyComplete
 C:\Users\krish\Downloads\s2-cb03-group-5-software-project-Vasil-Project App-Project Application\s2-cb03-group-5-software-project-Vasil-Project App-Project Application\Project App\Project Application\ProjectMB\obj\Debug\ProjectMB.exe
 C:\Users\krish\Downloads\s2-cb03-group-5-software-project-Vasil-Project App-Project Application\s2-cb03-group-5-software-project-Vasil-Project App-Project Application\Project App\Project Application\ProjectMB\obj\Debug\ProjectMB.pdb
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\bin\Debug\ProjectMB.exe.config
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\bin\Debug\ProjectMB.exe
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\bin\Debug\ProjectMB.pdb
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\bin\Debug\en-NL\ProjectMB.resources.dll
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\bin\Debug\Google.Protobuf.dll
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\bin\Debug\MySql.Data.dll
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\bin\Debug\Renci.SshNet.dll
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\bin\Debug\Google.Protobuf.xml
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\bin\Debug\MySql.Data.xml
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\bin\Debug\Renci.SshNet.xml
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.csprojAssemblyReference.cache
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.DepartmentForm.resources
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.DepartmentsForm.resources
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.EmployeeForm.resources
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.EmployeesForm.resources
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.MainForm.resources
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.ProductForm.resources
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.ProductsForm.resources
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.Properties.Resources.resources
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.SearchForm.resources
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.SplashScreen.resources
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.StatisticsForm.resources
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.EmployeesForm.en-NL.resources
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.csproj.GenerateResource.cache
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.csproj.CoreCompileInputs.cache
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\en-NL\ProjectMB.resources.dll
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.csproj.CopyComplete
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.exe
+C:\Users\krish\Documents\k\Kris\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.pdb

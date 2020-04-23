@@ -209,6 +209,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage Employees";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EmployeesForm_FormClosing);
             this.Load += new System.EventHandler(this.EmployeesForm_Load);
             this.ResumeLayout(false);
 

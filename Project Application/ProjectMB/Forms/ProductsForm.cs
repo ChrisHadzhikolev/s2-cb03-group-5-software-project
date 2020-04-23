@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace ProjectMB
 {
     public partial class ProductsForm : Form
     {
+
+        [DllImport("user32")]
+        static extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flags);
         public ProductsForm()
         {
             InitializeComponent();
@@ -64,6 +68,8 @@ private void ProductsForm_Load(object sender, EventArgs e)
                 MessageBox.Show("Department is non-existent, please restart", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+            AnimateWindow(this.Handle, 500, AnimateWindowFlags.AW_SLIDE);
+
         }
 
         private void searchBtn_Click(object sender, EventArgs e)
@@ -81,6 +87,11 @@ private void ProductsForm_Load(object sender, EventArgs e)
         private void productsLb_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void ProductsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            AnimateWindow(this.Handle, 1000, AnimateWindowFlags.AW_BLEND | AnimateWindowFlags.AW_HIDE);
         }
     }
 }

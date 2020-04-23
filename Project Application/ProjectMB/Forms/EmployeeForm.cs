@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -18,6 +19,10 @@ namespace ProjectMB
     {
         private bool _edit = false;
         private User _userToBeEdited;
+
+        [DllImport("user32")]
+        static extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flags);
+
         #region Constructors
         public EmployeeForm()
         {
@@ -341,5 +346,15 @@ namespace ProjectMB
             salaryPnl.BackColor = Color.FromArgb(125, 249, 255);
         }
         #endregion
+
+        private void EmployeeForm_Load(object sender, EventArgs e)
+        {
+            AnimateWindow(this.Handle, 500, AnimateWindowFlags.AW_SLIDE);
+        }
+
+        private void EmployeeForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            AnimateWindow(this.Handle, 1000, AnimateWindowFlags.AW_BLEND | AnimateWindowFlags.AW_HIDE);
+        }
     }
 }

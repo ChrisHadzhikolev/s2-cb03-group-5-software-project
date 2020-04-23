@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +15,10 @@ namespace ProjectMB
     {
         Product _productToBeEdited;
         private bool _editProduct;
+
+        [DllImport("user32")]
+        static extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flags);
+
         public ProductForm(Product product)
         {
             InitializeComponent();
@@ -43,6 +48,8 @@ namespace ProjectMB
             this.removeBtn.BackColor = Color.FromArgb(5, 179, 245);
             this.removeBtn.FlatStyle = FlatStyle.Flat;
             this.BackColor = Color.FromArgb(193, 162, 254);
+            AnimateWindow(this.Handle, 500, AnimateWindowFlags.AW_SLIDE);
+
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -134,6 +141,11 @@ namespace ProjectMB
                 MessageBox.Show("Product is non-existent, please restart", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+
+        private void ProductForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            AnimateWindow(this.Handle, 1000, AnimateWindowFlags.AW_BLEND | AnimateWindowFlags.AW_HIDE);
         }
     }
 }
