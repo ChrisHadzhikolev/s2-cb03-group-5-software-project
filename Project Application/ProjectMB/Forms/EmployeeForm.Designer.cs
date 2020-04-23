@@ -219,7 +219,8 @@
             "Role",
             "Employee",
             "Stock",
-            "Department"});
+            "Department",
+            "Manager"});
             this.roleCb.Location = new System.Drawing.Point(85, 321);
             this.roleCb.Name = "roleCb";
             this.roleCb.Size = new System.Drawing.Size(251, 33);
@@ -231,16 +232,7 @@
             this.departmentCb.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.departmentCb.FormattingEnabled = true;
             this.departmentCb.Items.AddRange(new object[] {
-            "Department",
-            "Human Resources",
-            "Finances",
-            "Edno",
-            "Dve",
-            "Tri",
-            "Koi",
-            "Shte",
-            "Go ",
-            "Boli"});
+            "Department"});
             this.departmentCb.Location = new System.Drawing.Point(85, 277);
             this.departmentCb.Name = "departmentCb";
             this.departmentCb.Size = new System.Drawing.Size(251, 33);
@@ -389,7 +381,7 @@
             // 
             this.namePb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.namePb.Image = global::ProjectMB.Properties.Resources.emp_add;
-            this.namePb.Location = new System.Drawing.Point(31, 12);
+            this.namePb.Location = new System.Drawing.Point(81, 12);
             this.namePb.Name = "namePb";
             this.namePb.Size = new System.Drawing.Size(323, 212);
             this.namePb.TabIndex = 0;

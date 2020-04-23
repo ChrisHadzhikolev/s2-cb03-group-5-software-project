@@ -235,6 +235,7 @@ namespace ProjectMB
             {
                 if (user.Position == PersonPosition.Manager || user.Position == PersonPosition.Admin)
                 {
+                    if (user.Position == PersonPosition.Admin) Users.admin = true;                   
                     string pass = DatabaseFunctions.PasswordByUsername(user.Username);
                     if (pass == passwordTb.Text)
                     {

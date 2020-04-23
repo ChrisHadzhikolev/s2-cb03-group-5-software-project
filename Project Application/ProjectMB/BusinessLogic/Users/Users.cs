@@ -14,6 +14,7 @@ namespace ProjectMB
         public static List<User> users = new List<User>();
         public static List<User> requestedUsers = new List<User>();
         public static string Department = "";
+        public static bool admin = false;
         
         public static User FindUser(string username)
         {
@@ -65,9 +66,9 @@ namespace ProjectMB
             return results.ToArray();
         }
 
-        public static void AddUser(User user) 
+        public static void AddUser(User user, bool manager = false) 
         {
-            DatabaseFunctions.AddUser(user);
+            DatabaseFunctions.AddUser(user, manager);
             DatabaseFunctions.GetAllUsers();
         }
         public static void UpdateUser(User user)

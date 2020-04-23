@@ -109,36 +109,49 @@ namespace ProjectMB
                             double salary = double.Parse(salaryStr.Trim());
                             Department department = Departments.DepartmentByName(departmentCb.SelectedItem.ToString());
                             PersonPosition position = (PersonPosition)Enum.Parse(typeof(PersonPosition), roleCb.Text, true);
-                            ShiftType type = (ShiftType)Enum.Parse(typeof(ShiftType), shiftCb.Text, true);
-                            bool[] _days = new bool[7];
-                            _days[0] = mondayCbx.Checked;
-                            _days[1] = tuesdayCbx.Checked;
-                            _days[2] = wednesdayCbx.Checked;
-                            _days[3] = thursdayCbx.Checked; 
-                            _days[4] = fridayCbx.Checked;
-                            _days[5] = saturdayCbx.Checked;
-                            _days[6] = sundayCbx.Checked;
-                            //_days = { mondayCbx.Checked, tuesdayCbx.Checked, wednesdayCbx.Checked, thursdayCbx.Checked, fridayCbx.Checked, saturdayCbx.Checked, sundayCbx.Checked };
-
-                            if (_edit)
+                            if ((position == PersonPosition.Manager && Users.admin) || (position != PersonPosition.Manager)) 
                             {
-                                _userToBeEdited.FirstName = fn;
-                                _userToBeEdited.LastName = ln;
-                                _userToBeEdited.Email = email;
-                                _userToBeEdited.Position = position;
-                                _userToBeEdited.Salary = salary;
-                                _userToBeEdited.ShiftTypeU = type;
-                                _userToBeEdited.WorkingDays = _days;
-                                _userToBeEdited.UserDepartment = department;
-                                Users.UpdateUser(_userToBeEdited);
+                                ShiftType type = (ShiftType)Enum.Parse(typeof(ShiftType), shiftCb.Text, true);
+                                bool[] _days = new bool[7];
+                                _days[0] = mondayCbx.Checked;
+                                _days[1] = tuesdayCbx.Checked;
+                                _days[2] = wednesdayCbx.Checked;
+                                _days[3] = thursdayCbx.Checked;
+                                _days[4] = fridayCbx.Checked;
+                                _days[5] = saturdayCbx.Checked;
+                                _days[6] = sundayCbx.Checked;
+
+                                if (_edit)
+                                {
+                                    _userToBeEdited.FirstName = fn;
+                                    _userToBeEdited.LastName = ln;
+                                    _userToBeEdited.Email = email;
+                                    _userToBeEdited.Position = position;
+                                    _userToBeEdited.Salary = salary;
+                                    _userToBeEdited.ShiftTypeU = type;
+                                    _userToBeEdited.WorkingDays = _days;
+                                    _userToBeEdited.UserDepartment = department;
+                                    Users.UpdateUser(_userToBeEdited);
+                                }
+                                else
+                                {
+                                    if (position == PersonPosition.Manager)
+                                    {
+                                        Users.AddUser(new User(fn, ln, email, position, salary, type, _days, department), true);
+                                    }
+                                    else
+                                    {
+                                        Users.AddUser(new User(fn, ln, email, position, salary, type, _days, department));
+                                    }
+                                }
+                                DatabaseFunctions.GetAllUsers();
+                                this.Close();
                             }
                             else
                             {
-                                Users.AddUser(new User(fn, ln, email, position, salary, type, _days, department));
-                            }
-
-                            DatabaseFunctions.GetAllUsers();
-                            this.Close();
+                                MessageBox.Show("Managers can be added just by admin profile!", "Error", MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                            }                            
                         }
                         else
                         {

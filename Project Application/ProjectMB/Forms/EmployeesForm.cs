@@ -24,7 +24,7 @@ namespace ProjectMB
             //Users.Change += new EventHandler<EventArgs>(OnTimerEvent);
             Timer timer = new Timer
             {
-                Interval = 2000
+                Interval = 5000
             };
             timer.Enabled = true;
             timer.Tick += OnTimerEvent;

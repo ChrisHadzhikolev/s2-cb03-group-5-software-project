@@ -91,25 +91,26 @@ namespace ProjectMB
                 throw new NotExistingException();
             }
         }
-        public static void AddUser(User user)
+        public static void AddUser(User user, bool manager = false)
         {
             if (user != null)
             {
                 try
                 {
                 using (MySqlConnection conn = new MySqlConnection(ConnectionString))
-                {
-
+                {       
                     string query =
                             "insert into users (`username`, `first_time_verification_key`) VALUES (@username, @verificationKey);";
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                        if (manager) query =
+                             "insert into users (`username`, `password`) VALUES (@username, @verificationKey);";
+                        MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@username", user.Username);
                     cmd.Parameters.AddWithValue("@verificationKey", user.GenerateVerificationKey());
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     query =
-                           "Insert into people (`username`, `first_name`, `last_name`, `email`, `position`, `salary`, `department`) values (@username, @first_name, @last_name, @email,'EMPLOYEE', @salary, @department);";
+                           "Insert into people (`username`, `first_name`, `last_name`, `email`, `position`, `salary`, `department`) values (@username, @first_name, @last_name, @email, @position, @salary, @department);";
                     cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@username", user.Username);
                     cmd.Parameters.AddWithValue("@first_name", user.FirstName);
@@ -117,7 +118,9 @@ namespace ProjectMB
                     cmd.Parameters.AddWithValue("@email", user.Email);
                     cmd.Parameters.AddWithValue("@salary", user.Salary);
                     cmd.Parameters.AddWithValue("@department", user.UserDepartment.Name);
-                    conn.Open();
+                    cmd.Parameters.AddWithValue("@position", user.Position.ToString());
+                        //MessageBox.Show(user.Position.ToString());
+                        conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     query =

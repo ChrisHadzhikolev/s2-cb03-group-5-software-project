@@ -114,7 +114,7 @@
             // 
             this.closeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(179)))), ((int)(((byte)(245)))));
             this.closeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.closeBtn.Location = new System.Drawing.Point(999, 396);
+            this.closeBtn.Location = new System.Drawing.Point(1277, 363);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.Size = new System.Drawing.Size(101, 32);
             this.closeBtn.TabIndex = 9;
