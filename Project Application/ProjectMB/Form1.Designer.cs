@@ -45,9 +45,11 @@ namespace ProjectMB
             this.employeesBtn = new System.Windows.Forms.Button();
             this.exitBtn = new System.Windows.Forms.Button();
             this.logOutBtn = new System.Windows.Forms.Button();
+            this.logoPb = new System.Windows.Forms.PictureBox();
             this.loginPnl.SuspendLayout();
             this.loginComponentsPnl.SuspendLayout();
             this.selectionPnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPb)).BeginInit();
             this.SuspendLayout();
             // 
             // loginBtn
@@ -197,11 +199,23 @@ namespace ProjectMB
             this.logOutBtn.Visible = false;
             this.logOutBtn.Click += new System.EventHandler(this.logOutBtn_Click);
             // 
+            // logoPb
+            // 
+            this.logoPb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(162)))), ((int)(((byte)(254)))));
+            this.logoPb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.logoPb.Image = global::ProjectMB.Properties.Resources.emp_add;
+            this.logoPb.Location = new System.Drawing.Point(817, 12);
+            this.logoPb.Name = "logoPb";
+            this.logoPb.Size = new System.Drawing.Size(289, 226);
+            this.logoPb.TabIndex = 7;
+            this.logoPb.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.Controls.Add(this.logoPb);
             this.Controls.Add(this.logOutBtn);
             this.Controls.Add(this.exitBtn);
             this.Controls.Add(this.selectionPnl);
@@ -217,6 +231,7 @@ namespace ProjectMB
             this.loginComponentsPnl.ResumeLayout(false);
             this.loginComponentsPnl.PerformLayout();
             this.selectionPnl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.logoPb)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -237,6 +252,7 @@ namespace ProjectMB
         private System.Windows.Forms.Label usernameLbl;
         private Button statisticsBtn;
         private Button departmentsBtn;
+        private PictureBox logoPb;
     }
 }
 

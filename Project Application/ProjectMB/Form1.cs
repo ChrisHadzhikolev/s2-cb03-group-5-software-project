@@ -109,6 +109,10 @@ namespace ProjectMB
             this.loginBtn.BackColor = Color.FromArgb(5, 179, 245);
             this.loginBtn.FlatStyle = FlatStyle.Flat;
 
+            //this.logoPb.Size = new Size(usernameTb.Width * 2, loginComponentsPnl.Height / 8);
+            this.logoPb.Location = new Point((Width - logoPb.Width) / 2,
+               5);          
+
             this.usernameTb.AutoSize = false;
             this.usernameTb.Text = "Username";
             this.usernameTb.BorderStyle = BorderStyle.None;

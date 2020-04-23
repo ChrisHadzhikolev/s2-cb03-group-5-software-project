@@ -258,10 +258,9 @@ namespace ProjectMB
                             (ProductCategory)Enum.Parse(typeof(ProductCategory), dataReader[2].ToString(), true);
                         string price = dataReader[3].ToString();
                         string quantity = dataReader[4].ToString();
+                        bool stockRequest = (bool)dataReader[5];
 
-
-
-                        Product product = new Product(name, productCategory, double.Parse(price), int.Parse(quantity), int.Parse(id));
+                        Product product = new Product(name, productCategory, double.Parse(price), int.Parse(quantity), stockRequest, int.Parse(id));
                         results.Add(product);
                     }
 
@@ -296,10 +295,9 @@ namespace ProjectMB
                             (ProductCategory)Enum.Parse(typeof(ProductCategory), dataReader[2].ToString(), true);
                         string price = dataReader[3].ToString();
                         string quantity = dataReader[4].ToString();
+                        bool stockRequest = (bool) dataReader[5];
 
-
-
-                        Product product = new Product(name, productCategory, double.Parse(price), int.Parse(quantity), int.Parse(id));
+                        Product product = new Product(name, productCategory, double.Parse(price), int.Parse(quantity), stockRequest, int.Parse(id));
                         results.Add(product);
                     }
 
@@ -322,12 +320,13 @@ namespace ProjectMB
                 using (MySqlConnection conn = new MySqlConnection(ConnectionString))
                 {
                     string query =
-                        "Insert into products (`id`, `Name`, `Category`, `Price`, `Quantity`) values (null, @name, @category, @price, @quantity);";
+                        "Insert into products (`Name`, `Category`, `Price`, `Quantity`, `stockRequest`) values (@name, @category, @price, @quantity, @stockRequest);";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@name", product.Name);
                     cmd.Parameters.AddWithValue("@category", product.Category + 1);
                     cmd.Parameters.AddWithValue("@price", product.Price);
                     cmd.Parameters.AddWithValue("@quantity", product.Quantity);
+                    cmd.Parameters.AddWithValue("@stockRequest", product.StockRequest);
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();
@@ -343,7 +342,7 @@ namespace ProjectMB
             if (product != null)
             {
                 string query =
-                    "update products set Name = @name, Category = @category, Price = @price, Quantity = @quantity WHERE id = @id;";
+                    "update products set Name = @name, Category = @category, Price = @price, Quantity = @quantity, stockRequest = @stockRequest WHERE id = @id;";
                 try
                 {
                     using (MySqlConnection conn = new MySqlConnection(ConnectionString))
@@ -354,6 +353,7 @@ namespace ProjectMB
                         cmd.Parameters.AddWithValue("@category", product.Category + 1);
                         cmd.Parameters.AddWithValue("@price", product.Price);
                         cmd.Parameters.AddWithValue("@quantity", product.Quantity);
+                        cmd.Parameters.AddWithValue("@stockRequest", product.StockRequest);
                         conn.Open();
                         cmd.ExecuteNonQuery();
                         conn.Close();

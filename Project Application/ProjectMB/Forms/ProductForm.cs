@@ -26,7 +26,7 @@ namespace ProjectMB
             nameTb.Text = product.Name;
             priceTb.Text = product.Price.ToString();
             quantityTb.Text = product.Quantity.ToString();
-            typeCb.Text = product.Category.ToString();
+            categoryCb.Text = product.Category.ToString();
             _editProduct = true;
         }
 
@@ -48,21 +48,20 @@ namespace ProjectMB
             this.removeBtn.BackColor = Color.FromArgb(5, 179, 245);
             this.removeBtn.FlatStyle = FlatStyle.Flat;
             this.BackColor = Color.FromArgb(193, 162, 254);
+            categoryCb.Items.Clear();
+            categoryCb.Items.Add("Category");
+            foreach (var item in Enum.GetValues(typeof(ProductCategory))
+                                    .Cast<ProductCategory>()
+                                    .ToList())               
+            {
+                categoryCb.Items.Add(item.ToString());
+            } 
+            
             AnimateWindow(this.Handle, 500, AnimateWindowFlags.AW_SLIDE);
 
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (availableCkb.Checked)
-            {
-                quantityTb.Enabled = true;
-            }
-            else
-            {
-                quantityTb.Enabled = false;
-            }
-        }
+        
 
         private void cancelBtn_Click(object sender, EventArgs e)
         {
@@ -76,12 +75,13 @@ namespace ProjectMB
                 if (!string.IsNullOrWhiteSpace(nameTb.Text) && !string.IsNullOrWhiteSpace(priceTb.Text) && !string.IsNullOrWhiteSpace(quantityTb.Text))
                 {
 
-                    if (typeCb.SelectedIndex > -1)
+                    if (categoryCb.SelectedIndex > 0)
                     {
                         string productName = nameTb.Text;
-                        double productPrice = double.Parse(priceTb.Text); ;
+                        double productPrice = double.Parse(priceTb.Text); 
                         int productQuantity = int.Parse(quantityTb.Text);
-                        ProductCategory type = (ProductCategory)Enum.Parse(typeof(ProductCategory), typeCb.Text, true);
+                        bool stockRequest = stockCbx.Checked;
+                        ProductCategory type = (ProductCategory)Enum.Parse(typeof(ProductCategory), categoryCb.Text, true);
 
                         if (_editProduct)
                         {
@@ -89,11 +89,12 @@ namespace ProjectMB
                             _productToBeEdited.Price = productPrice;
                             _productToBeEdited.Quantity = productQuantity;
                             _productToBeEdited.Category = type;
+                            _productToBeEdited.StockRequest = stockRequest;
                             DatabaseFunctions.UpdateProduct(_productToBeEdited);
                         }
                         else
                         {
-                            Product newProduct = new Product(productName, type, productPrice, productQuantity);
+                            Product newProduct = new Product(productName, type, productPrice, productQuantity, stockRequest);
                             DatabaseFunctions.AddProduct(newProduct);
                         }
                         DatabaseFunctions.GetAllProducts();
@@ -146,6 +147,18 @@ namespace ProjectMB
         private void ProductForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             AnimateWindow(this.Handle, 1000, AnimateWindowFlags.AW_BLEND | AnimateWindowFlags.AW_HIDE);
+        }
+
+        private void stockCbx_CheckedChanged(object sender, EventArgs e)
+        {
+            if (stockCbx.Checked)
+            {
+                stockCbx.BackColor = Color.Green;
+            }
+            else
+            {
+                stockCbx.BackColor = Color.Red;
+            }
         }
     }
 }
