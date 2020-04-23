@@ -55,8 +55,8 @@ namespace ProjectMB
                     }
 
                     conn.Close();
-                    Users.Employees.Clear();
-                    Users.Employees.AddRange(results);
+                    Users.requestedUsers.Clear();
+                    Users.requestedUsers.AddRange(results);
                 }
             }
             catch (Exception)
@@ -150,8 +150,8 @@ namespace ProjectMB
                     }
 
                     conn.Close();
-                    Users.Employees.Clear();
-                    Users.Employees.AddRange(results);
+                    Users.requestedUsers.Clear();
+                    Users.requestedUsers.AddRange(results);
                 }
             }
             catch (Exception)
@@ -210,8 +210,8 @@ namespace ProjectMB
                         }
 
                         conn.Close();
-                        Users.Employees.Clear();
-                        Users.Employees.AddRange(results);
+                        Users.requestedUsers.Clear();
+                        Users.requestedUsers.AddRange(results);
                     }
                 }
                 catch (Exception)
@@ -269,8 +269,8 @@ namespace ProjectMB
                         }
 
                         conn.Close();
-                        Users.Employees.Clear();
-                        Users.Employees.AddRange(results);
+                        Users.requestedUsers.Clear();
+                        Users.requestedUsers.AddRange(results);
                     }
                 }
                 catch (Exception)

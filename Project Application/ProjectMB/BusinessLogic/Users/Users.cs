@@ -79,40 +79,50 @@ namespace ProjectMB
             DatabaseFunctions.RemoveUser(user);
             DatabaseFunctions.GetAllEmployees();
         }
-        public static void GetUsers(string role, string department)
+        public static void GetUsers(int role, string department)
         {
-//            switch (role)
-//            {
-                
-//Employee
-//Stock
-//Department
-//All Employees
-//Manager
-//All People
-//            }
-//            if (department != "All Departments")
-//            {
-//                foreach (var item in users)
-//                {
-//                    if (true)
-//                    {
+            requestedUsers.Clear();
+            if (role < 5)
+            {
 
-//                    }
-//                }
-//            }
-//            else
-//            {
-
-//            }
-//            requestedUsers.Clear();
-//            foreach (var item in users)
-//            {
-//                if (true)
-//                {
-
-//                }
-//            }
+                foreach (var item in users)
+                {
+                    if (item.UserDepartment.Name == department || department == "All Departments")
+                    {
+                        if (item.Position == (PersonPosition)role)
+                        {
+                            requestedUsers.Add(item);
+                        }
+                    }
+                }
+            }
+            else if (role == 6)
+            {
+                foreach (var item in users)
+                {
+                    if (item.UserDepartment.Name == department || department == "All Departments")
+                    {
+                        if (item.Position != PersonPosition.Admin && item.Position != PersonPosition.Manager)
+                        {
+                            requestedUsers.Add(item);
+                        }
+                    }
+                }
+            }
+            else if (role == 7)
+            {
+                foreach (var item in users)
+                {
+                    if (item.UserDepartment.Name == department || department == "All Departments")
+                    {
+                        requestedUsers.Add(item);
+                    }
+                }
+            }
+            else
+            {
+                throw new NotExistingException();
+            }
         }
     }
 }

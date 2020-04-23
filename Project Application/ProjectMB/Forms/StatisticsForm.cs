@@ -28,8 +28,8 @@ namespace ProjectMB
                 int[] shifts = new int[3];
                 int favouriteShift = 0;
                 DatabaseFunctions.GetEmployeesByDepartment(departmentName);
-                int employees = Users.Employees.Count;
-                foreach (User user in Users.Employees)
+                int employees = Users.requestedUsers.Count;
+                foreach (User user in Users.requestedUsers)
                 {
                     avgSalary += user.Salary;
                     if (user.ShiftTypeU == ShiftType.Day)
@@ -56,9 +56,9 @@ namespace ProjectMB
                 int[] shifts = new int[3];
                 int favouriteShift = 0;
                 DatabaseFunctions.GetAllEmployees();
-                int employees = Users.Employees.Count;
+                int employees = Users.requestedUsers.Count;
 
-                foreach (User user in Users.Employees)
+                foreach (User user in Users.requestedUsers)
                 {
                     avgSalary += user.Salary;
                     if (user.ShiftTypeU == ShiftType.Day)
@@ -111,8 +111,15 @@ namespace ProjectMB
                         //lbStatistics.Items.Add(product.ToString());
                     }
                 }
-                lbStatistics.Items.Add($"There are {productsInCategory} products in this category with average price of {(avgPrice / productsInCategory).ToString("C2", CultureInfo.CurrentCulture)}");
-                lbStatistics.Items.Add($"The most restocked product is: {mostRestocked.Name} Price: {mostRestocked.Price} Quantity: {mostRestocked.Quantity}");
+                if(productsInCategory == 0)
+                {
+                    lbStatistics.Items.Add($"There are {productsInCategory} products in this category.");
+                }
+                else
+                {
+                    lbStatistics.Items.Add($"There are {productsInCategory} products in this category with average price of {(avgPrice / productsInCategory).ToString("C2", CultureInfo.CurrentCulture)}");
+                    lbStatistics.Items.Add($"The most restocked product is: {mostRestocked.Name} Price: {mostRestocked.Price} Quantity: {mostRestocked.Quantity}");
+                }
             }
             else
             {
@@ -137,7 +144,6 @@ namespace ProjectMB
                 lbStatistics.Items.Add($"There are {Products.products.Count} products in total. The average price is {(avgPrice / Products.products.Count).ToString("C2", CultureInfo.CurrentCulture)}");
                 lbStatistics.Items.Add($"The most expensive product is: {mostExpensiveP.Name} Price: {mostExpensiveP.Price} Quantity: {mostExpensiveP.Quantity}");
             }
-
         }
         private void StatisticsForm_Load(object sender, EventArgs e)
         {

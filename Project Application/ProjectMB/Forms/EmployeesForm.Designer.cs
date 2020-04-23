@@ -74,13 +74,7 @@
             this.departmentCb.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.departmentCb.FormattingEnabled = true;
             this.departmentCb.Items.AddRange(new object[] {
-            "Position",
-            "Employee",
-            "Stock",
-            "Department",
-            "All Employees",
-            "All Managers",
-            "All People"});
+            "Department"});
             this.departmentCb.Location = new System.Drawing.Point(667, 388);
             this.departmentCb.Name = "departmentCb";
             this.departmentCb.Size = new System.Drawing.Size(245, 40);
@@ -107,8 +101,9 @@
             "Employee",
             "Stock",
             "Department",
+            "Admin",
+            "Manager",
             "All Employees",
-            "All Managers",
             "All People"});
             this.roleCb.Location = new System.Drawing.Point(416, 388);
             this.roleCb.Name = "roleCb";
