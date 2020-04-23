@@ -32,7 +32,7 @@ namespace ProjectMB
                 double avgSalary = 0;
                 int[] shifts = new int[3];
                 int favouriteShift = 0;
-                DatabaseFunctions.GetEmployeesByDepartment(departmentName);
+                Users.GetUsers(6, departmentName);
                 int employees = Users.requestedUsers.Count;
                 foreach (User user in Users.requestedUsers)
                 {
@@ -60,7 +60,7 @@ namespace ProjectMB
                 double avgSalary = 0;
                 int[] shifts = new int[3];
                 int favouriteShift = 0;
-                DatabaseFunctions.GetAllEmployees();
+                DatabaseFunctions.GetAllUsers();
                 int employees = Users.requestedUsers.Count;
 
                 foreach (User user in Users.requestedUsers)

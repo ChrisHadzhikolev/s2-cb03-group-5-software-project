@@ -22,17 +22,17 @@ namespace ProjectMB
         {
             InitializeComponent();
             //Users.Change += new EventHandler<EventArgs>(OnTimerEvent);
-            Timer timer = new Timer    
-            {    
-                Interval = 2000    
-            };    
-            timer.Enabled = true;    
-            timer.Tick += OnTimerEvent;  
+            Timer timer = new Timer
+            {
+                Interval = 2000
+            };
+            timer.Enabled = true;
+            timer.Tick += OnTimerEvent;
         }
-        private void OnTimerEvent(object sender, EventArgs e)    
+        private void OnTimerEvent(object sender, EventArgs e)
         {
             employeesLv.Items.Clear();
-            foreach (var item in Users.users)
+            foreach (var item in Users.requestedUsers)
             {
                 ListViewItem lvi = new ListViewItem(item.ID.ToString());
                 lvi.SubItems.Add(item.FirstName);
@@ -43,11 +43,11 @@ namespace ProjectMB
                 lvi.SubItems.Add(item.Salary.ToString("C2", CultureInfo.CurrentCulture));
                 lvi.SubItems.Add(item.UserDepartment.Name);
                 employeesLv.Items.Add(lvi);
-            }    
-        }                 
-       
+            }
+        }
+
         private void EmployeesForm_Load(object sender, EventArgs e)
-        {          
+        {
             try
             {
                 DatabaseFunctions.GetAllUsers();
@@ -132,9 +132,13 @@ namespace ProjectMB
         {
             if (departmentCb.SelectedIndex > 0 && roleCb.SelectedIndex > 0)
             {
-                string role = roleCb.SelectedItem.ToString();
+                int role = roleCb.SelectedIndex;
                 string department = departmentCb.SelectedItem.ToString();
-                DatabaseFunctions.ShowResults(role, department);
+                Users.GetUsers(role, department);
+            }
+            else
+            {
+                MessageBox.Show("Choose valid options, please!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

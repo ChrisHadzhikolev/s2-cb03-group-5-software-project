@@ -137,7 +137,7 @@ namespace ProjectMB
                                 Users.AddUser(new User(fn, ln, email, position, salary, type, _days, department));
                             }
 
-                            DatabaseFunctions.GetUsersByDepartment(Users.Department);
+                            DatabaseFunctions.GetAllUsers();
                             this.Close();
                         }
                         else

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ProjectMB
 {
@@ -67,29 +68,30 @@ namespace ProjectMB
         public static void AddUser(User user) 
         {
             DatabaseFunctions.AddUser(user);
-            DatabaseFunctions.GetAllEmployees();
+            DatabaseFunctions.GetAllUsers();
         }
         public static void UpdateUser(User user)
         {
             DatabaseFunctions.UpdateUser(user);
-            DatabaseFunctions.GetAllEmployees();
+            DatabaseFunctions.GetAllUsers();
         }
         public static void RemoveUser(User user)
         {
             DatabaseFunctions.RemoveUser(user);
-            DatabaseFunctions.GetAllEmployees();
+            DatabaseFunctions.GetAllUsers();
         }
         public static void GetUsers(int role, string department)
         {
+            MessageBox.Show(((PersonPosition)(role-1)).ToString());
             requestedUsers.Clear();
-            if (role < 5)
+            if (role < 6)
             {
 
                 foreach (var item in users)
                 {
                     if (item.UserDepartment.Name == department || department == "All Departments")
                     {
-                        if (item.Position == (PersonPosition)role)
+                        if (item.Position == (PersonPosition)(role-1))
                         {
                             requestedUsers.Add(item);
                         }

@@ -117,7 +117,7 @@ namespace ProjectMB
 
         public override string ToString()
         {
-            return $"{FirstName}\t{LastName}\t{Email}\t{Salary.ToString("C2", CultureInfo.CurrentCulture)}\t{UserDepartment.Name}";
+            return $"{FirstName}\t{LastName}\t{Email}\t{Salary.ToString("C2", CultureInfo.CurrentCulture)}\t{UserDepartment.Name}\t{Position}";
         }
     }
 

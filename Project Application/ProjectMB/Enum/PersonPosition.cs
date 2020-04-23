@@ -11,7 +11,7 @@ namespace ProjectMB
         Employee,
         Stock,
         Department,
-        Manager,
         Admin,
+        Manager,
     }
 }

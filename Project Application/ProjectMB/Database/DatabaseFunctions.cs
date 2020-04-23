@@ -15,55 +15,6 @@ namespace ProjectMB
         private static readonly string ConnectionString =
             "server=studmysql01.fhict.local;database=dbi428428;uid=dbi428428;password=spiderMan2000;";
         #region CRUD_User
-        public static void GetUsers(string role, string departmentName)
-        {
-            try
-            {
-                string query =
-                    "Select * from people as p join working_days as wd on p.username = wd.username where department = @departmentName AND position = @role;";
-                using (MySqlConnection conn = new MySqlConnection(ConnectionString))
-                {
-                    List<User> results = new List<User>();
-                    conn.Open();
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@departmentName", departmentName);
-                    cmd.Parameters.AddWithValue("@role", role);
-                    MySqlDataReader dataReader = cmd.ExecuteReader();
-                    while (dataReader.Read())
-                    {
-                        int id = Int32.Parse(dataReader[0].ToString());
-                        string username = dataReader[1].ToString();
-                        string firstName = dataReader[2].ToString();
-                        string lastName = dataReader[3].ToString();
-                        string email = dataReader[4].ToString();
-                        string phoneNumber = dataReader[5].ToString();
-                        PersonPosition position =
-                            (PersonPosition)Enum.Parse(typeof(PersonPosition), dataReader[6].ToString(), true);
-                        double salary = Double.Parse(dataReader[7].ToString());
-                        Department department = new Department(dataReader[8].ToString());
-                        ShiftType shiftType =
-                            (ShiftType)Enum.Parse(typeof(ShiftType), dataReader[11].ToString(), true);
-                        bool[] days = new bool[7];
-                        for (int i = 0; i < 7; i++)
-                        {
-                            days[i] = bool.Parse(dataReader[i + 12].ToString());
-                        }
-
-                        User user = new User(username, firstName, lastName, email, position, salary, shiftType,
-                            days, department, id, phoneNumber);
-                        results.Add(user);
-                    }
-
-                    conn.Close();
-                    Users.requestedUsers.Clear();
-                    Users.requestedUsers.AddRange(results);
-                }
-            }
-            catch (Exception)
-            {
-                throw new NoConnectionException();
-            }
-        }
         public static bool GetAllUsers()
         {
             string query = "Select * from people as p join working_days as wd on p.username = wd.username";
@@ -98,6 +49,7 @@ namespace ProjectMB
                         User user = new User(username, firstName, lastName, email, position, salary, shiftType,
                             days, department, id, phoneNumber);
                         results.Add(user);
+                        //MessageBox.Show(user.ToString());
                     }
 
                     conn.Close();
@@ -111,177 +63,6 @@ namespace ProjectMB
             }
 
             return true;
-        }
-        public static void GetAllEmployees()
-        {
-            try
-            {
-                string query =
-                    "Select * from people as p join working_days as wd on p.username = wd.username where position <> 'MANAGER';";
-                using (MySqlConnection conn = new MySqlConnection(ConnectionString))
-                {
-                    List<User> results = new List<User>();
-                    conn.Open();
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    MySqlDataReader dataReader = cmd.ExecuteReader();
-                    while (dataReader.Read())
-                    {
-                        int id = Int32.Parse(dataReader[0].ToString());
-                        string username = dataReader[1].ToString();
-                        string firstName = dataReader[2].ToString();
-                        string lastName = dataReader[3].ToString();
-                        string email = dataReader[4].ToString();
-                        string phoneNumber = dataReader[5].ToString();
-                        PersonPosition position =
-                            (PersonPosition)Enum.Parse(typeof(PersonPosition), dataReader[6].ToString(), true);
-                        double salary = Int32.Parse(dataReader[7].ToString());
-                        Department department = new Department(dataReader[8].ToString());
-                        ShiftType shiftType =
-                            (ShiftType)Enum.Parse(typeof(ShiftType), dataReader[11].ToString(), true);
-                        bool[] days = new bool[7];
-                        for (int i = 0; i < 7; i++)
-                        {
-                            days[i] = bool.Parse(dataReader[i + 12].ToString());
-                        }
-
-                        User user = new User(username, firstName, lastName, email, position, salary, shiftType,
-                            days, department, id, phoneNumber);
-                        results.Add(user);
-                    }
-
-                    conn.Close();
-                    Users.requestedUsers.Clear();
-                    Users.requestedUsers.AddRange(results);
-                }
-            }
-            catch (Exception)
-            {
-                throw new NoConnectionException();
-            }
-        }
-
-        internal static void ShowResults(string role, string department)
-        {
-            switch (role)
-            {
-                default:
-                    break;
-            }
-        }
-
-        public static void GetEmployeesByDepartment(string departmentName)
-        {
-            if (departmentName != "")
-            {
-                try
-                {
-                    string query =
-                        "Select * from people as p join working_days as wd on p.username = wd.username where department = @departmentName AND position = 'Employee';";
-                    using (MySqlConnection conn = new MySqlConnection(ConnectionString))
-                    {
-                        List<User> results = new List<User>();
-                        conn.Open();
-                        MySqlCommand cmd = new MySqlCommand(query, conn);
-                        cmd.Parameters.AddWithValue("@departmentName", departmentName);
-                        MySqlDataReader dataReader = cmd.ExecuteReader();
-                        while (dataReader.Read())
-                        {
-                            int id = Int32.Parse(dataReader[0].ToString());
-                            string username = dataReader[1].ToString();
-                            string firstName = dataReader[2].ToString();
-                            string lastName = dataReader[3].ToString();
-                            string email = dataReader[4].ToString();
-                            string phoneNumber = dataReader[5].ToString();
-                            PersonPosition position =
-                                (PersonPosition)Enum.Parse(typeof(PersonPosition), dataReader[6].ToString(), true);
-                            double salary = Double.Parse(dataReader[7].ToString());
-                            Department department = new Department(dataReader[8].ToString());
-                            ShiftType shiftType =
-                                (ShiftType)Enum.Parse(typeof(ShiftType), dataReader[11].ToString(), true);
-                            bool[] days = new bool[7];
-                            for (int i = 0; i < 7; i++)
-                            {
-                                days[i] = bool.Parse(dataReader[i + 12].ToString());
-                            }
-
-                            User user = new User(username, firstName, lastName, email, position, salary, shiftType,
-                                days, department, id, phoneNumber);
-                            results.Add(user);
-                        }
-
-                        conn.Close();
-                        Users.requestedUsers.Clear();
-                        Users.requestedUsers.AddRange(results);
-                    }
-                }
-                catch (Exception)
-                {
-                    throw new NoConnectionException();
-                }
-            }
-            else
-            {
-                throw new NotExistingException();
-            }
-        }
-        public static void GetUsersByDepartment(string departmentName)
-        {
-            if (departmentName == "All Departments")
-            {
-
-            }
-            else if (departmentName != "")
-            {
-                try
-                {
-                    string query =
-                        "Select * from people as p join working_days as wd on p.username = wd.username where department = @departmentName;";
-                    using (MySqlConnection conn = new MySqlConnection(ConnectionString))
-                    {
-                        List<User> results = new List<User>();
-                        conn.Open();
-                        MySqlCommand cmd = new MySqlCommand(query, conn);
-                        cmd.Parameters.AddWithValue("@departmentName", departmentName);
-                        MySqlDataReader dataReader = cmd.ExecuteReader();
-                        while (dataReader.Read())
-                        {
-                            int id = Int32.Parse(dataReader[0].ToString());
-                            string username = dataReader[1].ToString();
-                            string firstName = dataReader[2].ToString();
-                            string lastName = dataReader[3].ToString();
-                            string email = dataReader[4].ToString();
-                            string phoneNumber = dataReader[5].ToString();
-                            PersonPosition position =
-                                (PersonPosition)Enum.Parse(typeof(PersonPosition), dataReader[6].ToString(), true);
-                            double salary = Double.Parse(dataReader[7].ToString());
-                            Department department = new Department(dataReader[8].ToString());
-                            ShiftType shiftType =
-                                (ShiftType)Enum.Parse(typeof(ShiftType), dataReader[11].ToString(), true);
-                            bool[] days = new bool[7];
-                            for (int i = 0; i < 7; i++)
-                            {
-                                days[i] = bool.Parse(dataReader[i + 12].ToString());
-                            }
-
-                            User user = new User(username, firstName, lastName, email, position, salary, shiftType,
-                                days, department, id, phoneNumber);
-                            results.Add(user);
-                        }
-
-                        conn.Close();
-                        Users.requestedUsers.Clear();
-                        Users.requestedUsers.AddRange(results);
-                    }
-                }
-                catch (Exception)
-                {
-                    throw new NoConnectionException();
-                }
-            }
-            else
-            {
-                throw new NotExistingException();
-            }
         }
         public static string PasswordByUsername(string username)
         {
@@ -613,7 +394,7 @@ namespace ProjectMB
             }
         }
         #endregion
-        #region CRUD_Deprtment
+        #region CRUD_Department
         public static bool GetAllDepartments()
         {
             string query = "select departmentName from departments";
@@ -662,50 +443,11 @@ namespace ProjectMB
         {
             if (department != null)
             {
-                // try
-                //{
+                try
+                {
                 using (MySqlConnection conn = new MySqlConnection(ConnectionString))
                 {
-                    string query = "select * from people as p join working_days as wd on p.username = wd.username where department = @oldName";
-                    List<User> results = new List<User>();
-                    MySqlCommand cmd_refactor = new MySqlCommand(query, conn);
-                    cmd_refactor.Parameters.AddWithValue("@oldName", oldName);
-                    conn.Open();
-                    MySqlDataReader dataReader = cmd_refactor.ExecuteReader();
-                    while (dataReader.Read())
-                    {
-                        int id = int.Parse(dataReader[0].ToString());
-                        string username = dataReader[1].ToString();
-                        string firstName = dataReader[2].ToString();
-                        string lastName = dataReader[3].ToString();
-                        string email = dataReader[4].ToString();
-                        string phoneNumber = dataReader[5].ToString();
-                        PersonPosition position =
-                            (PersonPosition)Enum.Parse(typeof(PersonPosition), dataReader[6].ToString(), true);
-                        double salary = Double.Parse(dataReader[7].ToString());
-                        Department departmentResult = new Department(dataReader[8].ToString());
-                        ShiftType shiftType =
-                            (ShiftType)Enum.Parse(typeof(ShiftType), dataReader[11].ToString(), true);
-                        bool[] days = new bool[7];
-                        for (int i = 0; i < 7; i++)
-                        {
-                            days[i] = bool.Parse(dataReader[i + 12].ToString());
-                        }
-
-                        User user = new User(username, firstName, lastName, email, position, salary, shiftType,
-                            days, departmentResult, id, phoneNumber);
-                        results.Add(user);
-                    }
-                    conn.Close();
-                    foreach (var item in results)
-                    {
-                        conn.Open();
-                        item.UserDepartment = department;
-                        UpdateUser(item);
-                        conn.Close();
-                    }
-
-                    query = "update departments set departmentName = @name where departmentName = @oldName";
+                    string query = "update departments set departmentName = @name where departmentName = @oldName";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@name", department.Name);
                     cmd.Parameters.AddWithValue("@oldName", oldName);
@@ -713,12 +455,11 @@ namespace ProjectMB
                     cmd.ExecuteNonQuery();
                     conn.Close();
                 }
-                //}                
-                //catch (Exception e)
-                //{
-                //    MessageBox.Show(e.Source);
-                //    throw new NoConnectionException();
-                // }
+                }
+                catch (Exception)
+                {
+                    throw new NoConnectionException();
+                }
             }
         }
         public static void RemoveDepartment(Department department)
