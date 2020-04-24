@@ -27,7 +27,10 @@ namespace ProjectMB
             priceTb.Text = product.Price.ToString();
             quantityTb.Text = product.Quantity.ToString();
             categoryCb.Text = product.Category.ToString();
+            stockCbx.Checked = product.StockRequest;
             _editProduct = true;
+            titleLbl.Text = "Edit Product";
+            this.removeBtn.Enabled = true;
         }
 
         public ProductForm()
@@ -39,7 +42,6 @@ namespace ProjectMB
         private void NewProductForm_Load(object sender, EventArgs e)
         {
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.cancelBtn.BackColor = Color.FromArgb(5, 179, 245);
             this.cancelBtn.FlatStyle = FlatStyle.Flat;
@@ -55,13 +57,9 @@ namespace ProjectMB
                                     .ToList())               
             {
                 categoryCb.Items.Add(item.ToString());
-            } 
-            
+            }             
             AnimateWindow(this.Handle, 500, AnimateWindowFlags.AW_SLIDE);
-
-        }
-
-        
+        }        
 
         private void cancelBtn_Click(object sender, EventArgs e)
         {

@@ -68,7 +68,7 @@
             this.stockCbx.ForeColor = System.Drawing.Color.Snow;
             this.stockCbx.Location = new System.Drawing.Point(85, 323);
             this.stockCbx.Name = "stockCbx";
-            this.stockCbx.Size = new System.Drawing.Size(251, 35);
+            this.stockCbx.Size = new System.Drawing.Size(251, 49);
             this.stockCbx.TabIndex = 19;
             this.stockCbx.Text = "Stock Request";
             this.stockCbx.UseVisualStyleBackColor = false;

@@ -98,7 +98,7 @@ namespace ProjectMB
                 //int[] categories = new int[9];
                 //DatabaseFunctions.GetAllProductsByCategory((ProductCategory)categoryName);
                 DatabaseFunctions.GetAllProducts();
-                Product mostRestocked = new Product("Bom", ProductCategory.COMPUTER, 2.2, 8);
+                Product mostRestocked = new Product("Bom", ProductCategory.COMPUTER, 2.2, 8, false);
                 foreach (Product product in Products.products)
                 {
                     if (product.Category == (ProductCategory)categoryName)
@@ -130,7 +130,7 @@ namespace ProjectMB
             {
                 double avgPrice = 0;
                 double mostExpensive = 0; 
-                Product mostExpensiveP = new Product("Test", ProductCategory.COMPUTER, 2.2, 8);
+                Product mostExpensiveP = new Product("Test", ProductCategory.COMPUTER, 2.2, 8, false);
                 DatabaseFunctions.GetAllProducts();
 
                 foreach (Product product in Products.products)

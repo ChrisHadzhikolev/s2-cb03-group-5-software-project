@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -13,38 +14,40 @@ namespace ProjectMB
         public ProductsForm()
         {
             InitializeComponent();
-            productsLb.SelectedValueChanged += new EventHandler(ProductLb_SelectedValueChanged);
+            //productsLb.SelectedValueChanged += new EventHandler(ProductLb_SelectedValueChanged);
             Timer timer = new Timer
             {
-                Interval = 2000
+                Interval = 5000
             };
             timer.Enabled = true;
-            timer.Tick += OnTimerEvent;
+            //timer.Tick += OnTimerEvent;
         }
-        private void OnTimerEvent(object sender, EventArgs e)
-        {
-            productsLb.Items.Clear();
-            foreach (var item in Products.products)
-            {
-                productsLb.Items.Add(item.Name);
-            }
-        }
-        protected void ProductLb_SelectedValueChanged(object sender, EventArgs e)
-        {
-            try { 
-                ProductForm productForm = new ProductForm(Products.products[productsLb.SelectedIndex]);
-            productForm.Show();
-        }
-            catch (Exception exception)
-            {
-                Console.WriteLine(exception);
-            }
-
-}
-private void ProductsForm_Load(object sender, EventArgs e)
+        //private void OnTimerEvent(object sender, EventArgs e)
+        //{
+        //    productsLw.Items.Clear();
+        //    foreach (var item in Products.products)
+        //    {
+        //        ListViewItem lvi = new ListViewItem(item.id.ToString());
+        //        lvi.SubItems.Add(item.Name);
+        //        lvi.SubItems.Add(item.Category.ToString());
+        //        lvi.SubItems.Add(item.Quantity.ToString());
+        //        lvi.SubItems.Add(item.Price.ToString("C2", CultureInfo.CurrentCulture));
+        //        if (item.StockRequest)
+        //        {
+        //            lvi.SubItems.Add("Yes");
+        //        }
+        //        else
+        //        {
+        //            lvi.SubItems.Add("No");
+        //        }
+                            
+        //        productsLw.Items.Add(lvi);
+        //    }
+        //}
+      
+        private void ProductsForm_Load(object sender, EventArgs e)
         {
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.addBtn.BackColor = Color.FromArgb(5, 179, 245);
             this.addBtn.FlatStyle = FlatStyle.Flat;
@@ -54,9 +57,15 @@ private void ProductsForm_Load(object sender, EventArgs e)
             try
             {
                 DatabaseFunctions.GetAllProducts();
+                productsLw.Items.Clear();
                 foreach (var item in Products.products)
                 {
-                    productsLb.Items.Add(item.Name);
+                    ListViewItem lvi = new ListViewItem(item.id.ToString());
+                    lvi.SubItems.Add(item.Name);
+                    lvi.SubItems.Add(item.Quantity.ToString());
+                    lvi.SubItems.Add(item.StockRequest.ToString());
+                    lvi.SubItems.Add(item.Price.ToString("C2", CultureInfo.CurrentCulture));
+                    productsLw.Items.Add(lvi);
                 }
             }
             catch (NoConnectionException)
@@ -82,16 +91,56 @@ private void ProductsForm_Load(object sender, EventArgs e)
         {
             ProductForm newProductForm = new ProductForm();
             newProductForm.Show();
-        }
-
-        private void productsLb_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        }       
 
         private void ProductsForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             AnimateWindow(this.Handle, 1000, AnimateWindowFlags.AW_BLEND | AnimateWindowFlags.AW_HIDE);
+        }
+
+        private void productsLw_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Product product = Products.FindProduct(int.Parse(productsLw.SelectedItems[0].SubItems[0].Text));
+                if (product != null)
+                {
+                    ProductForm productForm = new ProductForm(product);
+                    productForm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Couldn't find the user, please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+            }
+}
+
+        private void closeBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void showBtn_Click(object sender, EventArgs e)
+        {
+            if (categoryCb.SelectedIndex > 0)
+            {                
+                productsLw.Items.Clear();
+                foreach (var item in Products.FindProducts((ProductCategory)Enum.Parse(typeof(ProductCategory), (categoryCb.Text).Trim(), true)))
+                {
+                    ListViewItem lvi = new ListViewItem(item.id.ToString());
+                    lvi.SubItems.Add(item.Name);
+                    lvi.SubItems.Add(item.Quantity.ToString());
+                    lvi.SubItems.Add(item.StockRequest.ToString());
+                    lvi.SubItems.Add(item.Price.ToString("C2", CultureInfo.CurrentCulture));
+                    productsLw.Items.Add(lvi);
+
+                }
+            }
         }
     }
 }

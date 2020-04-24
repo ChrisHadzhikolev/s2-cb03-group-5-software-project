@@ -10,9 +10,7 @@ namespace ProjectMB
     {
         public static List<Product> products = new List<Product>();
 
-        //public static ProductCategory productCategory;
-
-       public static Product FindProductByName(string name)
+       public static Product FindProduct(string name)
        {
             foreach (var item in products)
             {
@@ -23,5 +21,29 @@ namespace ProjectMB
             }
             return null;
        }
+
+        public static Product FindProduct(int id)
+        {
+            foreach (var item in products)
+            {
+                if (item.id == id)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+        public static Product[] FindProducts(ProductCategory category)
+        {
+            List<Product> products = new List<Product>();
+            foreach (var item in products)
+            {
+                if (item.Category == category)
+                {
+                    products.Add(item);
+                }
+            }
+            return products.ToArray();
+        }
     }
 }

@@ -37,7 +37,7 @@ namespace ProjectMB
                 }
                 else
                 {
-                    ProductForm productForm = new ProductForm(Products.FindProductByName(resultsLb.SelectedItem.ToString()));
+                    ProductForm productForm = new ProductForm(Products.FindProduct(resultsLb.SelectedItem.ToString()));
                     productForm.Show();
                 }
              }
