@@ -68,7 +68,7 @@
             this.sundayCbx.ForeColor = System.Drawing.Color.Snow;
             this.sundayCbx.Location = new System.Drawing.Point(274, 483);
             this.sundayCbx.Name = "sundayCbx";
-            this.sundayCbx.Size = new System.Drawing.Size(90, 35);
+            this.sundayCbx.Size = new System.Drawing.Size(66, 27);
             this.sundayCbx.TabIndex = 22;
             this.sundayCbx.Text = "Sunday";
             this.sundayCbx.UseVisualStyleBackColor = false;
@@ -84,7 +84,7 @@
             this.saturdayCbx.ForeColor = System.Drawing.Color.Snow;
             this.saturdayCbx.Location = new System.Drawing.Point(172, 483);
             this.saturdayCbx.Name = "saturdayCbx";
-            this.saturdayCbx.Size = new System.Drawing.Size(101, 35);
+            this.saturdayCbx.Size = new System.Drawing.Size(75, 27);
             this.saturdayCbx.TabIndex = 21;
             this.saturdayCbx.Text = "Saturday";
             this.saturdayCbx.UseVisualStyleBackColor = false;
@@ -100,7 +100,7 @@
             this.fridayCbx.ForeColor = System.Drawing.Color.Snow;
             this.fridayCbx.Location = new System.Drawing.Point(95, 483);
             this.fridayCbx.Name = "fridayCbx";
-            this.fridayCbx.Size = new System.Drawing.Size(76, 35);
+            this.fridayCbx.Size = new System.Drawing.Size(57, 27);
             this.fridayCbx.TabIndex = 20;
             this.fridayCbx.Text = "Friday";
             this.fridayCbx.UseVisualStyleBackColor = false;
@@ -116,7 +116,7 @@
             this.thursdayCbx.ForeColor = System.Drawing.Color.Snow;
             this.thursdayCbx.Location = new System.Drawing.Point(343, 447);
             this.thursdayCbx.Name = "thursdayCbx";
-            this.thursdayCbx.Size = new System.Drawing.Size(105, 35);
+            this.thursdayCbx.Size = new System.Drawing.Size(78, 27);
             this.thursdayCbx.TabIndex = 19;
             this.thursdayCbx.Text = "Thursday";
             this.thursdayCbx.UseVisualStyleBackColor = false;
@@ -132,7 +132,7 @@
             this.wednesdayCbx.ForeColor = System.Drawing.Color.Snow;
             this.wednesdayCbx.Location = new System.Drawing.Point(214, 447);
             this.wednesdayCbx.Name = "wednesdayCbx";
-            this.wednesdayCbx.Size = new System.Drawing.Size(128, 35);
+            this.wednesdayCbx.Size = new System.Drawing.Size(93, 27);
             this.wednesdayCbx.TabIndex = 18;
             this.wednesdayCbx.Text = "Wednesday";
             this.wednesdayCbx.UseVisualStyleBackColor = false;
@@ -148,7 +148,7 @@
             this.tuesdayCbx.ForeColor = System.Drawing.Color.Snow;
             this.tuesdayCbx.Location = new System.Drawing.Point(114, 447);
             this.tuesdayCbx.Name = "tuesdayCbx";
-            this.tuesdayCbx.Size = new System.Drawing.Size(99, 35);
+            this.tuesdayCbx.Size = new System.Drawing.Size(73, 27);
             this.tuesdayCbx.TabIndex = 17;
             this.tuesdayCbx.Text = "Tuesday";
             this.tuesdayCbx.UseVisualStyleBackColor = false;
@@ -164,7 +164,7 @@
             this.mondayCbx.ForeColor = System.Drawing.Color.Snow;
             this.mondayCbx.Location = new System.Drawing.Point(20, 447);
             this.mondayCbx.Name = "mondayCbx";
-            this.mondayCbx.Size = new System.Drawing.Size(93, 35);
+            this.mondayCbx.Size = new System.Drawing.Size(68, 27);
             this.mondayCbx.TabIndex = 16;
             this.mondayCbx.Text = "Monday";
             this.mondayCbx.UseVisualStyleBackColor = false;
@@ -207,7 +207,7 @@
             "HalfDay"});
             this.shiftCb.Location = new System.Drawing.Point(85, 370);
             this.shiftCb.Name = "shiftCb";
-            this.shiftCb.Size = new System.Drawing.Size(251, 33);
+            this.shiftCb.Size = new System.Drawing.Size(251, 24);
             this.shiftCb.TabIndex = 12;
             // 
             // roleCb
@@ -223,7 +223,7 @@
             "Manager"});
             this.roleCb.Location = new System.Drawing.Point(85, 321);
             this.roleCb.Name = "roleCb";
-            this.roleCb.Size = new System.Drawing.Size(251, 33);
+            this.roleCb.Size = new System.Drawing.Size(251, 24);
             this.roleCb.TabIndex = 11;
             // 
             // departmentCb
@@ -235,7 +235,7 @@
             "Department"});
             this.departmentCb.Location = new System.Drawing.Point(85, 277);
             this.departmentCb.Name = "departmentCb";
-            this.departmentCb.Size = new System.Drawing.Size(251, 33);
+            this.departmentCb.Size = new System.Drawing.Size(251, 24);
             this.departmentCb.TabIndex = 10;
             // 
             // salaryPnl
@@ -251,7 +251,7 @@
             this.salaryTb.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.salaryTb.Location = new System.Drawing.Point(85, 232);
             this.salaryTb.Name = "salaryTb";
-            this.salaryTb.Size = new System.Drawing.Size(251, 23);
+            this.salaryTb.Size = new System.Drawing.Size(251, 16);
             this.salaryTb.TabIndex = 8;
             this.salaryTb.Text = "Salary";
             this.salaryTb.Click += new System.EventHandler(this.salaryTb_Click);
@@ -278,7 +278,7 @@
             this.lastNameTb.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lastNameTb.Location = new System.Drawing.Point(85, 139);
             this.lastNameTb.Name = "lastNameTb";
-            this.lastNameTb.Size = new System.Drawing.Size(251, 23);
+            this.lastNameTb.Size = new System.Drawing.Size(251, 16);
             this.lastNameTb.TabIndex = 4;
             this.lastNameTb.Text = "Last Name";
             this.lastNameTb.Click += new System.EventHandler(this.lastNameTb_Click);
@@ -290,7 +290,7 @@
             this.titleLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLbl.Location = new System.Drawing.Point(126, 24);
             this.titleLbl.Name = "titleLbl";
-            this.titleLbl.Size = new System.Drawing.Size(178, 29);
+            this.titleLbl.Size = new System.Drawing.Size(114, 20);
             this.titleLbl.TabIndex = 3;
             this.titleLbl.Text = "New Employee";
             // 
@@ -319,7 +319,7 @@
             this.firstNameTb.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.firstNameTb.Location = new System.Drawing.Point(85, 95);
             this.firstNameTb.Name = "firstNameTb";
-            this.firstNameTb.Size = new System.Drawing.Size(251, 23);
+            this.firstNameTb.Size = new System.Drawing.Size(251, 16);
             this.firstNameTb.TabIndex = 0;
             this.firstNameTb.Text = "First Name";
             this.firstNameTb.Click += new System.EventHandler(this.firstNameTb_Click);
@@ -361,7 +361,7 @@
             this.emailTb.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.emailTb.Location = new System.Drawing.Point(85, 186);
             this.emailTb.Name = "emailTb";
-            this.emailTb.Size = new System.Drawing.Size(251, 23);
+            this.emailTb.Size = new System.Drawing.Size(251, 16);
             this.emailTb.TabIndex = 6;
             this.emailTb.Text = "Email";
             this.emailTb.Click += new System.EventHandler(this.emailTb_Click);
@@ -383,13 +383,13 @@
             this.namePb.Image = global::ProjectMB.Properties.Resources.emp_add;
             this.namePb.Location = new System.Drawing.Point(81, 12);
             this.namePb.Name = "namePb";
-            this.namePb.Size = new System.Drawing.Size(323, 212);
+            this.namePb.Size = new System.Drawing.Size(297, 212);
             this.namePb.TabIndex = 0;
             this.namePb.TabStop = false;
             // 
             // EmployeeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(845, 617);
             this.Controls.Add(this.contentPnl);

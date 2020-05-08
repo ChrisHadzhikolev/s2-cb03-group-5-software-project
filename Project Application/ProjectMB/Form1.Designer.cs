@@ -78,6 +78,7 @@ namespace ProjectMB
             this.passwordTb.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordTb.Location = new System.Drawing.Point(0, 0);
             this.passwordTb.Name = "passwordTb";
+            this.passwordTb.ShortcutsEnabled = false;
             this.passwordTb.Size = new System.Drawing.Size(100, 34);
             this.passwordTb.TabIndex = 2;
             this.passwordTb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.passwordTb_KeyDown);

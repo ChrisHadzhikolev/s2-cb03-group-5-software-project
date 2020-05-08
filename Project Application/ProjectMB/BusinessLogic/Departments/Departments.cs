@@ -32,7 +32,6 @@ namespace ProjectMB
 
                 throw;
             }
-            //departments.Add("")
         }
 
         public static void RemoveDepartment()
@@ -49,7 +48,6 @@ namespace ProjectMB
 
                 throw;
             }
-            //departments.Add("")
         }
 
         public static void UpdateDepartment()
@@ -63,7 +61,6 @@ namespace ProjectMB
 
                 throw;
             }
-            //departments.Add("")
         }
     }
 }

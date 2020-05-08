@@ -54,16 +54,8 @@ namespace ProjectMB
             return returnId;
         }
         public static User[] FindUsers(string lastName)
-        {
-            List<User> results = new List<User>();
-            foreach (var item in users)
-            {
-                if (item.LastName == lastName)
-                {
-                   results.Add(item);
-                }
-            }
-            return results.ToArray();
+        {           
+            return users.FindAll(User => User.LastName.ToLower().Contains(lastName.ToLower())).ToArray();
         }
 
         public static void AddUser(User user, bool manager = false) 
@@ -83,7 +75,6 @@ namespace ProjectMB
         }
         public static void GetUsers(int role, string department)
         {
-            MessageBox.Show(((PersonPosition)(role-1)).ToString());
             requestedUsers.Clear();
             if (role < 6)
             {

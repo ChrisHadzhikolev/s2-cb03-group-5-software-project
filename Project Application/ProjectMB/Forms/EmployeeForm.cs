@@ -61,7 +61,6 @@ namespace ProjectMB
             foreach (var item in Departments.departments)
             {
                 departmentCb.Items.Add(item.Name);
-                MessageBox.Show(item.Name);
             }
             
         }

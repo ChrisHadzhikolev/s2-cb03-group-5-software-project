@@ -63,13 +63,7 @@ namespace ProjectMB
         private void DepartmentsForm_Load(object sender, EventArgs e)
         {
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.addDepartmentBtn.BackColor = Color.FromArgb(5, 179, 245);
-            this.addDepartmentBtn.FlatStyle = FlatStyle.Flat;
-            this.searchDepartmentBtn.BackColor = Color.FromArgb(5, 179, 245);
-            this.searchDepartmentBtn.FlatStyle = FlatStyle.Flat;
-            this.BackColor = Color.FromArgb(193, 162, 254);
+           
 
             try
             {
@@ -94,6 +88,11 @@ namespace ProjectMB
         private void DepartmentsForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             AnimateWindow(this.Handle, 1000, AnimateWindowFlags.AW_BLEND | AnimateWindowFlags.AW_HIDE);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
