@@ -1,225 +1,274 @@
+
+<?php session_start();
+ob_start(); 
+header("Cache-control: no-cache");
+if(!isset($_SESSION['reload']))
+{
+  header("location:schedule.php");
+  $_SESSION['reload']="1";
+}
+
+if (!isset($_SESSION["loggedin"]))
+{
+  header("location: Login.php");
+}
+require_once "navBar.php";
+$date=date("d/m/Y");
+setcookie('selectedDate',$date);
+$date="01/01/1999";
+$day = date('l');
+echo "<script>document.cookie = 'day'= '$day'; </script>";
+setcookie("day",$day);
+$_COOKIE['selectedDate']=$date;
+$date="11/10/1999";
+
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
-<?php
-if (!isset($_SESSION["loggedin"])) {
-  # code...
-  header('Location:http://localhost/LogIn.php');
-}?>
-<html lang="en">
+<html>
   <head>
-    <meta charset="utf-8" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="footer, address, phone, icons" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
-    <link
-      href="http://fonts.googleapis.com/css?family=Cookie"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Volkhov&display=swap"
-      rel="stylesheet"
-    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="schedule.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+ <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+ <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+ <script src="jquery-3.5.0.min.js" type="text/javascript"></script>
 
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
-    />
-    <script
-      type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
-    ></script>
-    <link
-      href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="index.css" />
-
-    <title>Employee</title>
+    <title>Schedule</title>
   </head>
   <body>
-    <ul>
-      <li>
-        <a><span>IHDY</span></a>
-      </li>
-      <li class="home"><a href="index.php">Information</a></li>
-      <li class="home"><a href="schedule.php">Schedule</a></li>
-      <li class="home"><a href="messages.php">Notifications</a></li>
-      <li style="float:right"><a href="#about">Login</a></li>
-    </ul>
+ <div class="calendar">
+ <!-- <div class="checkboxes">
+ <p>Check-in</p>
 
-    <div class="main">
-      <div class="bg-text">
-        <h1 style="font-size:30px">SCHEDULE</h1>
-        <!--<a class="button" href="php/login.php">Log in</a>-->
-      </div>
-    </div>
+At work: <input type="checkbox" id="myCheck"  onclick="myFunction()" name="work">
 
-    <div class="calendar">
-      <div class="month">
-        <ul>
-          <li class="prev">&#10094;</li>
-          <li class="next">&#10095;</li>
-          <p>August<br /><span style="font-size:18px">2017</span></p>
-        </ul>
-      </div>
+<p id="text" style="display:none">Employee is at work.</p>
+Absent: <input type="checkbox" id="myCheck_absent"  onclick="myFunction1()" name = "absent">
 
-      <ul class="weekdays">
-        <li>Mo</li>
-        <li>Tu</li>
-        <li>We</li>
-        <li>Th</li>
-        <li>Fr</li>
-        <li>Sa</li>
-        <li>Su</li>
-      </ul>
+<p id="text_a" style="display:none">Employee is absent.</p>
+Sick: <input type="checkbox" id="myCheck_sick"  onclick="myFunction2()" name = "sick">
 
-      <ul class="days">
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>6</li>
-        <li>7</li>
-        <li>8</li>
-        <li>9</li>
-        <li><span class="active">10</span></li>
-        <li>11</li>
-        <li>12</li>
-        <li>13</li>
-        <li>14</li>
-        <li>15</li>
-        <li>16</li>
-        <li>17</li>
-        <li>18</li>
-        <li>19</li>
-        <li>20</li>
-        <li>21</li>
-        <li>22</li>
-        <li>23</li>
-        <li>24</li>
-        <li>25</li>
-        <li>26</li>
-        <li>27</li>
-        <li>28</li>
-        <li>29</li>
-        <li>30</li>
-        <li>31</li>
-      </ul>
-    </div>
-    <div class="notes">
-      <div class="month">
-        <p>Notes<br /><span style="font-size:18px">August</span></p>
-      </div>
+<p id="text_s" style="display:none">Employee is sick.</p>
+</div>-->
+<div id = "sickbutton">
 
-      <ul class="weekdays">
-        <li>✓ 1.</li>
-      </ul>
-      <ul class="weekdays">
-        <li>2.</li>
-      </ul>
-      <ul class="weekdays">
-        <li>3.</li>
-      </ul>
-      <ul class="weekdays">
-        <li>4.</li>
-      </ul>
-    </div>
-    <!--tasks-->
-    <div class="task">
-      <div class="month">
-        <p>Tasks<br /></p>
-      </div>
+    <button class="btn btn-primary" name ="sick"  onclick="Sick()" style="background-color:#a5b3fe;border-color: black;color:#2f292f;margin-left:45%;margin-top:2%;">
+          Call in sick
+          </button>
 
-      <ul class="weekdays">
-        <li>1.</li>
-      </ul>
-      <ul class="weekdays">
-        <li>2.</li>
-      </ul>
-      <ul class="weekdays">
-        <li>3.</li>
-      </ul>
-      <ul class="weekdays">
-        <li>4.</li>
-      </ul>
-      <ul class="weekdays">
-        <li>5.</li>
-      </ul>
-    </div>
-    <div class="footer">
-      <ul>
-        <li><a class="active" href="#home">-> IHDY</a></li>
-        <li><a href="#news">Services</a></li>
-        <li><a href="#contact">Notifications</a></li>
-        <li><a href="schedule.html">Schedule</a></li>
-        <li><a href="#contact">Contact</a></li>
-  <li style="float:right"><a href="#about">Login</a></li>
-        <div class="info_footer">
-          <li>Caplaan 66 </li><br>
-          <li>Eindhoven, Netherlands</li><br>
+          </div>
+
+<script src="checkbox.js" type="text/javascript"></script>
+
+<div class="wrapper">
+      <div class="container-calendar"> 
+          <h3 id="monthAndYear"></h3>
+          <div class="button-container-calendar">
+              <button id="previous" onclick="previous()">&#8249;</button>
+              <button id="next" onclick="next()">&#8250;</button>
+          </div>
           
-      
+          <table class="table-calendar" id="calendar" data-lang="en">
+              <thead id="thead-month"></thead>
+              <tbody id="calendar-body"></tbody>
+          </table>
+          
+          <div class="footer-container-calendar">
+              <label for="month">Jump To: </label>
+              <select id="month" onchange="jump()">
+                  <option value=0>Jan</option>
+                  <option value=1>Feb</option>
+                  <option value=2>Mar</option>
+                  <option value=3>Apr</option>
+                  <option value=4>May</option>
+                  <option value=5>Jun</option>
+                  <option value=6>Jul</option>
+                  <option value=7>Aug</option>
+                  <option value=8>Sep</option>
+                  <option value=9>Oct</option>
+                  <option value=10>Nov</option>
+                  <option value=11>Dec</option>
+              </select>
+              <select id="year" onchange="jump()"></select>       
+          </div>
       </div>
-      <div class="info2_footer">
-        <li>+31 674 898 468</li><br>
-          <li>media_bazaar@gmail.com</li>
-        </div>
     </div>
-  </ul>
-    <!--<footer class="footer">
-      <div class="footer-left pl-5">
-        <h3><span>-> IHDY</span></h3>
+    </div>
+    <script src="calendar.js" type="text/javascript"></script>
 
-        <p class="footer-links">
-          <a href="#">Home</a>
-          |
-          <a href="#">Services</a>
-          |
-          <a href="#">Contact Us</a>
-          |
-          <a href="#">About Us</a>
-          |
-          <a href="#">Login</a>
-          |
-          <a href="#">Registration</a>
-        </p>
+<div class="list-group" id = "workers">
+  <a href="#" class="list-group-item list-group-item-action" style="background-color:#a5b3fe; color: black">
+    Shifts for today
+  </a>
+</div>
+<div class="list-group" id ="sick" style="margin-top:1%; margin-bottom:2%">
+  <a href="#" class="list-group-item list-group-item-action" style="background-color:#a5b3fe; color: black">
+    Absent employees due to sickness
+  </a>
 
-        <p class="footer-company-name">© 2020 MediaBazaar Inc.</p>
-      </div>
+</div>
+  
+  <script>
+     var selectedDate = new Date();
+     var weekday = new Array(7);
+weekday[0] = "Sunday";
+weekday[1] = "Monday";
+weekday[2] = "Tuesday";
+weekday[3] = "Wednesday";
+weekday[4] = "Thursday";
+weekday[5] = "Friday";
+weekday[6] = "Saturday";
+    var t = document.querySelector("#calendar-body");
+        t.addEventListener("click", function (e) {
+        selectedTd.classList.remove("selected");
+    var tdSelected = e.composedPath()[0];
+    
+    if(tdSelected.nodeName === "SPAN"){
+        selectedDate.setFullYear(currentYear,currentMonth, tdSelected.innerText);
+        tdSelected = e.composedPath()[1];
 
-      <div class="footer-center">
-        <div>
-          <i class="fa fa-map-marker"></i>
-          <p><span> Caplaan 66 </span> Eindhoven, Netherlands</p>
-        </div>
 
-        <div>
-          <i class="fa fa-phone"></i>
-          <p>+31 674 898 468</p>
-        </div>
-        <div>
-          <i class="fa fa-envelope"></i>
-          <p>
-            <a href="mailto:media_bazaar@gmail.com">media_bazaar@gmail.com</a>
-          </p>
-        </div>
-      </div>
-      <div class="footer-right">
-        <p class="footer-company-about">
-          <span>About the company</span>
-          Startup. Fresh Solutions. Good Results.
-        </p>
-        <div class="footer-icons">
-          <a href="#"><i class="fa fa-facebook"></i></a>
-          <a href="#"><i class="fa fa-twitter"></i></a>
-          <a href="#"><i class="fa fa-instagram"></i></a>
-          <a href="#"><i class="fa fa-linkedin"></i></a>
-          <a href="#"><i class="fa fa-youtube"></i></a>
-        </div>
-      </div>
-    </footer>-->
+        
+    }else{
+        selectedDate.setFullYear(currentYear,currentMonth, tdSelected.childNodes[0].innerText);
+
+    }
+    tdSelected.classList.add("selected");
+    document.cookie = "selectedDate =" + selectedDate.toLocaleDateString();
+    document.cookie = "day =" + weekday[selectedDate.getDay()];
+    
+    selectedTd = tdSelected;
+    let Workers=($.ajax({
+          url:"SchedulePHP.php",
+          type:"POST",
+          success:function(msg){
+            ShowWorkers(msg,selectedDate.toLocaleDateString());
+          },
+          dataType:"json"
+        }).responseText);
+
+
+        var Sick=($.ajax({
+          url:"ScheduleSick.php",
+          type:"POST",
+          success:function(msg){
+            
+            ShowSick(msg,selectedDate.toLocaleDateString());
+          },
+          dataType:"json"
+        }).responseText);
+        
+        
+        
+
+
+    
+ 
+
+   
+});
+
+function ShowWorkers(worker,date){
+
+  var string = "<a class='list-group-item list-group-item-action' style='background-color:#a5b3fe; color: black'>Shifts for "+date+"</a>";
+  for(var i =0;i<worker.length;i++)
+  {
+   
+    string +="<a class='list-group-item list-group-item-action' style='background-color:black; color: white'>"+worker[i][0]+" "+worker[i][1]+"</a>"
+
+  }
+
+
+ 
+
+  document.getElementById("workers").innerHTML = string;  
+} 
+function ShowSick(sick,date){
+
+  var string = "<a class='list-group-item list-group-item-action' style='background-color:#a5b3fe; color: black'>Absent due to sickness on: "+date+"</a>";
+  for(var i =0;i<sick.length;i++)
+  {
+   
+    string +="<a class='list-group-item list-group-item-action' style='background-color:black; color: white'>"+sick[i][0]+" "+sick[i][1]+"</a>"
+
+  }
+  document.getElementById("sick").innerHTML = string;  
+}
+function Sick()
+{
+  var r = confirm("Are you sure you want to check in as sick for "+selectedDate.toLocaleDateString()+"\nYou can't undo this action unless you directly contact your manager.")
+  if(r== true)
+  {
+    var trys=($.ajax({
+          url:"callsick.php",
+          type:"POST",
+          success:function(msg){
+            if(msg == "false")
+            {
+              alert("You are already checked in as sick for "+selectedDate.toLocaleDateString());
+            }
+            else{
+              alert("You have been checked in as sick for "+selectedDate.toLocaleDateString());
+            }
+          },
+
+        }));
+    
+  }
+  else{
+alert("You have not checked in sick for "+selectedDate.toLocaleDateString());
+  }
+
+}
+  </script>
   </body>
+  
 </html>
+
+<?php
+
+
+$servername = "studmysql01.fhict.local";  
+$database = 'dbi428428';
+$username = "dbi428428";
+$password = "spiderMan2000";
+
+    $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+if($date != $_COOKIE['selectedDate'])
+{
+
+
+  
+  
+  $sqlworker ="SELECT username FROM working_days WHERE ".$_COOKIE['day']."=1";
+  $stmtworker = $conn->prepare($sqlworker);
+  $stmtworker->execute();
+$workers = $stmtworker->fetchAll();
+$date =$_COOKIE['selectedDate'] ;
+echo "<script>var Workers=($.ajax({url:'SchedulePHP.php',type:'POST',success:function(msg){ShowWorkers(msg,selectedDate.toLocaleDateString());},dataType:'json'}).responseText);</script>";
+echo "<script>var Workers=($.ajax({url:'ScheduleSick.php',type:'POST',success:function(msg){ShowSick(msg,selectedDate.toLocaleDateString());},dataType:'json'}).responseText);</script>";
+
+
+
+
+
+
+
+ob_flush();
+}
+if(isset($_POST['sick']))
+{
+
+}
+
+?>
+

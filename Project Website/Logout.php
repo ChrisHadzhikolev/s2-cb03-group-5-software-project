@@ -18,7 +18,7 @@
     if(isset($_POST['logout_user'])){
         unset($_SESSION['loggedin']);
         sleep(2);
-        header('Location:http://localhost/');
+        header('Location:index.php');
     }
 
 
