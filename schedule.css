@@ -8,8 +8,8 @@ body {
   font-family: Verdana, sans-serif;
 }
 div.list-group {
-  width: 40%;
-  margin-left: 33%;
+  width: 45%;
+  margin-left: 30%;
 }
 
 .calendar {
@@ -124,6 +124,7 @@ html {
   cursor: pointer;
   font-size: large;
 }
+
 /* Add media queries for smaller screens */
 @media screen and (max-width: 720px) {
   .weekdays li,
