@@ -15,7 +15,12 @@ namespace ProjectMB
         public static List<User> requestedUsers = new List<User>();
         public static string Department = "";
         public static bool admin = false;
-        
+
+        public delegate void userStatus(User user);
+        public static event userStatus userAdded;
+        public static event userStatus userChanged;
+        public static event userStatus userRemoved;
+
         public static User FindUser(string username)
         {
             foreach (var item in users)
@@ -54,36 +59,30 @@ namespace ProjectMB
             return returnId;
         }
         public static User[] FindUsers(string lastName)
-        {
-            List<User> results = new List<User>();
-            foreach (var item in users)
-            {
-                if (item.LastName == lastName)
-                {
-                   results.Add(item);
-                }
-            }
-            return results.ToArray();
+        {           
+            return users.FindAll(User => User.LastName.ToLower().Contains(lastName.ToLower())).ToArray();
         }
 
         public static void AddUser(User user, bool manager = false) 
         {
             DatabaseFunctions.AddUser(user, manager);
             DatabaseFunctions.GetAllUsers();
+            userAdded?.Invoke(user);
         }
         public static void UpdateUser(User user)
         {
             DatabaseFunctions.UpdateUser(user);
             DatabaseFunctions.GetAllUsers();
+            userChanged?.Invoke(user);
         }
         public static void RemoveUser(User user)
         {
             DatabaseFunctions.RemoveUser(user);
             DatabaseFunctions.GetAllUsers();
+            userRemoved?.Invoke(user);
         }
         public static void GetUsers(int role, string department)
         {
-            MessageBox.Show(((PersonPosition)(role-1)).ToString());
             requestedUsers.Clear();
             if (role < 6)
             {

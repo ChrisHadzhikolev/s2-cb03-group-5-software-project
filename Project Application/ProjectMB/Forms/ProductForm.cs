@@ -42,24 +42,16 @@ namespace ProjectMB
         private void NewProductForm_Load(object sender, EventArgs e)
         {
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.MaximizeBox = false;
-            this.cancelBtn.BackColor = Color.FromArgb(5, 179, 245);
-            this.cancelBtn.FlatStyle = FlatStyle.Flat;
-            this.confirmBtn.BackColor = Color.FromArgb(5, 179, 245);
-            this.confirmBtn.FlatStyle = FlatStyle.Flat;
-            this.removeBtn.BackColor = Color.FromArgb(5, 179, 245);
-            this.removeBtn.FlatStyle = FlatStyle.Flat;
-            this.BackColor = Color.FromArgb(193, 162, 254);
             categoryCb.Items.Clear();
             categoryCb.Items.Add("Category");
             foreach (var item in Enum.GetValues(typeof(ProductCategory))
                                     .Cast<ProductCategory>()
-                                    .ToList())               
+                                    .ToList())
             {
                 categoryCb.Items.Add(item.ToString());
-            }             
+            }
             AnimateWindow(this.Handle, 500, AnimateWindowFlags.AW_SLIDE);
-        }        
+        }
 
         private void cancelBtn_Click(object sender, EventArgs e)
         {
@@ -68,15 +60,15 @@ namespace ProjectMB
 
         private void confirmBtn_Click(object sender, EventArgs e)
         {
-            try
-            {
+           
                 if (!string.IsNullOrWhiteSpace(nameTb.Text) && !string.IsNullOrWhiteSpace(priceTb.Text) && !string.IsNullOrWhiteSpace(quantityTb.Text))
                 {
 
                     if (categoryCb.SelectedIndex > 0)
                     {
                         string productName = nameTb.Text;
-                        double productPrice = double.Parse(priceTb.Text); 
+                       
+                        double productPrice = double.Parse(priceTb.Text);
                         int productQuantity = int.Parse(quantityTb.Text);
                         bool stockRequest = stockCbx.Checked;
                         ProductCategory type = (ProductCategory)Enum.Parse(typeof(ProductCategory), categoryCb.Text, true);
@@ -88,12 +80,12 @@ namespace ProjectMB
                             _productToBeEdited.Quantity = productQuantity;
                             _productToBeEdited.Category = type;
                             _productToBeEdited.StockRequest = stockRequest;
-                            DatabaseFunctions.UpdateProduct(_productToBeEdited);
+                            Products.UpdateProduct(_productToBeEdited);
                         }
                         else
                         {
                             Product newProduct = new Product(productName, type, productPrice, productQuantity, stockRequest);
-                            DatabaseFunctions.AddProduct(newProduct);
+                            Products.AddProduct(newProduct);
                         }
                         DatabaseFunctions.GetAllProducts();
                         this.Close();
@@ -108,28 +100,15 @@ namespace ProjectMB
                 {
                     MessageBox.Show("Fill in the empty fields!");
                 }
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Price and quantity must be numeric!");
-            }
-            catch (NoConnectionException)
-            {
-                MessageBox.Show("Connection unsuccessful, please restart", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (NotExistingException)
-            {
-                MessageBox.Show("Product is non-existent, please restart", "Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
+            
+          
         }
 
         private void removeBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                DatabaseFunctions.RemoveProduct(_productToBeEdited);
-                DatabaseFunctions.GetAllProducts();
+                Products.RemoveProduct(_productToBeEdited);
             }
             catch (NoConnectionException)
             {

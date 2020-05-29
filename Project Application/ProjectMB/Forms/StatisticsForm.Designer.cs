@@ -43,12 +43,13 @@
             // 
             // lbStatistics
             // 
-            this.lbStatistics.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lbStatistics.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbStatistics.FormattingEnabled = true;
-            this.lbStatistics.ItemHeight = 16;
-            this.lbStatistics.Location = new System.Drawing.Point(-1, 1);
+            this.lbStatistics.ItemHeight = 32;
+            this.lbStatistics.Location = new System.Drawing.Point(-2, 2);
+            this.lbStatistics.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lbStatistics.Name = "lbStatistics";
-            this.lbStatistics.Size = new System.Drawing.Size(666, 276);
+            this.lbStatistics.Size = new System.Drawing.Size(997, 420);
             this.lbStatistics.TabIndex = 0;
             // 
             // btnEmployeeStatistics
@@ -56,9 +57,10 @@
             this.btnEmployeeStatistics.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(179)))), ((int)(((byte)(245)))));
             this.btnEmployeeStatistics.Cursor = System.Windows.Forms.Cursors.Cross;
             this.btnEmployeeStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmployeeStatistics.Location = new System.Drawing.Point(206, 108);
+            this.btnEmployeeStatistics.Location = new System.Drawing.Point(309, 166);
+            this.btnEmployeeStatistics.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnEmployeeStatistics.Name = "btnEmployeeStatistics";
-            this.btnEmployeeStatistics.Size = new System.Drawing.Size(222, 36);
+            this.btnEmployeeStatistics.Size = new System.Drawing.Size(333, 55);
             this.btnEmployeeStatistics.TabIndex = 1;
             this.btnEmployeeStatistics.Text = "Employee Statistics";
             this.btnEmployeeStatistics.UseVisualStyleBackColor = false;
@@ -66,24 +68,27 @@
             // 
             // cbEmployeeDepartment
             // 
+            this.cbEmployeeDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEmployeeDepartment.FormattingEnabled = true;
             this.cbEmployeeDepartment.Items.AddRange(new object[] {
             "Finance",
             "Human Resource",
             "Inventory",
             "Marketing"});
-            this.cbEmployeeDepartment.Location = new System.Drawing.Point(206, 49);
+            this.cbEmployeeDepartment.Location = new System.Drawing.Point(309, 75);
+            this.cbEmployeeDepartment.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbEmployeeDepartment.Name = "cbEmployeeDepartment";
-            this.cbEmployeeDepartment.Size = new System.Drawing.Size(176, 24);
+            this.cbEmployeeDepartment.Size = new System.Drawing.Size(333, 37);
             this.cbEmployeeDepartment.TabIndex = 2;
             // 
             // btnGetProductStatistics
             // 
             this.btnGetProductStatistics.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(179)))), ((int)(((byte)(245)))));
             this.btnGetProductStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGetProductStatistics.Location = new System.Drawing.Point(444, 108);
+            this.btnGetProductStatistics.Location = new System.Drawing.Point(666, 166);
+            this.btnGetProductStatistics.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnGetProductStatistics.Name = "btnGetProductStatistics";
-            this.btnGetProductStatistics.Size = new System.Drawing.Size(219, 36);
+            this.btnGetProductStatistics.Size = new System.Drawing.Size(328, 55);
             this.btnGetProductStatistics.TabIndex = 3;
             this.btnGetProductStatistics.Text = "Product Statistics";
             this.btnGetProductStatistics.UseVisualStyleBackColor = false;
@@ -91,6 +96,7 @@
             // 
             // cbProductCategories
             // 
+            this.cbProductCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbProductCategories.FormattingEnabled = true;
             this.cbProductCategories.Items.AddRange(new object[] {
             "IMAGE_SOUND",
@@ -102,28 +108,31 @@
             "SPORT_CARE",
             "GAMING_FILM_MUSIC",
             "SMART_HOME"});
-            this.cbProductCategories.Location = new System.Drawing.Point(444, 49);
+            this.cbProductCategories.Location = new System.Drawing.Point(666, 75);
+            this.cbProductCategories.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbProductCategories.Name = "cbProductCategories";
-            this.cbProductCategories.Size = new System.Drawing.Size(176, 24);
+            this.cbProductCategories.Size = new System.Drawing.Size(328, 37);
             this.cbProductCategories.TabIndex = 4;
             // 
             // lbStatisticsEdepartments
             // 
             this.lbStatisticsEdepartments.AutoSize = true;
-            this.lbStatisticsEdepartments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lbStatisticsEdepartments.Location = new System.Drawing.Point(206, 7);
+            this.lbStatisticsEdepartments.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbStatisticsEdepartments.Location = new System.Drawing.Point(309, 11);
+            this.lbStatisticsEdepartments.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbStatisticsEdepartments.Name = "lbStatisticsEdepartments";
-            this.lbStatisticsEdepartments.Size = new System.Drawing.Size(168, 20);
+            this.lbStatisticsEdepartments.Size = new System.Drawing.Size(230, 26);
             this.lbStatisticsEdepartments.TabIndex = 5;
             this.lbStatisticsEdepartments.Text = "Employee Department";
             // 
             // lbStatisticsProductCategory
             // 
             this.lbStatisticsProductCategory.AutoSize = true;
-            this.lbStatisticsProductCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lbStatisticsProductCategory.Location = new System.Drawing.Point(440, 7);
+            this.lbStatisticsProductCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbStatisticsProductCategory.Location = new System.Drawing.Point(660, 11);
+            this.lbStatisticsProductCategory.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbStatisticsProductCategory.Name = "lbStatisticsProductCategory";
-            this.lbStatisticsProductCategory.Size = new System.Drawing.Size(132, 20);
+            this.lbStatisticsProductCategory.Size = new System.Drawing.Size(181, 26);
             this.lbStatisticsProductCategory.TabIndex = 6;
             this.lbStatisticsProductCategory.Text = "Product Category";
             // 
@@ -138,9 +147,10 @@
             this.panel1.Controls.Add(this.lbStatisticsEdepartments);
             this.panel1.Controls.Add(this.btnGetProductStatistics);
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.panel1.Location = new System.Drawing.Point(-1, 273);
+            this.panel1.Location = new System.Drawing.Point(-2, 420);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(666, 177);
+            this.panel1.Size = new System.Drawing.Size(999, 272);
             this.panel1.TabIndex = 7;
             // 
             // namePb
@@ -148,20 +158,22 @@
             this.namePb.BackColor = System.Drawing.Color.Transparent;
             this.namePb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.namePb.Image = global::ProjectMB.Properties.Resources.emp_add;
-            this.namePb.Location = new System.Drawing.Point(0, -23);
+            this.namePb.Location = new System.Drawing.Point(0, -35);
+            this.namePb.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.namePb.Name = "namePb";
-            this.namePb.Size = new System.Drawing.Size(200, 200);
+            this.namePb.Size = new System.Drawing.Size(300, 308);
             this.namePb.TabIndex = 8;
             this.namePb.TabStop = false;
             // 
             // StatisticsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(664, 450);
+            this.ClientSize = new System.Drawing.Size(996, 692);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbStatistics);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "StatisticsForm";
             this.Text = "Statistics";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StatisticsForm_FormClosing);

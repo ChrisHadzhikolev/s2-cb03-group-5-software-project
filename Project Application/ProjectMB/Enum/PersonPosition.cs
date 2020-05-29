@@ -13,5 +13,6 @@ namespace ProjectMB
         Department,
         Admin,
         Manager,
+        Cashier
     }
 }

@@ -30,59 +30,120 @@ namespace ProjectMB
             {
                 string departmentName = cbEmployeeDepartment.SelectedItem.ToString();
                 double avgSalary = 0;
-                int[] shifts = new int[3];
-                int favouriteShift = 0;
-                Users.GetUsers(6, departmentName);
-                int employees = Users.requestedUsers.Count;
-                foreach (User user in Users.requestedUsers)
+                string favouriteShift = "";
+
+                int day = 0;
+                int halfDay = 0;
+                int night = 0;
+
+                DatabaseFunctions.GetAllUsers();
+                foreach (User user in Users.users.ToList())
                 {
-                    avgSalary += user.Salary;
-                    if (user.ShiftTypeU == ShiftType.Day)
+                    if (user.Position != PersonPosition.Employee)
                     {
-                        shifts[0]++;
-                    }
-                    else if (user.ShiftTypeU == ShiftType.Night)
-                    {
-                        shifts[1]++;
-                    }
-                    else if (user.ShiftTypeU == ShiftType.HalfDay)
-                    {
-                        shifts[2]++;
+                        Users.users.Remove(user);
                     }
                 }
-                favouriteShift = shifts.Max();
-                int index = Array.IndexOf(shifts, favouriteShift);
+                int employees = 0;
+                
+                foreach (User user in Users.users)
+                {
+                    if (user.UserDepartment.Name == departmentName)
+                    {
+                        avgSalary += user.Salary;
+                        employees++;
+
+                        Dictionary<string, int> shiftsForUser = DatabaseFunctions.GetShiftsForUser(user);
+
+                        foreach (var VARIABLE in shiftsForUser.Keys)
+                        {
+                            if (shiftsForUser[VARIABLE] == 1)
+                            {
+                                day++;
+                            }
+                            else if (shiftsForUser[VARIABLE] == 2)
+                            {
+                                halfDay++;
+                            }
+                            else if (shiftsForUser[VARIABLE] == 3)
+                            {
+                                night++;
+                            }
+                        }
+                        shiftsForUser.Clear();
+                    }
+                }
+
+                if (Math.Max(Math.Max(day, halfDay), night) == day)
+                {
+                    favouriteShift = "Day";
+                }
+                else if (Math.Max(Math.Max(day, halfDay), night) == halfDay)
+                {
+                    favouriteShift = "HalfDay";
+                }
+                else if (Math.Max(Math.Max(day, halfDay), night) == night)
+                {
+                    favouriteShift = "Night";
+                }
                 lbStatistics.Items.Add($"The average salary for the department {departmentName} is: {(avgSalary / employees).ToString("C2", CultureInfo.CurrentCulture)}");
-                lbStatistics.Items.Add($"The favourite shift of employees is: {(ShiftType)index}");
+                lbStatistics.Items.Add($"The favourite shift of the employees for the {departmentName} department is: {favouriteShift}");
             }
             else
             {
                 double avgSalary = 0;
-                int[] shifts = new int[3];
-                int favouriteShift = 0;
-                DatabaseFunctions.GetAllUsers();
-                int employees = Users.requestedUsers.Count;
+                string favouriteShift = "";
 
-                foreach (User user in Users.requestedUsers)
+                int day = 0;
+                int halfDay = 0;
+                int night = 0;
+                DatabaseFunctions.GetAllUsers();
+                foreach (User user in Users.users.ToList())
                 {
-                    avgSalary += user.Salary;
-                    if (user.ShiftTypeU == ShiftType.Day)
+                    if (user.Position != PersonPosition.Employee)
                     {
-                        shifts[0]++;
-                    }
-                    else if (user.ShiftTypeU == ShiftType.Night)
-                    {
-                        shifts[1]++;
-                    }
-                    else if (user.ShiftTypeU == ShiftType.HalfDay)
-                    {
-                        shifts[2]++;
+                        Users.users.Remove(user);
                     }
                 }
-                favouriteShift = shifts.Max();
-                int index = Array.IndexOf(shifts, favouriteShift);
+                int employees = 0;
+                foreach (User user in Users.users)
+                {
+                    avgSalary += user.Salary; 
+                    employees++;
+
+                    Dictionary<string, int> shiftsForUser = DatabaseFunctions.GetShiftsForUser(user);
+
+                    foreach (var VARIABLE in shiftsForUser.Keys)
+                    {
+                        if (shiftsForUser[VARIABLE] == 1)
+                        {
+                            day++;
+                        }
+                        else if (shiftsForUser[VARIABLE] == 2)
+                        {
+                            halfDay++;
+                        }
+                        else if (shiftsForUser[VARIABLE] == 3)
+                        {
+                            night++;
+                        }
+                    }
+                    shiftsForUser.Clear();
+                }
+                if (Math.Max(Math.Max(day, halfDay), night) == day)
+                {
+                    favouriteShift = "Day";
+                }
+                else if (Math.Max(Math.Max(day, halfDay), night) == halfDay)
+                {
+                    favouriteShift = "HalfDay";
+                }
+                else if (Math.Max(Math.Max(day, halfDay), night) == night)
+                {
+                    favouriteShift = "Night";
+                }
                 lbStatistics.Items.Add($"The average salary for all the employees is: {(avgSalary / employees).ToString("C2", CultureInfo.CurrentCulture)}");
-                lbStatistics.Items.Add($"The most requested shift of all the employees is: {(ShiftType)index}");
+                lbStatistics.Items.Add($"The most requested shift of all the employees is: {favouriteShift}");
             }
         }
         private void btnGetProductStatistics_Click(object sender, EventArgs e)

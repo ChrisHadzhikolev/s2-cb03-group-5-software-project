@@ -70,8 +70,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="anim\AnimateWindowFlags.cs" />
+    <Compile Include="BusinessLogic\Export\ExportExcel.cs" />
     <Compile Include="Database\DatabaseFunctions.cs" />
     <Compile Include="BusinessLogic\Departments\Department.cs" />
+    <Compile Include="Forms\CashierForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CashierForm.Designer.cs">
+      <DependentUpon>CashierForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DepartmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +157,9 @@
     <Compile Include="Exceptions\UsernameErrorException.cs" />
     <Compile Include="BusinessLogic\Users\Users.cs" />
     <Compile Include="Exceptions\UsersInDepartmentException.cs" />
+    <EmbeddedResource Include="Forms\CashierForm.resx">
+      <DependentUpon>CashierForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DepartmentForm.resx">
       <DependentUpon>DepartmentForm.cs</DependentUpon>
     </EmbeddedResource>

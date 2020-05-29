@@ -14,7 +14,7 @@ namespace ProjectMB
     public partial class SearchForm : Form
     {
         ManageType type;
-        User[] user;
+        User[] foundUsers;
 
         [DllImport("user32")]
         static extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flags);
@@ -32,7 +32,7 @@ namespace ProjectMB
             {
                 if (type==ManageType.EMPLOYEE)
                 {
-                    EmployeeForm employeeForm = new EmployeeForm(user[resultsLb.SelectedIndex]);
+                    EmployeeForm employeeForm = new EmployeeForm(foundUsers[resultsLb.SelectedIndex]);
                     employeeForm.Show();
                 }
                 else
@@ -40,7 +40,8 @@ namespace ProjectMB
                     ProductForm productForm = new ProductForm(Products.FindProduct(resultsLb.SelectedItem.ToString()));
                     productForm.Show();
                 }
-             }
+                resultsLb.Items.Clear();
+            }
             catch (Exception exception)
             {
                 Console.WriteLine(exception);
@@ -49,28 +50,20 @@ namespace ProjectMB
         }
         private void SearchProductForm_Load(object sender, EventArgs e)
         {
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.searchBtn.BackColor = Color.FromArgb(5, 179, 245);
-            this.searchBtn.FlatStyle = FlatStyle.Flat;
-            this.BackColor = Color.FromArgb(193, 162, 254);
             AnimateWindow(this.Handle, 500, AnimateWindowFlags.AW_SLIDE);
-
-
         }
 
         private void searchBtn_Click(object sender, EventArgs e)
         {
             resultsLb.Items.Clear();
             string input = searchTb.Text;
-            user = Users.FindUsers(input);
+            searchTb.Clear();
+            foundUsers = Users.FindUsers(input);
             if (type==ManageType.EMPLOYEE)
             {
-                foreach (var item in user)
+                foreach (var item in foundUsers)
                 {
-                    resultsLb.Items.Add(item.ToString());
-                 
+                    resultsLb.Items.Add(item.ToString());                 
                 }
             }
             else if (type==ManageType.PRODUCT)
@@ -99,6 +92,11 @@ namespace ProjectMB
         private void SearchForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             AnimateWindow(this.Handle, 1000, AnimateWindowFlags.AW_BLEND | AnimateWindowFlags.AW_HIDE);
+        }
+
+        private void closeBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
