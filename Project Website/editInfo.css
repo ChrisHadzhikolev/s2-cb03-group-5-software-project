@@ -4,3 +4,7 @@ div.col-md-9.pesonal-info {
 .input.button.btn.btn-primary {
   border-color: black;
 }
+.container {
+  background-color: #a5b3fe;
+  margin-top: 2cm;
+}

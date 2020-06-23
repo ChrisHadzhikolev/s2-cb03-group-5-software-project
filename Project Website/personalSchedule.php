@@ -4,7 +4,7 @@ ob_start();
 header("Cache-control: no-cache");
 if(!isset($_SESSION['reload']))
 {
-  header("location:schedule.php");
+  header("location:personalschedule.php");
   $_SESSION['reload']="1";
 }
 
@@ -17,11 +17,10 @@ $date=date("d/m/Y");
 setcookie('selectedDate',$date);
 $date="01/01/1999";
 $day = date('l');
-
 setcookie("day",$day);
 $_COOKIE['selectedDate']=$date;
 $date="11/10/1999";
-
+$unem=$_SESSION['uname'];
 
 
 ?>
@@ -103,14 +102,10 @@ Sick: <input type="checkbox" id="myCheck_sick"  onclick="myFunction2()" name = "
     </div>
     <script src="calendar.js" type="text/javascript"></script>
 
-<div class="list-group" id = "workers">
-  <a href="#" class="list-group-item list-group-item-action" style="background-color:#a5b3fe; color: black; border: solid 2px black">
-    Shifts for today
-  </a>
-</div>
-<div class="list-group" id ="sick" style="margin-top:1%; margin-bottom:2%">
-  <a href="#" class="list-group-item list-group-item-action" style="background-color:#a5b3fe; color: black; border: solid 2px black">
-    Absent employees due to sickness
+
+<div class="list-group" id ="workers" style="margin-top:1%; margin-bottom:2%">
+  <a href="#" class="list-group-item list-group-item-action" style="background-color:#a5b3fe; color: black">
+    Your shift on 
   </a>
 
 </div>
@@ -146,7 +141,7 @@ weekday[6] = "Saturday";
     
     selectedTd = tdSelected;
     let Workers=($.ajax({
-          url:"SchedulePHP.php",
+          url:"Php_functions/PersonalSift.php?name=<?php echo $unem?>",
           type:"POST",
           success:function(msg){
             ShowWorkers(msg,selectedDate.toLocaleDateString());
@@ -154,16 +149,6 @@ weekday[6] = "Saturday";
           dataType:"json"
         }).responseText);
 
-
-        var Sick=($.ajax({
-          url:"ScheduleSick.php",
-          type:"POST",
-          success:function(msg){
-            
-            ShowSick(msg,selectedDate.toLocaleDateString());
-          },
-          dataType:"json"
-        }).responseText);
         
         
         
@@ -176,65 +161,36 @@ weekday[6] = "Saturday";
 });
 
 function ShowWorkers(worker,date){
-var Shift = " ";
-  var string = "<a class='list-group-item list-group-item-action' style='background-color:#a5b3fe; color: black'>Shifts for "+date+"</a>";
+  var Shift = " ";
+  var string = "<a class='list-group-item list-group-item-action' style='background-color:#a5b3fe; color: black'>Your shift on "+date+"</a>";
   for(var i =0;i<worker.length;i++)
   {
-   
-   if (worker[i][0] == 1) {
+   if (worker[i][1] == 0) {
+     Shift = "Free Day";
+     
+   }
+   if (worker[i][1] == 1) {
       Shift = "Day Shift";
      
    }
-   if (worker[i][0] == 2) {
+   if (worker[i][1] == 2) {
       Shift = "Half-Day Shift";
      
    }
-   if (worker[i][0] == 3) {
+   if (worker[i][1] == 3) {
       Shift = "Night Shift";
-   }
      
-    string +="<a class='list-group-item list-group-item-action' style='background-color:black; color: white'>"+worker[i][2]+" "+worker[i][3]+" - ("+Shift+")</a>"
+   }
+    string +="<a class='list-group-item list-group-item-action' style='background-color:black; color: white'>"+Shift+"</a>"
 
   }
- document.getElementById("workers").innerHTML = string;  
+
+
+ 
+
+  document.getElementById("workers").innerHTML = string;  
 } 
-function ShowSick(sick,date){
 
-  var string = "<a class='list-group-item list-group-item-action' style='background-color:#a5b3fe; color: black'>Absent due to sickness on: "+date+"</a>";
-  for(var i =0;i<sick.length;i++)
-  {
-   
-    string +="<a class='list-group-item list-group-item-action' style='background-color:black; color: white'>"+sick[i][0]+" "+sick[i][1]+"</a>"
-
-  }
-  document.getElementById("sick").innerHTML = string;  
-}
-function Sick()
-{
-  var r = confirm("Are you sure you want to check in as sick for "+selectedDate.toLocaleDateString()+"\nYou can't undo this action unless you directly contact your manager.")
-  if(r== true)
-  {
-    var trys=($.ajax({
-          url:"callsick.php",
-          type:"POST",
-          success:function(msg){
-            if(msg == "false")
-            {
-              alert("You are already checked in as sick for "+selectedDate.toLocaleDateString());
-            }
-            else{
-              alert("You have been checked in as sick for "+selectedDate.toLocaleDateString());
-            }
-          },
-
-        }));
-    
-  }
-  else{
-alert("You have not checked in sick for "+selectedDate.toLocaleDateString());
-  }
-
-}
   </script>
   </body>
   
@@ -262,8 +218,8 @@ if($date != $_COOKIE['selectedDate'])
   $stmtworker->execute();
 $workers = $stmtworker->fetchAll();
 $date =$_COOKIE['selectedDate'] ;
-echo "<script>var Workers=($.ajax({url:'SchedulePHP.php',type:'POST',success:function(msg){ShowWorkers(msg,selectedDate.toLocaleDateString());},dataType:'json'}).responseText);</script>";
-echo "<script>var Workers=($.ajax({url:'ScheduleSick.php',type:'POST',success:function(msg){ShowSick(msg,selectedDate.toLocaleDateString());},dataType:'json'}).responseText);</script>";
+
+echo "<script>var Workers=($.ajax({url:'Php_functions/PersonalSift.php?name=$unem',type:'POST',success:function(msg){ShowWorkers(msg,selectedDate.toLocaleDateString());},dataType:'json'}).responseText);</script>";
 
 
 

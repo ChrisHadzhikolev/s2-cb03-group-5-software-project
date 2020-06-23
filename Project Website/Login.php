@@ -11,7 +11,7 @@
     <meta name="author" content="Colorlib" />
     <meta name="keywords" content="Colorlib Templates" />
 
-    <title>Register</title>
+    <title>Login</title>
 
     <!-- Icons font-->
     <link

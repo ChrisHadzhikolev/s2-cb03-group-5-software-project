@@ -1,18 +1,23 @@
 <?php session_start();?>
 <head>
-    <link rel="stylesheet" type="text/css" href="logIn.css">
+    <link rel="stylesheet" type="text/css" href="logOut.css">
+    <link
+            href="vendor/mdi-font/css/material-design-iconic-font.min.css"
+            rel="stylesheet"
+            media="all"
+    />
 </head>
 <body>
-<form method="post">
-    <div class="container2">
+<div class="content">
+
+    <form method='post' >
         <p>Are you sure you want to log out?</p>
         <br>
         <button type="submit" name="logout_user">Logout</button>
-    </div>
-    <div class="container2" style="backface-visibility: visible">
-        
-    </div>
     </form>
+</div>
+
+
 </body>
 <?php
     if(isset($_POST['logout_user'])){

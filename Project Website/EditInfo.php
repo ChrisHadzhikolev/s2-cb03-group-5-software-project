@@ -48,14 +48,14 @@ $servername = "studmysql01.fhict.local";
     <link rel="stylesheet" href="editInfo.css" />
     <title>Edit personal info</title>
     </head>
-   <body>
+   <body style="background-color: #a5b3fe">
    <?php
 require_once "navBar.php";
 ?>
 
-<div class="container">
+<div style="  height: 150%; width: 70%"class="container">
     <h1>Edit Profile</h1>
-  	<hr>
+ 
     <form method="POST" name="form1" enctype="multipart/form-data">
 	<div class="row">
       <!-- left column -->
@@ -127,7 +127,7 @@ require_once "navBar.php";
       </div>
   </div>
 </div>
-<hr>
+
 </body>
 </html>
 

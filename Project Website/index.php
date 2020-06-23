@@ -49,16 +49,18 @@ $servername = "studmysql01.fhict.local";
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    
+    
     <link rel="stylesheet" href="editInfo.css" />
     <title>Edit personal info</title>
     </head>
-   <body>
+   <body style="background-color: #a5b3fe">
    <?php
 require_once "navBar.php";
 ?>
-<div class="container">
+<div class="container"style="  height: 150%; width: 70%">
     <h1>Profile</h1>
-  	<hr>
+  
 	<div class="row">
       <!-- left column -->
       <div class="col-md-3">
@@ -121,6 +123,6 @@ require_once "navBar.php";
       </div>
   </div>
 </div>
-<hr>
+
 </body>
 </html>
