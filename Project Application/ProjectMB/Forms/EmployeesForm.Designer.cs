@@ -43,15 +43,19 @@
             this.positionColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.salaryColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.departmentColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.rightLbl = new System.Windows.Forms.Label();
+            this.leftLbl = new System.Windows.Forms.Label();
+            this.bottomLbl = new System.Windows.Forms.Label();
+            this.exportBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // addBtn
             // 
             this.addBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(179)))), ((int)(((byte)(245)))));
             this.addBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addBtn.Location = new System.Drawing.Point(1106, 427);
+            this.addBtn.Location = new System.Drawing.Point(1257, 427);
             this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(272, 81);
+            this.addBtn.Size = new System.Drawing.Size(121, 45);
             this.addBtn.TabIndex = 5;
             this.addBtn.Text = "Add";
             this.addBtn.UseVisualStyleBackColor = false;
@@ -61,9 +65,9 @@
             // 
             this.searchBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(179)))), ((int)(((byte)(245)))));
             this.searchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.searchBtn.Location = new System.Drawing.Point(13, 427);
+            this.searchBtn.Location = new System.Drawing.Point(12, 427);
             this.searchBtn.Name = "searchBtn";
-            this.searchBtn.Size = new System.Drawing.Size(272, 81);
+            this.searchBtn.Size = new System.Drawing.Size(121, 45);
             this.searchBtn.TabIndex = 4;
             this.searchBtn.Text = "Search";
             this.searchBtn.UseVisualStyleBackColor = false;
@@ -84,9 +88,9 @@
             // 
             this.showBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(179)))), ((int)(((byte)(245)))));
             this.showBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.showBtn.Location = new System.Drawing.Point(535, 434);
+            this.showBtn.Location = new System.Drawing.Point(601, 434);
             this.showBtn.Name = "showBtn";
-            this.showBtn.Size = new System.Drawing.Size(245, 32);
+            this.showBtn.Size = new System.Drawing.Size(121, 45);
             this.showBtn.TabIndex = 7;
             this.showBtn.Text = "Show";
             this.showBtn.UseVisualStyleBackColor = false;
@@ -114,9 +118,9 @@
             // 
             this.closeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(179)))), ((int)(((byte)(245)))));
             this.closeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.closeBtn.Location = new System.Drawing.Point(1277, 363);
+            this.closeBtn.Location = new System.Drawing.Point(1257, 363);
             this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(101, 32);
+            this.closeBtn.Size = new System.Drawing.Size(121, 45);
             this.closeBtn.TabIndex = 9;
             this.closeBtn.Text = "Close";
             this.closeBtn.UseVisualStyleBackColor = false;
@@ -124,7 +128,7 @@
             // 
             // employeesLv
             // 
-            this.employeesLv.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.employeesLv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.employeesLv.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.idColumn,
             this.firstNameColumn,
@@ -187,12 +191,55 @@
             this.departmentColumn.Text = "Department";
             this.departmentColumn.Width = 215;
             // 
+            // rightLbl
+            // 
+            this.rightLbl.BackColor = System.Drawing.Color.Black;
+            this.rightLbl.Dock = System.Windows.Forms.DockStyle.Right;
+            this.rightLbl.Location = new System.Drawing.Point(1389, 0);
+            this.rightLbl.Name = "rightLbl";
+            this.rightLbl.Size = new System.Drawing.Size(1, 518);
+            this.rightLbl.TabIndex = 11;
+            // 
+            // leftLbl
+            // 
+            this.leftLbl.BackColor = System.Drawing.Color.Black;
+            this.leftLbl.Dock = System.Windows.Forms.DockStyle.Left;
+            this.leftLbl.Location = new System.Drawing.Point(0, 0);
+            this.leftLbl.Name = "leftLbl";
+            this.leftLbl.Size = new System.Drawing.Size(1, 518);
+            this.leftLbl.TabIndex = 12;
+            // 
+            // bottomLbl
+            // 
+            this.bottomLbl.BackColor = System.Drawing.Color.Black;
+            this.bottomLbl.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bottomLbl.Location = new System.Drawing.Point(1, 517);
+            this.bottomLbl.Name = "bottomLbl";
+            this.bottomLbl.Size = new System.Drawing.Size(1388, 1);
+            this.bottomLbl.TabIndex = 13;
+            // 
+            // exportBtn
+            // 
+            this.exportBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(179)))), ((int)(((byte)(245)))));
+            this.exportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exportBtn.Location = new System.Drawing.Point(12, 363);
+            this.exportBtn.Name = "exportBtn";
+            this.exportBtn.Size = new System.Drawing.Size(121, 45);
+            this.exportBtn.TabIndex = 14;
+            this.exportBtn.Text = "Export";
+            this.exportBtn.UseVisualStyleBackColor = false;
+            this.exportBtn.Click += new System.EventHandler(this.exportBtn_Click);
+            // 
             // EmployeesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(162)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(1390, 518);
+            this.Controls.Add(this.exportBtn);
+            this.Controls.Add(this.bottomLbl);
+            this.Controls.Add(this.leftLbl);
+            this.Controls.Add(this.rightLbl);
             this.Controls.Add(this.employeesLv);
             this.Controls.Add(this.closeBtn);
             this.Controls.Add(this.roleCb);
@@ -232,5 +279,9 @@
         private System.Windows.Forms.ColumnHeader salaryColumn;
         private System.Windows.Forms.ColumnHeader departmentColumn;
         private System.Windows.Forms.ColumnHeader idColumn;
+        private System.Windows.Forms.Label rightLbl;
+        private System.Windows.Forms.Label leftLbl;
+        private System.Windows.Forms.Label bottomLbl;
+        private System.Windows.Forms.Button exportBtn;
     }
 }

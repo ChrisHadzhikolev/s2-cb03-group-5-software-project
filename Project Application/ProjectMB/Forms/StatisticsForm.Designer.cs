@@ -37,25 +37,29 @@
             this.lbStatisticsProductCategory = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.namePb = new System.Windows.Forms.PictureBox();
+            this.bottomLbl = new System.Windows.Forms.Label();
+            this.rightLbl = new System.Windows.Forms.Label();
+            this.leftLbl = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.namePb)).BeginInit();
             this.SuspendLayout();
             // 
             // lbStatistics
             // 
+            this.lbStatistics.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbStatistics.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbStatistics.FormattingEnabled = true;
             this.lbStatistics.ItemHeight = 32;
             this.lbStatistics.Location = new System.Drawing.Point(-2, 2);
             this.lbStatistics.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lbStatistics.Name = "lbStatistics";
-            this.lbStatistics.Size = new System.Drawing.Size(997, 420);
+            this.lbStatistics.Size = new System.Drawing.Size(997, 386);
             this.lbStatistics.TabIndex = 0;
             // 
             // btnEmployeeStatistics
             // 
             this.btnEmployeeStatistics.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(179)))), ((int)(((byte)(245)))));
-            this.btnEmployeeStatistics.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.btnEmployeeStatistics.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEmployeeStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEmployeeStatistics.Location = new System.Drawing.Point(309, 166);
             this.btnEmployeeStatistics.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -78,12 +82,13 @@
             this.cbEmployeeDepartment.Location = new System.Drawing.Point(309, 75);
             this.cbEmployeeDepartment.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbEmployeeDepartment.Name = "cbEmployeeDepartment";
-            this.cbEmployeeDepartment.Size = new System.Drawing.Size(333, 37);
+            this.cbEmployeeDepartment.Size = new System.Drawing.Size(332, 37);
             this.cbEmployeeDepartment.TabIndex = 2;
             // 
             // btnGetProductStatistics
             // 
             this.btnGetProductStatistics.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(179)))), ((int)(((byte)(245)))));
+            this.btnGetProductStatistics.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGetProductStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGetProductStatistics.Location = new System.Drawing.Point(666, 166);
             this.btnGetProductStatistics.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -139,6 +144,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(162)))), ((int)(((byte)(254)))));
+            this.panel1.Controls.Add(this.leftLbl);
+            this.panel1.Controls.Add(this.rightLbl);
+            this.panel1.Controls.Add(this.bottomLbl);
             this.panel1.Controls.Add(this.namePb);
             this.panel1.Controls.Add(this.btnEmployeeStatistics);
             this.panel1.Controls.Add(this.lbStatisticsProductCategory);
@@ -164,6 +172,33 @@
             this.namePb.Size = new System.Drawing.Size(300, 308);
             this.namePb.TabIndex = 8;
             this.namePb.TabStop = false;
+            // 
+            // bottomLbl
+            // 
+            this.bottomLbl.BackColor = System.Drawing.Color.Black;
+            this.bottomLbl.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bottomLbl.Location = new System.Drawing.Point(0, 271);
+            this.bottomLbl.Name = "bottomLbl";
+            this.bottomLbl.Size = new System.Drawing.Size(999, 1);
+            this.bottomLbl.TabIndex = 9;
+            // 
+            // rightLbl
+            // 
+            this.rightLbl.BackColor = System.Drawing.Color.Black;
+            this.rightLbl.Dock = System.Windows.Forms.DockStyle.Right;
+            this.rightLbl.Location = new System.Drawing.Point(998, 0);
+            this.rightLbl.Name = "rightLbl";
+            this.rightLbl.Size = new System.Drawing.Size(1, 271);
+            this.rightLbl.TabIndex = 10;
+            // 
+            // leftLbl
+            // 
+            this.leftLbl.BackColor = System.Drawing.Color.Black;
+            this.leftLbl.Dock = System.Windows.Forms.DockStyle.Left;
+            this.leftLbl.Location = new System.Drawing.Point(0, 0);
+            this.leftLbl.Name = "leftLbl";
+            this.leftLbl.Size = new System.Drawing.Size(1, 271);
+            this.leftLbl.TabIndex = 11;
             // 
             // StatisticsForm
             // 
@@ -196,5 +231,8 @@
         private System.Windows.Forms.Label lbStatisticsProductCategory;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox namePb;
+        private System.Windows.Forms.Label leftLbl;
+        private System.Windows.Forms.Label rightLbl;
+        private System.Windows.Forms.Label bottomLbl;
     }
 }

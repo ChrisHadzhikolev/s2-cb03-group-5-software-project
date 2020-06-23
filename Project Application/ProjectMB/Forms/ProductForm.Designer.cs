@@ -43,6 +43,12 @@
             this.confirmBtn = new System.Windows.Forms.Button();
             this.nameTb = new System.Windows.Forms.TextBox();
             this.leftPnl = new System.Windows.Forms.Panel();
+            this.topLeftLbl = new System.Windows.Forms.Label();
+            this.bottomLeftLbl = new System.Windows.Forms.Label();
+            this.leftLbl = new System.Windows.Forms.Label();
+            this.topLbl = new System.Windows.Forms.Label();
+            this.rightLbl = new System.Windows.Forms.Label();
+            this.bottomLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.namePb)).BeginInit();
             this.contentPnl.SuspendLayout();
             this.leftPnl.SuspendLayout();
@@ -71,6 +77,7 @@
             this.stockCbx.Size = new System.Drawing.Size(251, 49);
             this.stockCbx.TabIndex = 19;
             this.stockCbx.Text = "Stock Request";
+            this.stockCbx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.stockCbx.UseVisualStyleBackColor = false;
             this.stockCbx.CheckedChanged += new System.EventHandler(this.stockCbx_CheckedChanged);
             // 
@@ -102,6 +109,9 @@
             // contentPnl
             // 
             this.contentPnl.BackColor = System.Drawing.Color.White;
+            this.contentPnl.Controls.Add(this.bottomLbl);
+            this.contentPnl.Controls.Add(this.rightLbl);
+            this.contentPnl.Controls.Add(this.topLbl);
             this.contentPnl.Controls.Add(this.stockCbx);
             this.contentPnl.Controls.Add(this.removeBtn);
             this.contentPnl.Controls.Add(this.cancelBtn);
@@ -208,12 +218,69 @@
             // leftPnl
             // 
             this.leftPnl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(162)))), ((int)(((byte)(254)))));
+            this.leftPnl.Controls.Add(this.leftLbl);
+            this.leftPnl.Controls.Add(this.bottomLeftLbl);
+            this.leftPnl.Controls.Add(this.topLeftLbl);
             this.leftPnl.Controls.Add(this.namePb);
             this.leftPnl.Dock = System.Windows.Forms.DockStyle.Left;
             this.leftPnl.Location = new System.Drawing.Point(0, 0);
             this.leftPnl.Name = "leftPnl";
             this.leftPnl.Size = new System.Drawing.Size(378, 518);
             this.leftPnl.TabIndex = 4;
+            // 
+            // topLeftLbl
+            // 
+            this.topLeftLbl.BackColor = System.Drawing.Color.Black;
+            this.topLeftLbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.topLeftLbl.Location = new System.Drawing.Point(0, 0);
+            this.topLeftLbl.Name = "topLeftLbl";
+            this.topLeftLbl.Size = new System.Drawing.Size(378, 1);
+            this.topLeftLbl.TabIndex = 1;
+            // 
+            // bottomLeftLbl
+            // 
+            this.bottomLeftLbl.BackColor = System.Drawing.Color.Black;
+            this.bottomLeftLbl.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bottomLeftLbl.Location = new System.Drawing.Point(0, 517);
+            this.bottomLeftLbl.Name = "bottomLeftLbl";
+            this.bottomLeftLbl.Size = new System.Drawing.Size(378, 1);
+            this.bottomLeftLbl.TabIndex = 2;
+            // 
+            // leftLbl
+            // 
+            this.leftLbl.BackColor = System.Drawing.Color.Black;
+            this.leftLbl.Dock = System.Windows.Forms.DockStyle.Left;
+            this.leftLbl.Location = new System.Drawing.Point(0, 1);
+            this.leftLbl.Name = "leftLbl";
+            this.leftLbl.Size = new System.Drawing.Size(1, 516);
+            this.leftLbl.TabIndex = 3;
+            // 
+            // topLbl
+            // 
+            this.topLbl.BackColor = System.Drawing.Color.Black;
+            this.topLbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.topLbl.Location = new System.Drawing.Point(0, 0);
+            this.topLbl.Name = "topLbl";
+            this.topLbl.Size = new System.Drawing.Size(466, 1);
+            this.topLbl.TabIndex = 20;
+            // 
+            // rightLbl
+            // 
+            this.rightLbl.BackColor = System.Drawing.Color.Black;
+            this.rightLbl.Dock = System.Windows.Forms.DockStyle.Right;
+            this.rightLbl.Location = new System.Drawing.Point(465, 1);
+            this.rightLbl.Name = "rightLbl";
+            this.rightLbl.Size = new System.Drawing.Size(1, 517);
+            this.rightLbl.TabIndex = 21;
+            // 
+            // bottomLbl
+            // 
+            this.bottomLbl.BackColor = System.Drawing.Color.Black;
+            this.bottomLbl.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bottomLbl.Location = new System.Drawing.Point(0, 517);
+            this.bottomLbl.Name = "bottomLbl";
+            this.bottomLbl.Size = new System.Drawing.Size(465, 1);
+            this.bottomLbl.TabIndex = 22;
             // 
             // ProductForm
             // 
@@ -252,5 +319,11 @@
         private System.Windows.Forms.Button confirmBtn;
         private System.Windows.Forms.TextBox nameTb;
         private System.Windows.Forms.Panel leftPnl;
+        private System.Windows.Forms.Label bottomLbl;
+        private System.Windows.Forms.Label rightLbl;
+        private System.Windows.Forms.Label topLbl;
+        private System.Windows.Forms.Label leftLbl;
+        private System.Windows.Forms.Label bottomLeftLbl;
+        private System.Windows.Forms.Label topLeftLbl;
     }
 }

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms.VisualStyles;
+using ProjectMB.BusinessLogic;
 
 namespace ProjectMB
 {
@@ -38,18 +39,15 @@ namespace ProjectMB
                             (PersonPosition)Enum.Parse(typeof(PersonPosition), dataReader[6].ToString(), true);
                         double salary = Double.Parse(dataReader[7].ToString());
                         Department department = new Department(dataReader[8].ToString());
-                        ShiftType shiftType =
-                            (ShiftType)Enum.Parse(typeof(ShiftType), dataReader[11].ToString(), true);
-                        bool[] days = new bool[7];
+                        byte[] days = new byte[7];
                         for (int i = 0; i < 7; i++)
                         {
-                            days[i] = bool.Parse(dataReader[i + 12].ToString());
+                            days[i] = (byte)(int.Parse(dataReader[i + 11].ToString()));
                         }
 
-                        User user = new User(username, firstName, lastName, email, position, salary, shiftType,
+                        User user = new User(username, firstName, lastName, email, position, salary,
                             days, department, id, phoneNumber);
                         results.Add(user);
-                        //MessageBox.Show(user.ToString());
                     }
 
                     conn.Close();
@@ -119,22 +117,20 @@ namespace ProjectMB
                     cmd.Parameters.AddWithValue("@salary", user.Salary);
                     cmd.Parameters.AddWithValue("@department", user.UserDepartment.Name);
                     cmd.Parameters.AddWithValue("@position", user.Position.ToString());
-                        //MessageBox.Show(user.Position.ToString());
-                        conn.Open();
+                    conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     query =
-                            "insert into working_days (`username`, `shift`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`) values (@username, @shift, @monday, @tuesday, @wednesday, @thursday, @friday, @saturday, @sunday);";
+                            "insert into working_days (`username`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`) values (@username, @monday, @tuesday, @wednesday, @thursday, @friday, @saturday, @sunday);";
                     cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@username", user.Username);
-                    cmd.Parameters.AddWithValue("@shift", user.ShiftTypeU.ToString());
-                    cmd.Parameters.AddWithValue("@monday", user.WorkingDays[0]);
-                    cmd.Parameters.AddWithValue("@tuesday", user.WorkingDays[1]);
-                    cmd.Parameters.AddWithValue("@wednesday", user.WorkingDays[2]);
-                    cmd.Parameters.AddWithValue("@thursday", user.WorkingDays[3]);
-                    cmd.Parameters.AddWithValue("@friday", user.WorkingDays[4]);
-                    cmd.Parameters.AddWithValue("@saturday", user.WorkingDays[5]);
-                    cmd.Parameters.AddWithValue("@sunday", user.WorkingDays[6]);
+                    cmd.Parameters.AddWithValue("@monday",(int) user.WorkingDays[0]);
+                    cmd.Parameters.AddWithValue("@tuesday",(int) user.WorkingDays[1]);
+                    cmd.Parameters.AddWithValue("@wednesday",(int) user.WorkingDays[2]);
+                    cmd.Parameters.AddWithValue("@thursday",(int) user.WorkingDays[3]);
+                    cmd.Parameters.AddWithValue("@friday",(int) user.WorkingDays[4]);
+                    cmd.Parameters.AddWithValue("@saturday",(int) user.WorkingDays[5]);
+                    cmd.Parameters.AddWithValue("@sunday",(int) user.WorkingDays[6]);
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();
@@ -172,18 +168,17 @@ namespace ProjectMB
                         cmd.ExecuteNonQuery();
                         conn.Close();
                         query =
-                            "update working_days set shift = @shift, Monday = @monday, Tuesday = @tuesday, Wednesday = @wednesday, Thursday = @thursday, Friday = @friday, Saturday = @saturday, Sunday = @sunday where username = @username;";
+                            "update working_days set Monday = @monday, Tuesday = @tuesday, Wednesday = @wednesday, Thursday = @thursday, Friday = @friday, Saturday = @saturday, Sunday = @sunday where username = @username;";
 
                         cmd = new MySqlCommand(query, conn);
                         cmd.Parameters.AddWithValue("@username", user.Username);
-                        cmd.Parameters.AddWithValue("@shift", user.ShiftTypeU.ToString());
-                        cmd.Parameters.AddWithValue("@monday", user.WorkingDays[0]);
-                        cmd.Parameters.AddWithValue("@tuesday", user.WorkingDays[1]);
-                        cmd.Parameters.AddWithValue("@wednesday", user.WorkingDays[2]);
-                        cmd.Parameters.AddWithValue("@thursday", user.WorkingDays[3]);
-                        cmd.Parameters.AddWithValue("@friday", user.WorkingDays[4]);
-                        cmd.Parameters.AddWithValue("@saturday", user.WorkingDays[5]);
-                        cmd.Parameters.AddWithValue("@sunday", user.WorkingDays[6]);
+                        cmd.Parameters.AddWithValue("@monday",(int) user.WorkingDays[0]);
+                        cmd.Parameters.AddWithValue("@tuesday",(int) user.WorkingDays[1]);
+                        cmd.Parameters.AddWithValue("@wednesday",(int) user.WorkingDays[2]);
+                        cmd.Parameters.AddWithValue("@thursday",(int) user.WorkingDays[3]);
+                        cmd.Parameters.AddWithValue("@friday",(int) user.WorkingDays[4]);
+                        cmd.Parameters.AddWithValue("@saturday",(int) user.WorkingDays[5]);
+                        cmd.Parameters.AddWithValue("@sunday",(int) user.WorkingDays[6]);
                         conn.Open();
                         cmd.ExecuteNonQuery();
                         conn.Close();
@@ -235,6 +230,100 @@ namespace ProjectMB
             else
             {
                 throw new NotExistingException();
+            }
+        }
+
+        public static Dictionary<string,int> GetShiftsForUser(User user)
+        {
+            int userId = user.ID;
+            string query = $"Select * from working_days where id = {userId};";
+            Dictionary<string, int> shifts = new Dictionary<string, int>();
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(ConnectionString))
+                {
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        shifts.Add("Monday", Convert.ToInt32(dataReader[2]));
+                        shifts.Add("Tuesday", Convert.ToInt32(dataReader[3]));
+                        shifts.Add("Wednesday", Convert.ToInt32(dataReader[4]));
+                        shifts.Add("Thursday", Convert.ToInt32(dataReader[5]));
+                        shifts.Add("Friday", Convert.ToInt32(dataReader[6]));
+                        shifts.Add("Saturday", Convert.ToInt32(dataReader[7]));
+                        shifts.Add("Sunday", Convert.ToInt32(dataReader[8]));
+                    }
+
+                    conn.Close();
+                    return shifts;
+                }
+            }
+            catch (Exception)
+            {
+                throw new NoConnectionException();
+            }
+        }
+
+        public static void AddOrder(Order order)
+        {
+            if (order != null)
+            {
+                string query =
+                    "insert into orders (`timestamp`, `price`) VALUES (@timestamp, @price);";
+                try
+                {
+                    using (MySqlConnection conn = new MySqlConnection(ConnectionString))
+                    {
+                        conn.Open();
+                        MySqlCommand cmd = new MySqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@timestamp", order._timestamp);
+                        cmd.Parameters.AddWithValue("@price", order.Costs);
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                }
+                catch (Exception)
+                {
+                    throw new NoConnectionException();
+                }
+            }
+            else
+            {
+                throw new NotExistingException();
+            }
+        }
+
+        public static void GetAllOrders()
+        {
+            string query = "Select * from orders";
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(ConnectionString))
+                {
+                    List<Order> results = new List<Order>();
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        int id = Int32.Parse(dataReader[0].ToString());
+                        string timestamp = dataReader[1].ToString();
+                        double price = Convert.ToDouble(dataReader[2]);
+                        
+                        Order order = new Order(id, timestamp, price);
+                        results.Add(order);
+                    }
+
+                    conn.Close();
+                    Orders._orders.Clear();
+                    Orders._orders.AddRange(results);
+                }
+            }
+            catch (Exception)
+            {
+                throw new NoConnectionException();
             }
         }
         #endregion

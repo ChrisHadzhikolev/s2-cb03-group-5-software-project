@@ -19,6 +19,8 @@ namespace ProjectMB
     {
         private bool _edit = false;
         private User _userToBeEdited;
+        Color[] colors = {Color.Red, Color.LightBlue, Color.Orange, Color.Black};   
+
 
         [DllImport("user32")]
         static extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flags);
@@ -42,19 +44,20 @@ namespace ProjectMB
             this.salaryTb.Text = user.Salary.ToString("C2", CultureInfo.CurrentCulture);
             this.departmentCb.SelectedIndex = departmentCb.Items.IndexOf(user.UserDepartment.Name);
             this.roleCb.SelectedIndex = roleCb.Items.IndexOf(user.Position.ToString());
-            this.shiftCb.SelectedIndex = shiftCb.Items.IndexOf(user.ShiftTypeU.ToString());
-            mondayCbx.Checked = user.WorkingDays[0];
-            tuesdayCbx.Checked = user.WorkingDays[1];
-            wednesdayCbx.Checked = user.WorkingDays[2];
-            thursdayCbx.Checked = user.WorkingDays[3];
-            fridayCbx.Checked = user.WorkingDays[4];
-            saturdayCbx.Checked = user.WorkingDays[5];
-            sundayCbx.Checked = user.WorkingDays[6];
+            //this.shiftCb.SelectedIndex = shiftCb.Items.IndexOf(user.ShiftTypeU.ToString());
+            mondayCbx.BackColor = colors[user.WorkingDays[0]];
+            tuesdayCbx.BackColor = colors[user.WorkingDays[1]];
+            wednesdayCbx.BackColor = colors[user.WorkingDays[2]];
+            thursdayCbx.BackColor = colors[user.WorkingDays[3]];
+            fridayCbx.BackColor = colors[user.WorkingDays[4]];
+            saturdayCbx.BackColor = colors[user.WorkingDays[5]];
+            sundayCbx.BackColor = colors[user.WorkingDays[6]];
+
             _edit = true;
             titleLbl.Text = "Edit Employee";
         }
         #endregion
-        private void loadDepartments() 
+        private void loadDepartments()
         {
             departmentCb.Items.Clear();
             departmentCb.Items.Add("Department");
@@ -62,7 +65,7 @@ namespace ProjectMB
             {
                 departmentCb.Items.Add(item.Name);
             }
-            
+
         }
         #region CRUD
         private void cancelBtn_Click(object sender, EventArgs e)
@@ -93,8 +96,8 @@ namespace ProjectMB
             {
                 if (!string.IsNullOrWhiteSpace(firstNameTb.Text) && !string.IsNullOrWhiteSpace(lastNameTb.Text) &&
                     !string.IsNullOrWhiteSpace(emailTb.Text) && !string.IsNullOrWhiteSpace(salaryTb.Text))
-                { 
-                    if (shiftCb.SelectedIndex > 0 && departmentCb.SelectedIndex > 0 && roleCb.SelectedIndex > 0)
+                {
+                    if (departmentCb.SelectedIndex > 0 && roleCb.SelectedIndex > 0)
                     {
                         const string emailPattern =
                                             "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$";
@@ -108,17 +111,16 @@ namespace ProjectMB
                             double salary = double.Parse(salaryStr.Trim());
                             Department department = Departments.DepartmentByName(departmentCb.SelectedItem.ToString());
                             PersonPosition position = (PersonPosition)Enum.Parse(typeof(PersonPosition), roleCb.Text, true);
-                            if ((position == PersonPosition.Manager && Users.admin) || (position != PersonPosition.Manager)) 
+                            if ((position == PersonPosition.Manager && Users.admin) || (position != PersonPosition.Manager))
                             {
-                                ShiftType type = (ShiftType)Enum.Parse(typeof(ShiftType), shiftCb.Text, true);
-                                bool[] _days = new bool[7];
-                                _days[0] = mondayCbx.Checked;
-                                _days[1] = tuesdayCbx.Checked;
-                                _days[2] = wednesdayCbx.Checked;
-                                _days[3] = thursdayCbx.Checked;
-                                _days[4] = fridayCbx.Checked;
-                                _days[5] = saturdayCbx.Checked;
-                                _days[6] = sundayCbx.Checked;
+                                byte[] _days = new byte[7];
+                                _days[0] = (byte) Array.IndexOf(colors, mondayCbx.BackColor);
+                                _days[1] = (byte) Array.IndexOf(colors, tuesdayCbx.BackColor);
+                                _days[2] = (byte) Array.IndexOf(colors, wednesdayCbx.BackColor);
+                                _days[3] = (byte) Array.IndexOf(colors, thursdayCbx.BackColor);
+                                _days[4] = (byte) Array.IndexOf(colors, fridayCbx.BackColor);
+                                _days[5] = (byte) Array.IndexOf(colors, saturdayCbx.BackColor);
+                                _days[6] = (byte) Array.IndexOf(colors, sundayCbx.BackColor);
 
                                 if (_edit)
                                 {
@@ -127,7 +129,6 @@ namespace ProjectMB
                                     _userToBeEdited.Email = email;
                                     _userToBeEdited.Position = position;
                                     _userToBeEdited.Salary = salary;
-                                    _userToBeEdited.ShiftTypeU = type;
                                     _userToBeEdited.WorkingDays = _days;
                                     _userToBeEdited.UserDepartment = department;
                                     Users.UpdateUser(_userToBeEdited);
@@ -136,11 +137,11 @@ namespace ProjectMB
                                 {
                                     if (position == PersonPosition.Manager)
                                     {
-                                        Users.AddUser(new User(fn, ln, email, position, salary, type, _days, department), true);
+                                        Users.AddUser(new User(fn, ln, email, position, salary, _days, department), true);
                                     }
                                     else
                                     {
-                                        Users.AddUser(new User(fn, ln, email, position, salary, type, _days, department));
+                                         Users.AddUser(new User(fn, ln, email, position, salary, _days, department));
                                     }
                                 }
                                 DatabaseFunctions.GetAllUsers();
@@ -150,7 +151,7 @@ namespace ProjectMB
                             {
                                 MessageBox.Show("Managers can be added just by admin profile!", "Error", MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
-                            }                            
+                            }
                         }
                         else
                         {
@@ -197,86 +198,51 @@ namespace ProjectMB
         #region Design
         private void mondayCbx_CheckedChanged(object sender, EventArgs e)
         {
-            if (mondayCbx.Checked)
-            {
-                mondayCbx.BackColor = Color.Green;
-            }
-            else
-            {
-                mondayCbx.BackColor = Color.Red;
-            }
+            int index = Array.IndexOf(colors, mondayCbx.BackColor);
+            if (index == 3) index = -1;
+            mondayCbx.BackColor = colors[index + 1];
         }
 
         private void tuesdayCbx_CheckedChanged(object sender, EventArgs e)
         {
-            if (tuesdayCbx.Checked)
-            {
-                tuesdayCbx.BackColor = Color.Green;
-            }
-            else
-            {
-                tuesdayCbx.BackColor = Color.Red;
-            }
+            int index = Array.IndexOf(colors, tuesdayCbx.BackColor);
+            if (index == 3) index = -1;
+            tuesdayCbx.BackColor = colors[index + 1];
         }
 
         private void wednesdayCbx_CheckedChanged(object sender, EventArgs e)
         {
-            if (wednesdayCbx.Checked)
-            {
-                wednesdayCbx.BackColor = Color.Green;
-            }
-            else
-            {
-                wednesdayCbx.BackColor = Color.Red;
-            }
+            int index = Array.IndexOf(colors, wednesdayCbx.BackColor);
+            if (index == 3) index = -1;
+            wednesdayCbx.BackColor = colors[index + 1];
         }
 
         private void thursdayCbx_CheckedChanged(object sender, EventArgs e)
         {
-            if (thursdayCbx.Checked)
-            {
-                thursdayCbx.BackColor = Color.Green;
-            }
-            else
-            {
-                thursdayCbx.BackColor = Color.Red;
-            }
+            int index = Array.IndexOf(colors, thursdayCbx.BackColor);
+            if (index == 3) index = -1;
+            thursdayCbx.BackColor = colors[index + 1];
         }
 
         private void fridayCbx_CheckedChanged(object sender, EventArgs e)
         {
-            if (fridayCbx.Checked)
-            {
-                fridayCbx.BackColor = Color.Green;
-            }
-            else
-            {
-                fridayCbx.BackColor = Color.Red;
-            }
+            int index = Array.IndexOf(colors, fridayCbx.BackColor);
+            if (index == 3) index = -1;
+            fridayCbx.BackColor = colors[index + 1];
         }
 
         private void saturdayCbx_CheckedChanged(object sender, EventArgs e)
         {
-            if (saturdayCbx.Checked)
-            {
-                saturdayCbx.BackColor = Color.Green;
-            }
-            else
-            {
-                saturdayCbx.BackColor = Color.Red;
-            }
+            int index = Array.IndexOf(colors, saturdayCbx.BackColor);
+            if (index == 3) index = -1;
+            saturdayCbx.BackColor = colors[index + 1];
         }
 
         private void sundayCbx_CheckedChanged(object sender, EventArgs e)
         {
-            if (sundayCbx.Checked)
-            {
-                sundayCbx.BackColor = Color.Green;
-            }
-            else
-            {
-                sundayCbx.BackColor = Color.Red;
-            }
+            int index = Array.IndexOf(colors, sundayCbx.BackColor);
+            if (index == 3) index = -1;
+            sundayCbx.BackColor = colors[index + 1];
         }
         private void firstNameTb_Click(object sender, EventArgs e)
         {
@@ -367,6 +333,11 @@ namespace ProjectMB
         private void EmployeeForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             AnimateWindow(this.Handle, 1000, AnimateWindowFlags.AW_BLEND | AnimateWindowFlags.AW_HIDE);
+        }
+
+        private void legendBtn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Red is for no shift\nLight Blue is for day shift\nOrange is for half-day shift\nBlack is for night shift");
         }
     }
 }

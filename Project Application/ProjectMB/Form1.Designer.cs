@@ -46,6 +46,10 @@ namespace ProjectMB
             this.exitBtn = new System.Windows.Forms.Button();
             this.logOutBtn = new System.Windows.Forms.Button();
             this.logoPb = new System.Windows.Forms.PictureBox();
+            this.topLbl = new System.Windows.Forms.Label();
+            this.rightLbl = new System.Windows.Forms.Label();
+            this.leftLbl = new System.Windows.Forms.Label();
+            this.bottomLbl = new System.Windows.Forms.Label();
             this.loginPnl.SuspendLayout();
             this.loginComponentsPnl.SuspendLayout();
             this.selectionPnl.SuspendLayout();
@@ -211,11 +215,52 @@ namespace ProjectMB
             this.logoPb.TabIndex = 7;
             this.logoPb.TabStop = false;
             // 
+            // topLbl
+            // 
+            this.topLbl.BackColor = System.Drawing.Color.Black;
+            this.topLbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.topLbl.Location = new System.Drawing.Point(0, 0);
+            this.topLbl.Name = "topLbl";
+            this.topLbl.Size = new System.Drawing.Size(1280, 1);
+            this.topLbl.TabIndex = 8;
+            // 
+            // rightLbl
+            // 
+            this.rightLbl.BackColor = System.Drawing.Color.Black;
+            this.rightLbl.Dock = System.Windows.Forms.DockStyle.Right;
+            this.rightLbl.Location = new System.Drawing.Point(1279, 1);
+            this.rightLbl.Name = "rightLbl";
+            this.rightLbl.Size = new System.Drawing.Size(1, 999);
+            this.rightLbl.TabIndex = 9;
+            // 
+            // leftLbl
+            // 
+            this.leftLbl.BackColor = System.Drawing.Color.Black;
+            this.leftLbl.Dock = System.Windows.Forms.DockStyle.Left;
+            this.leftLbl.Location = new System.Drawing.Point(0, 1);
+            this.leftLbl.Name = "leftLbl";
+            this.leftLbl.Size = new System.Drawing.Size(1, 999);
+            this.leftLbl.TabIndex = 10;
+            // 
+            // bottomLbl
+            // 
+            this.bottomLbl.BackColor = System.Drawing.Color.Black;
+            this.bottomLbl.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bottomLbl.Location = new System.Drawing.Point(1, 999);
+            this.bottomLbl.Name = "bottomLbl";
+            this.bottomLbl.Size = new System.Drawing.Size(1278, 1);
+            this.bottomLbl.TabIndex = 11;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(162)))), ((int)(((byte)(254)))));
+            this.ClientSize = new System.Drawing.Size(1280, 1000);
+            this.Controls.Add(this.bottomLbl);
+            this.Controls.Add(this.leftLbl);
+            this.Controls.Add(this.rightLbl);
+            this.Controls.Add(this.topLbl);
             this.Controls.Add(this.logoPb);
             this.Controls.Add(this.logOutBtn);
             this.Controls.Add(this.exitBtn);
@@ -254,6 +299,10 @@ namespace ProjectMB
         private Button statisticsBtn;
         private Button departmentsBtn;
         private PictureBox logoPb;
+        private Label topLbl;
+        private Label rightLbl;
+        private Label leftLbl;
+        private Label bottomLbl;
     }
 }
 

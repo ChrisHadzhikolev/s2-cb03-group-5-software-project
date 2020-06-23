@@ -13,6 +13,7 @@ using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using ProjectMB.Forms;
 
 namespace ProjectMB
 {
@@ -33,11 +34,14 @@ namespace ProjectMB
             {
                 if (!DatabaseFunctions.GetAllUsers() && !DatabaseFunctions.GetAllProducts())
                 {
+                    this.Focus();
                     MessageBox.Show("Loading Data Failure, please restart", "Error", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
+                    
                 }
                 if (!DatabaseFunctions.GetAllDepartments()) 
                 {
+                    this.Focus();
                     MessageBox.Show("Loading Data Failure, please restart", "Error", MessageBoxButtons.OK,
                        MessageBoxIcon.Error);
                 }
@@ -50,12 +54,13 @@ namespace ProjectMB
             }
             catch (NoConnectionException)
             {
-
+                this.Focus();
                 MessageBox.Show("Loading Data Failure, please restart", "Error", MessageBoxButtons.OK,
                       MessageBoxIcon.Error);
             }
             catch (IOException)
             {
+                this.Focus();
                 MessageBox.Show("Loading Data Failure, please restart", "Error", MessageBoxButtons.OK,
                      MessageBoxIcon.Error);
             }
@@ -253,6 +258,20 @@ namespace ProjectMB
                     else
                     {
                         MessageBox.Show("Incorrect password, please try again!");
+                    }
+                }
+                else if(user.Position == PersonPosition.Cashier)
+                {
+                    string pass = DatabaseFunctions.PasswordByUsername(user.Username);
+                    if (pass == passwordTb.Text)
+                    {
+                        loginPnl.Visible = false;
+                        logOutBtn.Visible = true;
+                        usernameTb.Text = "Username";
+                        passwordTb.Text = "Password";
+                        Users.Department = user.UserDepartment.Name;
+                        CashierForm cashierForm = new CashierForm();
+                        cashierForm.Show();
                     }
                 }
                 else

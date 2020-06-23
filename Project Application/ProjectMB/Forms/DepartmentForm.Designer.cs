@@ -37,6 +37,12 @@
             this.NameTb = new System.Windows.Forms.TextBox();
             this.leftPnl = new System.Windows.Forms.Panel();
             this.namePb = new System.Windows.Forms.PictureBox();
+            this.topLbl = new System.Windows.Forms.Label();
+            this.bottomLbl = new System.Windows.Forms.Label();
+            this.topLeftLbl = new System.Windows.Forms.Label();
+            this.rightLbl = new System.Windows.Forms.Label();
+            this.leftLbl = new System.Windows.Forms.Label();
+            this.bottomLeftLbl = new System.Windows.Forms.Label();
             this.contentPnl.SuspendLayout();
             this.leftPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.namePb)).BeginInit();
@@ -45,6 +51,9 @@
             // contentPnl
             // 
             this.contentPnl.BackColor = System.Drawing.Color.White;
+            this.contentPnl.Controls.Add(this.rightLbl);
+            this.contentPnl.Controls.Add(this.bottomLbl);
+            this.contentPnl.Controls.Add(this.topLbl);
             this.contentPnl.Controls.Add(this.removeBtn);
             this.contentPnl.Controls.Add(this.cancelBtn);
             this.contentPnl.Controls.Add(this.titleLbl);
@@ -55,7 +64,7 @@
             this.contentPnl.Location = new System.Drawing.Point(567, 0);
             this.contentPnl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.contentPnl.Name = "contentPnl";
-            this.contentPnl.Size = new System.Drawing.Size(583, 452);
+            this.contentPnl.Size = new System.Drawing.Size(583, 374);
             this.contentPnl.TabIndex = 5;
             // 
             // removeBtn
@@ -63,10 +72,10 @@
             this.removeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(179)))), ((int)(((byte)(245)))));
             this.removeBtn.Enabled = false;
             this.removeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.removeBtn.Location = new System.Drawing.Point(200, 355);
+            this.removeBtn.Location = new System.Drawing.Point(296, 299);
             this.removeBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.removeBtn.Name = "removeBtn";
-            this.removeBtn.Size = new System.Drawing.Size(182, 69);
+            this.removeBtn.Size = new System.Drawing.Size(121, 45);
             this.removeBtn.TabIndex = 14;
             this.removeBtn.Text = "Remove";
             this.removeBtn.UseVisualStyleBackColor = false;
@@ -76,10 +85,10 @@
             // 
             this.cancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(179)))), ((int)(((byte)(245)))));
             this.cancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cancelBtn.Location = new System.Drawing.Point(9, 355);
+            this.cancelBtn.Location = new System.Drawing.Point(167, 299);
             this.cancelBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(182, 69);
+            this.cancelBtn.Size = new System.Drawing.Size(121, 45);
             this.cancelBtn.TabIndex = 13;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = false;
@@ -109,10 +118,10 @@
             // 
             this.confirmBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(179)))), ((int)(((byte)(245)))));
             this.confirmBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.confirmBtn.Location = new System.Drawing.Point(390, 355);
+            this.confirmBtn.Location = new System.Drawing.Point(425, 299);
             this.confirmBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.confirmBtn.Name = "confirmBtn";
-            this.confirmBtn.Size = new System.Drawing.Size(182, 69);
+            this.confirmBtn.Size = new System.Drawing.Size(121, 45);
             this.confirmBtn.TabIndex = 1;
             this.confirmBtn.Text = "Confirm";
             this.confirmBtn.UseVisualStyleBackColor = false;
@@ -131,32 +140,90 @@
             // leftPnl
             // 
             this.leftPnl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(162)))), ((int)(((byte)(254)))));
+            this.leftPnl.Controls.Add(this.bottomLeftLbl);
+            this.leftPnl.Controls.Add(this.leftLbl);
             this.leftPnl.Controls.Add(this.namePb);
+            this.leftPnl.Controls.Add(this.topLeftLbl);
             this.leftPnl.Dock = System.Windows.Forms.DockStyle.Left;
             this.leftPnl.Location = new System.Drawing.Point(0, 0);
             this.leftPnl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.leftPnl.Name = "leftPnl";
-            this.leftPnl.Size = new System.Drawing.Size(567, 452);
+            this.leftPnl.Size = new System.Drawing.Size(567, 374);
             this.leftPnl.TabIndex = 4;
             // 
             // namePb
             // 
             this.namePb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.namePb.Image = global::ProjectMB.Properties.Resources.emp_add;
-            this.namePb.Location = new System.Drawing.Point(46, 18);
+            this.namePb.Location = new System.Drawing.Point(42, 18);
             this.namePb.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.namePb.Name = "namePb";
             this.namePb.Size = new System.Drawing.Size(484, 326);
             this.namePb.TabIndex = 0;
             this.namePb.TabStop = false;
             // 
+            // topLbl
+            // 
+            this.topLbl.BackColor = System.Drawing.Color.Black;
+            this.topLbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.topLbl.Location = new System.Drawing.Point(0, 0);
+            this.topLbl.Name = "topLbl";
+            this.topLbl.Size = new System.Drawing.Size(583, 1);
+            this.topLbl.TabIndex = 15;
+            // 
+            // bottomLbl
+            // 
+            this.bottomLbl.BackColor = System.Drawing.Color.Black;
+            this.bottomLbl.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bottomLbl.Location = new System.Drawing.Point(0, 373);
+            this.bottomLbl.Name = "bottomLbl";
+            this.bottomLbl.Size = new System.Drawing.Size(583, 1);
+            this.bottomLbl.TabIndex = 16;
+            // 
+            // topLeftLbl
+            // 
+            this.topLeftLbl.BackColor = System.Drawing.Color.Black;
+            this.topLeftLbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.topLeftLbl.Location = new System.Drawing.Point(0, 0);
+            this.topLeftLbl.Name = "topLeftLbl";
+            this.topLeftLbl.Size = new System.Drawing.Size(567, 1);
+            this.topLeftLbl.TabIndex = 17;
+            // 
+            // rightLbl
+            // 
+            this.rightLbl.BackColor = System.Drawing.Color.Black;
+            this.rightLbl.Dock = System.Windows.Forms.DockStyle.Right;
+            this.rightLbl.Location = new System.Drawing.Point(582, 1);
+            this.rightLbl.Name = "rightLbl";
+            this.rightLbl.Size = new System.Drawing.Size(1, 372);
+            this.rightLbl.TabIndex = 18;
+            // 
+            // leftLbl
+            // 
+            this.leftLbl.BackColor = System.Drawing.Color.Black;
+            this.leftLbl.Dock = System.Windows.Forms.DockStyle.Left;
+            this.leftLbl.Location = new System.Drawing.Point(0, 1);
+            this.leftLbl.Name = "leftLbl";
+            this.leftLbl.Size = new System.Drawing.Size(1, 373);
+            this.leftLbl.TabIndex = 18;
+            // 
+            // bottomLeftLbl
+            // 
+            this.bottomLeftLbl.BackColor = System.Drawing.Color.Black;
+            this.bottomLeftLbl.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bottomLeftLbl.Location = new System.Drawing.Point(1, 373);
+            this.bottomLeftLbl.Name = "bottomLeftLbl";
+            this.bottomLeftLbl.Size = new System.Drawing.Size(566, 1);
+            this.bottomLeftLbl.TabIndex = 19;
+            // 
             // DepartmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1150, 452);
+            this.ClientSize = new System.Drawing.Size(1150, 374);
             this.Controls.Add(this.contentPnl);
             this.Controls.Add(this.leftPnl);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "DepartmentForm";
             this.Text = "DepartmentForm";
@@ -181,5 +248,11 @@
         private System.Windows.Forms.TextBox NameTb;
         private System.Windows.Forms.Panel leftPnl;
         private System.Windows.Forms.PictureBox namePb;
+        private System.Windows.Forms.Label rightLbl;
+        private System.Windows.Forms.Label bottomLbl;
+        private System.Windows.Forms.Label topLbl;
+        private System.Windows.Forms.Label bottomLeftLbl;
+        private System.Windows.Forms.Label leftLbl;
+        private System.Windows.Forms.Label topLeftLbl;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Drawing;
 using System.Globalization;
 using System.Runtime.InteropServices;
@@ -187,6 +188,26 @@ namespace ProjectMB
             {
                 MessageBox.Show("No category selected, please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+            }
+        }
+
+        private void exportBtn_Click(object sender, EventArgs e)
+        {
+            Microsoft.Office.Interop.Excel.Application xla = new Microsoft.Office.Interop.Excel.Application();
+            xla.Visible = true;
+            Workbook wb = xla.Workbooks.Add(XlSheetType.xlWorksheet);
+            Worksheet ws = (Worksheet)xla.ActiveSheet;
+            int i = 1, j = 1;
+            foreach (ListViewItem item in productsLw.Items)
+            {
+                ws.Cells[i, j] = item.Text.ToString();
+                foreach (ListViewItem.ListViewSubItem lvsi in item.SubItems)
+                {
+                    ws.Cells[i, j] = lvsi.Text.ToString();
+                    j++;
+                }
+                j = 1;
+                i++;
             }
         }
     }

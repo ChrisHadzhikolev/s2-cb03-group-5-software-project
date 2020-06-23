@@ -439,3 +439,162 @@ C:\Users\krish\Downloads\s2-cb03-group-5-software-project-Kris (1)\s2-cb03-group
 C:\Users\krish\Downloads\s2-cb03-group-5-software-project-Kris (1)\s2-cb03-group-5-software-project-Kris\Project Application\ProjectMB\obj\Debug\ProjectMB.csproj.CopyComplete
 C:\Users\krish\Downloads\s2-cb03-group-5-software-project-Kris (1)\s2-cb03-group-5-software-project-Kris\Project Application\ProjectMB\obj\Debug\ProjectMB.exe
 C:\Users\krish\Downloads\s2-cb03-group-5-software-project-Kris (1)\s2-cb03-group-5-software-project-Kris\Project Application\ProjectMB\obj\Debug\ProjectMB.pdb
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\bin\Debug\ProjectMB.exe.config
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\bin\Debug\ProjectMB.exe
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\bin\Debug\ProjectMB.pdb
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\bin\Debug\en-NL\ProjectMB.resources.dll
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\bin\Debug\Google.Protobuf.dll
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\bin\Debug\MySql.Data.dll
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\bin\Debug\Renci.SshNet.dll
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\bin\Debug\Google.Protobuf.xml
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\bin\Debug\MySql.Data.xml
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\bin\Debug\Renci.SshNet.xml
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.csprojAssemblyReference.cache
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.DepartmentForm.resources
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.DepartmentsForm.resources
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.EmployeeForm.resources
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.EmployeesForm.resources
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.MainForm.resources
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.ProductForm.resources
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.ProductsForm.resources
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.Properties.Resources.resources
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.SearchForm.resources
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.SplashScreen.resources
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.StatisticsForm.resources
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.EmployeesForm.en-NL.resources
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.csproj.GenerateResource.cache
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.csproj.CoreCompileInputs.cache
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\obj\Debug\en-NL\ProjectMB.resources.dll
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.csproj.CopyComplete
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.exe
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.pdb
+C:\Users\krish\Documents\k\Kris\refactor_week_13\s2-cb03-group-5-software-project-master-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.Forms.CashierForm.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\bin\Debug\ProjectMB.exe.config
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\bin\Debug\ProjectMB.exe
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\bin\Debug\ProjectMB.pdb
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\bin\Debug\en-NL\ProjectMB.resources.dll
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\bin\Debug\BouncyCastle.Crypto.dll
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\bin\Debug\Google.Protobuf.dll
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\bin\Debug\MySql.Data.dll
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\bin\Debug\Renci.SshNet.dll
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\bin\Debug\Ubiety.Dns.Core.dll
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\bin\Debug\Google.Protobuf.xml
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\bin\Debug\MySql.Data.xml
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\bin\Debug\Renci.SshNet.xml
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.csprojAssemblyReference.cache
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.Forms.CashierForm.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.DepartmentForm.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.DepartmentsForm.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.EmployeeForm.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.EmployeesForm.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.MainForm.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.ProductForm.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.ProductsForm.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.Properties.Resources.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.SearchForm.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.SplashScreen.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.StatisticsForm.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.EmployeesForm.en-NL.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.csproj.GenerateResource.cache
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\en-NL\ProjectMB.resources.dll
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.csproj.CopyComplete
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.exe
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\Project Application\ProjectMB\obj\Debug\ProjectMB.pdb
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\ProjectMB.exe.config
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\ProjectMB.exe
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\ProjectMB.pdb
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\en-NL\ProjectMB.resources.dll
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\Google.Protobuf.dll
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\MySql.Data.dll
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\Renci.SshNet.dll
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\Google.Protobuf.xml
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\MySql.Data.xml
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\Renci.SshNet.xml
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.csprojAssemblyReference.cache
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.Forms.CashierForm.resources
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.DepartmentForm.resources
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.DepartmentsForm.resources
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.EmployeeForm.resources
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.EmployeesForm.resources
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.MainForm.resources
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.ProductForm.resources
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.ProductsForm.resources
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.Properties.Resources.resources
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.SearchForm.resources
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.SplashScreen.resources
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.StatisticsForm.resources
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.EmployeesForm.en-NL.resources
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.csproj.GenerateResource.cache
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.csproj.CoreCompileInputs.cache
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\en-NL\ProjectMB.resources.dll
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.csproj.CopyComplete
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.exe
+C:\Users\krish\Downloads\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.pdb
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\ProjectMB.exe.config
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\ProjectMB.exe
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\ProjectMB.pdb
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\en-NL\ProjectMB.resources.dll
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\BouncyCastle.Crypto.dll
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\Google.Protobuf.dll
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\MySql.Data.dll
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\Renci.SshNet.dll
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\Ubiety.Dns.Core.dll
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\Google.Protobuf.xml
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\MySql.Data.xml
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\Renci.SshNet.xml
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.csprojAssemblyReference.cache
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.Forms.CashierForm.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.DepartmentForm.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.DepartmentsForm.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.EmployeeForm.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.EmployeesForm.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.MainForm.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.ProductForm.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.ProductsForm.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.Properties.Resources.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.SearchForm.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.SplashScreen.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.StatisticsForm.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.EmployeesForm.en-NL.resources
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.csproj.GenerateResource.cache
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\en-NL\ProjectMB.resources.dll
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.csproj.CopyComplete
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.exe
+D:\Assignments\Project\Branches\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.pdb
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\ProjectMB.exe.config
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\ProjectMB.exe
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\ProjectMB.pdb
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\en-NL\ProjectMB.resources.dll
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\Google.Protobuf.dll
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\MySql.Data.dll
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\Renci.SshNet.dll
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\Google.Protobuf.xml
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\MySql.Data.xml
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\bin\Debug\Renci.SshNet.xml
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.csprojAssemblyReference.cache
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.Forms.CashierForm.resources
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.DepartmentForm.resources
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.DepartmentsForm.resources
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.EmployeeForm.resources
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.EmployeesForm.resources
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.MainForm.resources
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.ProductForm.resources
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.ProductsForm.resources
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.Properties.Resources.resources
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.SearchForm.resources
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.SplashScreen.resources
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.StatisticsForm.resources
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.EmployeesForm.en-NL.resources
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.csproj.GenerateResource.cache
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.csproj.CoreCompileInputs.cache
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\en-NL\ProjectMB.resources.dll
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.csproj.CopyComplete
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.exe
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.pdb
+C:\Users\krish\Documents\k\Vasil\s2-cb03-group-5-software-project\prj_18_06\s2-cb03-group-5-software-project-Vasil-Project Application\Project Application\ProjectMB\obj\Debug\ProjectMB.csproj.ResolveComReference.cache

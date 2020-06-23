@@ -9,6 +9,12 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Office;
+using System.IO;
+using Microsoft.Office.Interop.Excel;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using Application=Microsoft.Office.Interop.Excel._Application;
 
 namespace ProjectMB
 {
@@ -145,6 +151,27 @@ namespace ProjectMB
         private void EmployeesForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             AnimateWindow(this.Handle, 1000, AnimateWindowFlags.AW_BLEND | AnimateWindowFlags.AW_HIDE);
+
+        }
+
+        private void exportBtn_Click(object sender, EventArgs e)
+        {
+            Microsoft.Office.Interop.Excel.Application xla = new Microsoft.Office.Interop.Excel.Application();
+            xla.Visible = true;
+            Workbook wb = xla.Workbooks.Add(XlSheetType.xlWorksheet);
+            Worksheet ws = (Worksheet)xla.ActiveSheet;
+            int i = 1, j = 1;
+            foreach (ListViewItem item in employeesLv.Items)
+            {
+                ws.Cells[i, j] = item.Text.ToString();
+                foreach (ListViewItem.ListViewSubItem lvsi in item.SubItems)
+                {
+                    ws.Cells[i, j] = lvsi.Text.ToString();
+                    j++;
+                }
+                j = 1;
+                i++;
+            }
 
         }
     }
